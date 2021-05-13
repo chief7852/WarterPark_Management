@@ -9,6 +9,8 @@
 <body>
 <form action="<%=request.getContextPath()%>/test">
 	<input type="submit" >
+	<%= JspFactory.getDefaultFactory().getEngineInfo().getSpecificationVersion() %>
+
 </form>
 </body>
 </html>
