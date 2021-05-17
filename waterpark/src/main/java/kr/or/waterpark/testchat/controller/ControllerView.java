@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ControllerView {
 
 	// 채팅방 입장
-	@RequestMapping(value = "/chat", method = RequestMethod.GET)
+	@RequestMapping(value = "/chzXat", method = RequestMethod.GET)
 	public String view_chat(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		System.out.println("입장");
 		return "view_chat";
