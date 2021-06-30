@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.customer.common.login.dao.IUserDAO">
+
+	<select id="selectUserForAuth" parameterType="String" resultType="kr.or.waterpark.customer.common.join.vo.UserVO">
+		SELECT USER_ID, 
+			USER_PASS,
+		    USER_AUTH,
+		    USER_PROTECT,
+		    MEMBERSHIP_END,
+		    MEMBERSHIP_YEAR
+		FROM (SELECT *
+		    FROM (SELECT
+		            A.USER_ID,
+		            USER_PASS,
+		            USER_AUTH,
+		            USER_PROTECT,
+		            MEMBERSHIP_END,
+		            DECODE(MEMBERSHIP_END, NULL, 0, LEVEL) MEMBERSHIP_YEAR
+		        FROM
+		            USER_AUTH_VIEW A
+		            LEFT OUTER JOIN  MEMBERSHIP B ON (A.USER_ID = B.USER_ID)
+		            WHERE a.USER_ID = #{user_id} AND USER_PROTECT ='N'
+		            START WITH MEMBERSHIP_PARENT IS NULL
+		            CONNECT BY PRIOR B.RES_INFO_CODE=B.MEMBERSHIP_PARENT
+		            ORDER SIBLINGS BY B.RES_INFO_CODE)
+		        ORDER BY MEMBERSHIP_END DESC)
+		        WHERE ROWNUM = 1
+	</select>
+	
+	<select id="selectUserDetail" parameterType="String" resultType="kr.or.waterpark.customer.common.join.vo.UserVO">
+		select *
+		  from users
+		 where user_id = #{USER_ID}
+	</select>
+	
+	<update id="updateUserForProtect" parameterType="String">
+		update users
+		   set user_protect = 'Y'
+		   where user_id = #{user_id}
+	</update>
+	
+	<insert id="insertUser" parameterType="kr.or.waterpark.customer.common.join.vo.UserVO">
+		INSERT INTO USERS(
+			USER_ID,
+			USER_PASS,
+			USER_NAME,
+			USER_REG,
+			USER_MAIL,
+			USER_HP,
+			USER_PROTECT,
+			USER_DEL,
+			USER_DATE
+		)
+		VALUES
+		(
+		#{user_id,jdbcType=VARCHAR},
+		#{user_pass,jdbcType=VARCHAR},
+		 #{user_name,jdbcType=VARCHAR},
+		 #{user_reg,jdbcType=VARCHAR},
+		 #{user_mail,jdbcType=VARCHAR},
+		 #{user_hp,jdbcType=VARCHAR},
+		 'N',
+		 null,
+		 SYSDATE
+		)
+	</insert>
+	
+	<select id="selectUserForPhoneAuth" parameterType="kr.or.waterpark.customer.common.join.vo.UserVO" resultType="kr.or.waterpark.customer.common.join.vo.UserVO">
+		select user_hp, user_name, user_id
+		  from users
+		 where user_name = #{user_name} and user_hp = #{user_hp}
+		 <if test="user_id !=null">
+		 	and user_id= #{user_id}
+		 </if>
+	</select>
+	
+	<update id="updateUserForPass" parameterType="kr.or.waterpark.customer.common.join.vo.UserVO" >
+		UPDATE USERS
+		   SET USER_PASS = #{user_pass}
+		       ,USER_PROTECT = 'N'
+		 WHERE USER_ID = #{user_id}
+	</update>
+	
+</mapper>
+
+
+

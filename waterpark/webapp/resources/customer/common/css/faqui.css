@@ -1,0 +1,1962 @@
+@charset "utf-8";
+
+/* form */
+input {vertical-align:middle;}
+label {vertical-align:middle;}
+input.iText {padding:3px 0 3px 10px;border:1px solid #e6e1e1;border-radius:2px;line-height:16px;vertical-align:middle;}
+input.text {padding:3px 0 3px 10px;border:1px solid #e6e1e1;border-radius:2px;line-height:16px;vertical-align:middle;}
+select {height:23px;border:1px solid #e6e1e1;border-radius:2px;line-height:21px;vertical-align:middle;}
+textarea {resize:none;border:1px solid #e6e1e1;border-radius:2px;overflow-y:auto;padding:3px 10px;vertical-align:middle;line-height:21px;}
+
+/* common */
+a {color:#434343;}
+a:hover {color:#007bc7;text-decoration:underline;}
+a:active {color:#007bc7;font-weight:bold;}
+.mr7 {margin-right:7px !important;}
+.mt5 {margin-top:5px !important;}
+.mt12 {margin-top:12px !important;}
+.mt20 {margin-top:20px !important;}
+.mt30 {margin-top:30px !important;}
+.mt40 {margin-top:40px !important;}
+.mb3 {margin-bottom:3px !important;}
+.mb5 {margin-bottom:5px !important;}
+.mb14 {margin-bottom:14px !important;}
+.mb20 {margin-bottom:20px !important;}
+.mb30 {margin-bottom:30px !important;}
+.ml12 {margin-left:12px !important;}
+.ml16 {margin-left:16px !important;}
+.ml20 {margin-left:20px !important;}
+.ml21 {margin-left:21px !important;}
+.ml25 {margin-left:25px !important;}
+.ml30 {margin-left:30px !important;}
+.pt10 {padding-top:10px !important;}
+.pb10 {padding-bottom:10px !important;}
+.mb0 {margin-bottom:0px !important;}
+.txtL {text-align:left !important;}
+.txtR {text-align:right !important;}
+.fl {float:left !important;}
+.fr {float:right !important;}
+.hidden {position:absolute;overflow:hidden;left:0;top:0;width:0;height:0;font-size:0;line-height:0;}
+
+table {table-layout:fixed;width:100%;color:#434343;}
+table caption {overflow:hidden;visibility:hidden;width:0;height:0;font-size:0;line-height:0;}
+table th, table td {font-size:12px;}
+table td a:active {letter-spacing:-0.08em;}
+
+/* common - contents */
+#contents .visual {margin:-80px -30px 0px -30px;background:#ff0000;height:100px;}
+#contents .foreword {margin:-80px -30px 0px -30px;background:#ff0000;height:100px;}
+.wide {margin:0 -30px;}
+.contpdT {padding-top:40px;}
+.contpdB {padding-bottom:40px;}
+.contpdTB {padding:40px 0;}
+.borderT {border-top:1px solid #eef0f0;}
+.borderTN {border-top:none !important;}
+.borderB {border-bottom:1px solid #eef0f0;}
+.borderTB {border-top:1px solid #eef0f0;border-bottom:1px solid #eef0f0;}
+.borderDB {border-bottom:3px double #eef0f0;}
+.dashed {border-bottom:1px dashed #e3e3e3;}
+.bold {font-weight:700;}
+.gray {color:#737373;}
+.darkgray {color:#717171;}
+.blue {color:#007bc7;}
+.green {color:#59ae2e;}
+.red {color:#e5564f;}
+.santi {font-family:'Shanti';}
+.font11 {font-size:11px;letter-spacing:-0.03em;}
+.font20 {font-size:20px;}
+.gray11 {font-size:11px;color:#737373;letter-spacing:-1px;}
+.blue11 {font-size:11px;color:#007bc7;letter-spacing:-1px;}
+.commonTit {font-size:14px;font-family:'Nanum Gothic';font-weight:700;line-height:18px;}
+.dot {line-height:22px;}
+.dot li,
+.dot dd {padding-left:12px;background:url("/waterpark/_img/ui/bg_dot.gif") no-repeat 0 9px;color:#666;font-size:12px;}
+.dot li strong {font-weight:bold;}
+.dot2 {line-height:20px;}
+.dot2 li {padding-left:12px;background:url("/waterpark/_img/ui/bg_dot.gif") no-repeat 0 7px;color:#666;font-size:12px;}
+.dot2 li strong {font-weight:bold;}
+.bg_dot {padding-left:12px;background:url("/waterpark/_img/ui/bg_dot.gif") no-repeat left center;}
+.layerPopDimmed {width:100%;height:100%;position:absolute;top:0;left:0;background:#000000;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";/* IE 5-7 */filter: alpha(opacity=50);/* Netscape */-moz-opacity: 0.5;/* Safari 1.x */-khtml-opacity: 0.5;/* Good browsers */opacity: 0.5;z-index:99998 ;}
+.popShowCon {display:none;position:absolute;z-index:99999;}
+.popHtmlCon {display:none;}
+.popHtmlCon .focusTo {display:none;}
+.searchNo {margin-top:20px;}
+
+/* table - list */
+.listColTable {table-layout:auto;width:100%;border-top:1px solid #e2e5e7;border-bottom:1px solid #e2e5e7;}
+.listColTable thead tr th {padding-top:9px;padding-bottom:8px;border-right:1px solid #dfdfdf;border-bottom:1px solid #dfdfdf;background-color:#f7f7f7;text-align:center;}
+.listColTable thead tr th.firstOne {}
+.listColTable thead tr th.lastOne {border-right:none;}
+.listColTable tbody tr td {padding-top:9px;padding-bottom:8px;border-bottom:1px solid #dfdfdf;border-right:1px solid #dfdfdf;text-align:center;}
+.listColTable tbody tr td.firstOne {}
+.listColTable tbody tr td.lastOne {border-right:none;}
+.listColTable tbody tr td.txtLeft {padding-left:20px;text-align:left;}
+.listColTable tbody tr td.txtRight {padding-right:20px;text-align:right;}
+.listColTable tbody tr td span.gray {font-size:11px;color:#737373;letter-spacing:-1px;}
+.listColTable tbody tr td .btn {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;height:19px;padding-left:25px;color:#434343;line-height:19px;}
+.listColTable tbody tr td .btn_check {background:url("/waterpark/_img/ui/btn_check.gif") no-repeat;}
+.listColTable tbody tr td .btn_del {background:url("/waterpark/_img/ui/btn_del.gif") no-repeat;}
+.listColTable tbody tr td .btn:active {letter-spacing:-1px;}
+.listColTable tbody tr th {padding-top:9px;padding-bottom:8px;border-right:1px solid #dfdfdf;border-bottom:1px solid #dfdfdf;background-color:#f7f7f7;text-align:center;}
+.listColTable tbody tr.last th {border-bottom:none;}
+.listColTable tbody tr.last td {border-bottom:none;}
+.listColTable tbody tr td ul.txt {margin-left:-5px;padding-right:20px;color:#434343;font-size:11px;line-height:20px;letter-spacing:-1px;}
+.listColTable tbody tr td ul.txt.type2 {font-size:12px;letter-spacing:-0.050em;}
+.listColTable tbody tr.line td {padding:1px}
+/*2016-01-26추가*/
+.listColTable tbody tr td.txtLeft  ul.txt2 li{background: url("/waterpark/_img/ui/bg_dot.gif") no-repeat 0 4px;padding-left:8px}
+
+/* table - list - FAQ */
+.faqContents .listColTable thead tr .no {width:48px;}
+.faqContents .listColTable thead tr .section {width:98px;}
+.faqContents .listColTable thead tr .title {width:*;}
+.faqContents .listColTable tbody tr.questionTr td {vertical-align:top;}
+.faqContents .listColTable tbody tr td.subjectTd {padding-left:20px;background:url("/waterpark/_img/ui/arrowQoff.gif") no-repeat 97% 13px;text-align:left;}
+.faqContents .listColTable tbody tr td.subjectTd .question {padding-right:50px;}
+.faqContents .listColTable tbody tr td.subjectTd .question p {text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+.faqContents .listColTable tbody tr td.subjectTd .answer {display:none;padding:14px 50px 7px 0;color:#737373;line-height:22px;}
+.faqContents .listColTable tbody tr td.subjectTd .answer strong {font-weight:bold;}
+.faqContents .listColTable tbody tr td.subjectTd.on {background:url("/waterpark/_img/ui/arrowQon.gif") no-repeat 97% 13px;}
+.faqContents .listColTable tbody tr td.subjectTd.on .answer {display:block;}
+
+/* table - list - news */
+.news_list_borad .listColTable thead tr .no {width:48px;}
+.news_list_borad .listColTable thead tr .type {width:79px;}
+.news_list_borad .listColTable thead tr .date {width:96px;}
+.news_list_borad .listColTable thead tr .title {width:*;}
+.news_list_borad .listColTable tbody tr .subjectTd {padding-left:20px;text-align:left;}
+
+/* table - list - promote */
+.prom_list_borad .listColTable thead tr .no {width:48px;}
+.prom_list_borad .listColTable thead tr .date {width:96px;}
+.prom_list_borad .listColTable thead tr .title {width:*;}
+.prom_list_borad .listColTable tbody tr .subjectTd {padding:20px;text-align:left;}
+.prom_list_borad .listColTable tbody tr .subjectTd a {position:relative;z-index:0;display:block;height:85px;padding-left:138px;}
+.prom_list_borad .listColTable tbody tr .subjectTd a .pic {position:absolute;z-index:0;left:0;top:0;display:block;width:118px;height:85px;}
+.prom_list_borad .listColTable tbody tr .subjectTd a .pic img {width:118px;height:85px;vertical-align:top;}
+.prom_list_borad .listColTable tbody tr .subjectTd a .tit {display:block;margin-bottom:6px;width:100%;height:20px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:22px;color:#434343;font-weight:700;}
+.prom_list_borad .listColTable tbody tr .subjectTd a .txt {display:block;height:54px;overflow:hidden;line-height:18px;color:#434343;}
+.prom_list_borad .listColTable tbody tr .subjectTd a:hover .tit {color:#007bc7;text-decoration:underline;}
+.prom_list_borad .listColTable tbody tr .subjectTd a:active .tit {letter-spacing:0;}
+.prom_list_borad .listColTable tbody tr .subjectTd a:hover .txt {color:#434343;text-decoration:underline;}
+.prom_list_borad .listColTable tbody tr .subjectTd a:active .txt {letter-spacing:-1px;}
+
+/* table - list - winner */
+.winner .listColTable thead tr .w49 {width:49px;}
+.winner .listColTable thead tr .w98 {width:98px;}
+.winner .listColTable thead tr .w490 {width:*;}
+.winner .listColTable thead tr .w199 {width:199px;}
+.winner .listColTable tbody tr .subjectTd {padding-left:20px;text-align:left;}
+
+/* table - write */
+.boardWrite {table-layout:auto;width:100%;border-top:1px solid #e2e5e7;border-bottom:1px solid #e2e5e7;line-height:20px;}
+.boardWrite tbody tr th {padding:5px 0 5px 10px;border-bottom:1px solid #eef0f0;border-right:1px solid #eef0f0;background-color:#f7f7f7;}
+.boardWrite tbody tr td {padding:4px 0 4px 8px;border-bottom:1px solid #eef0f0;border-right:1px solid #eef0f0;line-height:24px;}
+.boardWrite tbody tr td.last {border-right:none;}
+.boardWrite tbody tr td label {margin-right:18px;line-height:16px;vertical-align:middle;}
+.boardWrite tbody tr td input {line-height:16px;vertical-align:middle;}
+.boardWrite tbody tr td textarea {width:96%;height:160px;}
+.boardWrite tbody tr td input.attachedFile {width:95%;padding:2px 0;font-size:12px;line-height:12px;}
+.boardWrite tbody tr.last th {border-bottom:none;}
+.boardWrite tbody tr.last td {border-bottom:none;}
+/* 20200616 추가 */
+.boardWrite tbody .add-caption {color: #de1827;padding-left: 5px;}
+
+/* table - view */
+.board_view {line-height:20px;}
+.board_view .title {position:relative;z-index:0;height:40px;padding:0 20px;border-bottom:1px solid #e2e5e7;line-height:40px;}
+.board_view .title h3 {color:#007bc7;font-size:14px;font-weight:700;}
+.board_view .title h4 {color:#007bc7;font-size:14px;font-weight:700;}
+.board_view .title2 {position:relative;z-index:0;height:40px;padding:0 20px;border-bottom:1px solid #e2e5e7;line-height:40px;}
+.board_view .title2 h3 {color:#007bc7;font-size:14px;font-weight:700;}
+.board_view .title2 h4 {color:#007bc7;font-size:14px;font-weight:700;}
+.board_view .attached {position:absolute;z-index:0;right:20px;top:0;color:#636363;font-size:11px;}
+.board_view .attached a,
+.board_view .attached span {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;}
+.board_view .attached .leftLine {margin-left:4px;padding-left:8px;background:url("/waterpark/_img/ui/barGray_1x10.gif") no-repeat left center;}
+.board_view .attached a.attachedFile {height:19px;margin-left:10px;line-height:19px;padding-left:25px;background:url("/waterpark/_img/ui/bg_attachedFile.gif") no-repeat left center;color:#737373;}
+.board_view .attached a.attachedFile:hover {background-position:-100px; 0;}
+.board_view .attached a.attachedFile:hover span {text-decoration:underline;}
+.board_view .attached a.attachedFile:active {background-position:-200px; 0;}
+.board_view .attached a.attachedFile:active span {font-weight:bold;letter-spacing:-1px;}
+.board_view .attached .layer {display:none;position:absolute;right:-20px;top:40px;width:198px;border:1px solid #e2e5e7;}
+.board_view .attached .layer.on {display:block;}
+.board_view .attached .layer .top {height:13px;padding:9px 15px;line-height:12px;background-color:#f7f7f7;}
+.board_view .attached .layer .top a {color:#434343;}
+.board_view .attached .layer .top span.num {color:#007bc7;}
+.board_view .attached .layer .top span.num strong {font-weight:bold;}
+.board_view .attached .layer a.attachedFileClose {position:absolute;z-index:1;right:10px;top:0;display:block;height:31px;line-height:31px;font-size:11px;color:#636363;}
+.board_view .attached .layer .downList {padding:15px 15px 12px 15px;background-color:#fff;font-size:11px;}
+.board_view .attached .layer .downList p {height:24px;line-height:24px;}
+.board_view .attached .layer .downList a {color:#434343;}
+.board_view .attached .layer .downList a:active {letter-spacing:-1px;}
+.board_view .attached .layer .downList p a {width:70px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.board_view .attached .layer .downList span {height:24px;line-height:24px;}
+.board_view .attached .layer .downList span.right {color:#737373;}
+.board_view .attached .layer p {position:relative;text-align:left;}
+.board_view .attached .layer p span.right {position:absolute;right:0;top:0;}
+.board_view .attached .layer p span.asf {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_asf.gif") no-repeat left center;}
+.board_view .attached .layer p span.avi {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_avi.gif") no-repeat left center;}
+.board_view .attached .layer p span.bmp {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_bmp.gif") no-repeat left center;}
+.board_view .attached .layer p span.doc {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_doc.gif") no-repeat left center;}
+.board_view .attached .layer p span.fla {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_fla.gif") no-repeat left center;}
+.board_view .attached .layer p span.gif {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_gif.gif") no-repeat left center;}
+.board_view .attached .layer p span.hwp {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_hwp.gif") no-repeat left center;}
+.board_view .attached .layer p span.jpg {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_jpg.gif") no-repeat left center;}
+.board_view .attached .layer p span.mkv {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_mkv.gif") no-repeat left center;}
+.board_view .attached .layer p span.mov {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_mov.gif") no-repeat left center;}
+.board_view .attached .layer p span.mp3 {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_mp3.gif") no-repeat left center;}
+.board_view .attached .layer p span.mp4 {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_mp4.gif") no-repeat left center;}
+.board_view .attached .layer p span.mpg {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_mpg.gif") no-repeat left center;}
+.board_view .attached .layer p span.ogg {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_ogg.gif") no-repeat left center;}
+.board_view .attached .layer p span.pdf {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_pdf.gif") no-repeat left center;}
+.board_view .attached .layer p span.png {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_png.gif") no-repeat left center;}
+.board_view .attached .layer p span.ppt {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_ppt.gif") no-repeat left center;}
+.board_view .attached .layer p span.txt {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_txt.gif") no-repeat left center;}
+.board_view .attached .layer p span.wav {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_wav.gif") no-repeat left center;}
+.board_view .attached .layer p span.wmv {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_wmv.gif") no-repeat left center;}
+.board_view .attached .layer p span.xls {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_xls.gif") no-repeat left center;}
+.board_view .attached .layer p span.zip {padding-left:20px;background:url("/waterpark/_img/ui/fileExtension/bg_zip.gif") no-repeat left center;}
+
+.board_view .cont {padding:32px 30px;}
+.board_view .prevnext {border-top:1px solid #e2e5e7;border-bottom:1px solid #e2e5e7;}
+.board_view .prevnext dl dt {float:left;width:89px;padding:9px 0 8px 8px;border-right:1px solid #eef0f0;color:#434343;}
+.board_view .prevnext dl dd {float:left;width:794px;padding:9px 0 8px 8px;color:#636363;}
+.board_view .prevnext dl dd a {color:#636363;}
+.board_view .prevnext dl dd a:hover {color:#007bc7;}
+.board_view .prevnext dl dd a:active {color:#007bc7;letter-spacing:-0.08em;}
+.board_view .prevnext dl.prev {border-bottom:1px solid #eef0f0;}
+.board_view .prevnext dl.prev dt {background:#f7f7f7 url("/waterpark/_img/ui/arrow_prev.gif") no-repeat 82px center;}
+.board_view .prevnext dl.next dt {background:#f7f7f7 url("/waterpark/_img/ui/arrow_next.gif") no-repeat 82px center;}
+.board_view .comment {margin-bottom:32px;padding:21px;background-color:#f7f7f7;}
+.board_view .comment .commentT span {color:#313335;font-size:14px;font-family:'Nanum Gothic';font-weight:700;}
+.board_view .comment .commentT em {color:#007dbd;}
+.board_view .comment .commentT em strong {font-weight:700;}
+.board_view .comment ul li {width:650px;margin-top:13px;color:#434343;line-height:20px;}
+.board_view .comment ul li .info {margin-top:3px;}
+.board_view .comment ul li .info span {height:13px;color:#636363;font-size:11px;line-height:13px;}
+.board_view .comment ul li .info .date {margin-right:4px;padding-left:19px;background:url("/waterpark/_img/ui/icon_date.png") no-repeat;}
+.board_view .comment ul li .info .admin {padding-left:8px;background:url("/waterpark/_img/ui/barGray_1x10.gif") no-repeat 0 1px;}
+.board_view .comment ul li .cmtWrap .cmtInner .cmtCont {min-height:20px;}
+.board_view .comment ul li.left .cmtWrap {background:url("/waterpark/_img/ui/cmtL_m.png") repeat-y;}
+.board_view .comment ul li.left .cmtWrap .cmtInner {background:url("/waterpark/_img/ui/cmtL_t.png") no-repeat left top;}
+.board_view .comment ul li.left .cmtWrap .cmtInner .cmtCont {padding:17px 25px;background:url("/waterpark/_img/ui/cmtL_b.png") no-repeat left bottom;}
+.board_view .comment ul li.left .info {padding-left:12px;text-align:left;}
+.board_view .comment ul li.right {padding-left:208px;}
+.board_view .comment ul li.right .cmtWrap {background:url("/waterpark/_img/ui/cmtR_m.png") repeat-y;}
+.board_view .comment ul li.right .cmtWrap .cmtInner {background:url("/waterpark/_img/ui/cmtR_t.png") no-repeat left top;}
+.board_view .comment ul li.right .cmtWrap .cmtInner .cmtCont {padding:17px 25px;background:url("/waterpark/_img/ui/cmtR_b.png") no-repeat left bottom;}
+.board_view .comment ul li.right .info {padding-right:12px;text-align:right;}
+.board_view .download {border-top:1px solid #e2e5e7;border-bottom:1px solid #e2e5e7;}
+.board_view .download dl dt {float:left;width:89px;padding:9px 0 8px 8px;border-right:1px solid #eef0f0;background-color:#f7f7f7;color:#434343;}
+.board_view .download dl dd {float:left;width:794px;padding:9px 0 8px 8px;color:#636363;}
+.board_view .download dl dd a {color:#636363;}
+.board_view .download dl dd a:hover {color:#007bc7;}
+.board_view .download dl dd a:active {color:#007bc7;letter-spacing:-0.08em;}
+.board_view.style2 {}
+.board_view.style2 .title {padding:0;}
+.board_view.style2 .title2 {padding:0;}
+.board_view.style2 .attached {right:0;}
+.board_view.style2 .cont {padding:32px 0;border-bottom:1px solid #e2e5e7;}
+
+/* btn - common */
+.centerBtnWrap {margin-top:32px;text-align:center;}
+.btnWrap {margin-top:32px;text-align:center;}
+
+.btn_st,
+.btn_st span {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;vertical-align:middle;cursor:pointer;}
+.btn_st:hover span {text-decoration:underline;}
+.btn_st:active span {font-weight:700;letter-spacing:-1px;text-decoration:none;}
+
+/* btn - text */
+.btn_link {padding-right:20px;background:url("/waterpark/_img/ui/btn_link_r.png") no-repeat right top;}
+.btn_link span {height:24px;padding:0 12px;background:url("/waterpark/_img/ui/btn_link.png") no-repeat left top;color:#434343;font-size:11px;line-height:24px;letter-spacing:-1px;vertical-align:top;}
+.btn_link:hover span {color:#007bc7;}
+.btn_link:active {background:url("/waterpark/_img/ui/btn_link_r_click.png") no-repeat right top;}
+.btn_link:active span {background:url("/waterpark/_img/ui/btn_link_click.png") no-repeat left top;color:#007bc7;letter-spacing:-2px;}
+
+.btn_blue,
+.btn_submit2 {padding-right:24px;background:url("/waterpark/_img/ui/btn_blue_r.png") no-repeat right top;color:#fff;}
+.btn_blue span,
+.btn_submit2 span {height:32px;padding:0 10px 0 19px;background:url("/waterpark/_img/ui/btn_blue.png") no-repeat left top;color:#fff;line-height:32px;text-shadow:1px 1px 1px #0067a6;}
+.btn_blue:active,
+.btn_submit2:active {background:url("/waterpark/_img/ui/btn_blue_r_click.png") no-repeat right top;}
+.btn_blue:active span,
+.btn_submit2:active span {background:url("/waterpark/_img/ui/btn_blue_click.png") no-repeat left top;}
+
+.btn_gray {padding-right:23px;background:url("/waterpark/_img/ui/btn_gray_r.png") no-repeat right top;color:#fff;}
+.btn_gray span {height:32px;padding:0 10px 0 19px;background:url("/waterpark/_img/ui/btn_gray.png") no-repeat left top;color:#fff;line-height:32px;text-shadow:1px 1px 1px #636363;}
+.btn_gray:active {background:url("/waterpark/_img/ui/btn_gray_r_click.png") no-repeat right top;}
+.btn_gray:active span {background:url("/waterpark/_img/ui/btn_gray_click.png") no-repeat left top;}
+
+.btn_small {height:24px;padding-right:10px;background:url("/waterpark/_img/ui/btn_small_r.png") no-repeat right top;color:#434343;}
+.btn_small span {height:24px;padding:0 0 0 10px;background:url("/waterpark/_img/ui/btn_small.png") no-repeat left top;color:#434343;line-height:24px;font-size:11px;vertical-align:top;}
+.btn_small:active {background:url("/waterpark/_img/ui/btn_small_r_click.png") no-repeat right top;}
+.btn_small:active span {background:url("/waterpark/_img/ui/btn_small_click.png") no-repeat left top;}
+
+.btn_find {height:26px;background:url("/waterpark/_img/ui/btn_find.gif") no-repeat right top;}
+.btn_find span {height:26px;padding:0 11px;background:url("/waterpark/_img/ui/btn_find_l.gif") no-repeat left top;color:#fff;line-height:26px;text-shadow:1px 1px 1px #636363;}
+
+/* btn - icon */
+.icon_st {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;background:url("/waterpark/_img/ui/btn_icon.png") no-repeat;vertical-align:middle;text-indent:-100%;*text-indent:0;white-space:nowrap;overflow:hidden;line-height:0;text-shadow:none;color:transparent;}
+.icon_st:hover {background:url("/waterpark/_img/ui/btn_icon_over.png") no-repeat left top;}
+.icon_st:active {background:url("/waterpark/_img/ui/btn_icon_click.png") no-repeat left top;}
+.icon_search {width:25px;height:25px;background-position:0 0;}
+
+/* btn - tab style */
+.tabStyle {background:url("/waterpark/_img/ui/boardTab_bg.png") no-repeat;}
+.tabStyle a {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;width:180px;height:36px;background:url("/waterpark/_img/ui/boardTab_off.gif") no-repeat right 14px;color:#636363;line-height:36px;text-align:center;}
+.tabStyle a:hover {}
+.tabStyle a:active {text-decoration:none;}
+.tabStyle a.on {color:#ffffff;font-weight:700;letter-spacing:-0.075em;}
+.tabStyle a.last {background:none;}
+.tabStyle a.on {background:url("/waterpark/_img/ui/boardTab1_on.png") 0 -40px no-repeat;}
+.tabStyle a.off {background:none !important;}
+
+/* btn - board tab */
+.boardTab {margin-bottom:36px;}
+.boardTab a {float:left;}
+.boardTab a {}
+
+/* btn - contents tab */
+.contentsTab {position:relative;z-index:0;padding-top:36px;background:url("/waterpark/_img/ui/boardTab_bg.png") no-repeat;}
+.contentsTab a {position:absolute;z-index:0;top:0px;}
+.contentsTab a.tab1 {left:0px;}
+.contentsTab a.tab2 {left:180px;}
+.contentsTab a.tab3 {left:360px;}
+.contentsTab a.tab4 {left:540px;}
+.contentsTab a.tab5 {left:720px;}
+.contentsTab .cont {display:none;}
+.contentsTab .cont.on {display:block;}
+
+/* btn_ wide tab */
+.wideTab {background:url("/waterpark/_img/ui/wideTab_bg.png") no-repeat;}
+.wideTab a {height:32px;padding:11px 0;line-height:32px;background-position:right 23px;}
+.wideTab a span {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;line-height:16px;vertical-align:middle;}
+.wideTab a:hover span {text-decoration:underline;}
+.wideTab a:active span {text-decoration:none;}
+.wideTab a.on {background:url("/waterpark/_img/ui/wideTab1_on.png") no-repeat;}
+.contentsTab.wideTab {padding-top:54px;}
+
+/* btn - icon tab style */
+.iconTabStyle {position:relative;z-index:1;margin:-20px -30px 0 -30px;padding-bottom:33px;background:url("/waterpark/_img/ui/iconTab_bg.gif") no-repeat left bottom;}
+.iconTabStyle ul {margin:0 auto;overflow:hidden;}
+.iconTabStyle ul li {float:left;width:173px;padding-bottom:13px;background-position:center bottom;background-repeat:no-repeat;}
+.iconTabStyle ul li a {display:block;width:173px;padding-top:18px;background-position:center top;background-repeat:no-repeat;}
+.iconTabStyle ul li a span {display:block;width:173px;height:40px;padding-top:85px;background-position:center top;background-repeat:no-repeat;color:#555555;font-size:14px;font-family:'Nanum Gothic';font-weight:700;line-height:40px;text-align:center;}
+.iconTabStyle ul li a:focus span,
+.iconTabStyle ul li a:hover span {color:#009bc7;}
+.iconTabStyle ul li a:active {text-decoration:none;}
+.iconTabStyle ul li.on {background-image:url("/waterpark/_img/ui/iconTab_arrow.gif");}
+.iconTabStyle ul li.iconTab1.on a {background-image:url("/waterpark/_img/ui/iconTab1_on.gif");}
+.iconTabStyle ul li.iconTab2.on a {background-image:url("/waterpark/_img/ui/iconTab2_on.gif");}
+.iconTabStyle ul li.iconTab3.on a {background-image:url("/waterpark/_img/ui/iconTab3_on.gif");}
+.iconTabStyle.tab2 ul {width:346px;}
+.iconTabStyle.tab3 ul {width:519px;}
+.iconTabStyle.tab4 ul {width:692px;}
+.iconTabStyle.tab5 ul {width:865px;}
+
+.iconContTab {position:relative;z-index:1;margin:0 -30px;padding-top:190px;background:url("/waterpark/_img/ui/iconTab_bg.gif") no-repeat left 156px;}
+.iconContTab h2 {position:absolute;z-index:0;top:0;}
+.iconContTab h2 a {display:block;width:173px;height:139px;padding-top:18px;background-position:center top;background-repeat:no-repeat;}
+.iconContTab h2 a span {display:block;width:173px;height:40px;padding-top:85px;background-position:center top;background-repeat:no-repeat;color:#555555;font-size:14px;font-family:'Nanum Gothic';font-weight:700;line-height:40px;text-align:center;}
+.iconContTab h2 a:focus span,
+.iconContTab h2 a:hover span {color:#009bc7;}
+.iconContTab h2 a:active {text-decoration:none;}
+.iconContTab h2.on {background-position:center bottom;background-repeat:no-repeat;background-image:url("/waterpark/_img/ui/iconTab_arrow.gif");}
+.iconContTab h2.iconTab1.on a {background-image:url("/waterpark/_img/ui/iconTab1_on.gif");}
+.iconContTab h2.iconTab2.on a {background-image:url("/waterpark/_img/ui/iconTab2_on.gif");}
+.iconContTab h2.iconTab3.on a {background-image:url("/waterpark/_img/ui/iconTab3_on.gif");}
+.iconContTab.tab2 h2.iconTab1 {left:307px;}
+.iconContTab.tab2 h2.iconTab2 {left:480px;}
+.iconContTab.tab3 h2.iconTab1 {left:220px;}
+.iconContTab.tab3 h2.iconTab2 {left:393px;}
+.iconContTab.tab3 h2.iconTab3 {left:566px;}
+.iconContTab .iconCont {display:none;}
+.iconContTab .iconCont.on {display:block;}
+
+/* btn - paging */
+.paging {margin-top:32px;text-align:center;}
+.paging a {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;width:32px;height:32px;background:url("/waterpark/_img/ui/btn_paging.gif") no-repeat;color:#636363;line-height:32px;font-size:11px;text-align:center;vertical-align:middle;}
+.paging a.btn_first,
+.paging a.btn_pre,
+.paging a.btn_next,
+.paging a.btn_last {text-indent:-100%;*text-indent:0;white-space:nowrap;overflow:hidden;font-size:0;line-height:0;text-shadow:none;color:transparent;}
+.paging a:hover {background:url("/waterpark/_img/ui/btn_paging_over.gif") no-repeat;color:#007bc7;text-decoration:underline;}
+.paging a:active,
+.paging a.on {background:url("/waterpark/_img/ui/btn_paging_click.gif") no-repeat;color:#fff;font-weight:700;text-decoration:none;}
+.paging a.btn_first {background-position:0 0;}
+.paging a.btn_pre {background-position:-100px 0;}
+.paging a.btn_page {background-position:-200px 0;}
+.paging a.btn_next {background-position:-300px 0;}
+.paging a.btn_last {background-position:-400px 0;}
+
+/* slideCont */
+.slideCont {}
+.slideCont a.btn {position:absolute;z-index:0;display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;text-indent:-100%;*text-indent:0;white-space:nowrap;overflow:hidden;font-size:0;line-height:0;text-shadow:none;color:transparent;}
+.slideCont .viewport {width:100%;height:100%;overflow:hidden;position:relative;}
+.slideCont .viewport ul li {float:left;}
+
+/* slideCont */
+.pageSlideCont {}
+.pageSlideCont a.btn {position:absolute;z-index:0;display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;text-indent:-100%;*text-indent:0;white-space:nowrap;overflow:hidden;font-size:0;line-height:0;text-shadow:none;color:transparent;}
+.pageSlideCont .viewport {width:100%;height:100%;overflow:hidden;position:relative;}
+.pageSlideCont .viewport ul li {float:left;}
+
+/* feedbackForm */
+.feedbackForm {margin:-80px -30px 38px -30px;padding:70px 30px 26px 40px;background:url("/waterpark/_img/ui/bg_feedback.gif") no-repeat left bottom;}
+.feedbackForm .feedbackForm_top {position:relative;z-index:0;min-height:126px;padding:0 0 0 170px;background:url("/waterpark/_img/ui/icon_character.png") no-repeat left top;}
+.feedbackForm .feedbackForm_top .quickBtn {position:absolute;z-index:0;right:0;top:17px;}
+.feedbackForm .feedbackForm_top .info {padding:20px 0 18px 0;border-bottom:1px dashed #e3e3e3;font-weight:700;line-height:18px;font-weight:700;}
+.feedbackForm .feedbackForm_top .dot {margin-top:4px;line-height:24px;}
+.feedbackForm .feedbackForm_top .dot li {color:#636363;}
+.feedbackForm .feedbackForm_top .type2 li {width:368px;}
+.feedbackForm .feedbackForm_top .type2 .dot .txt3 {float:right;margin-top:-48px;}
+.feedbackForm .feedbackForm_top .type2 .dot .txt4 {float:right;margin-top:-24px;}
+.feedbackForm .feedbackForm_top .btn_link {}
+
+/* qnaContainer */
+.qnaContainer {margin:-34px -30px 0 -30px;background:url("/waterpark/_img/ui/iconCont2_bg.gif") no-repeat;}
+.qnaContainer .inner {padding:42px 30px 45px 30px;background:url("/waterpark/_img/ui/iconCont2_bg_b.png") repeat-x left bottom;}
+.qnaContainer .inner .cont {color:#fff;font-family:'Nanum Gothic';font-weight:700;text-align:center;}
+.qnaContainer .inner .cont span {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;}
+.qnaContainer .inner .cont .q {margin-bottom:7px;font-size:18px;line-height:25px;}
+.qnaContainer .inner .cont .q span {padding-left:35px;background:url("/waterpark/_img/ui/bg_q.png") no-repeat;}
+.qnaContainer .inner .cont .a {line-height:22px;}
+.qnaContainer .inner .cont .a span {padding-left:19px;background:url("/waterpark/_img/ui/bg_a.png") no-repeat 0 4px;}
+
+/* noteBox */
+.noteBox {margin-top:40px;padding-top:55px;background:url("/waterpark/_img/ui/noteBox_top.gif") no-repeat left top;color:#434343;line-height:18px;}
+.noteBox .inner {padding:0 20px 23px 20px;background:url("/waterpark/_img/ui/noteBox_bottom.gif") no-repeat left bottom;}
+.noteBox .inner .commonTit {float:left;}
+.noteBox .inner ul {padding-left:128px;}
+.noteBox .inner ul li {margin-bottom:7px;padding-left:12px;background:url("/waterpark/_img/ui/bg_dot.gif") no-repeat left 6px;}
+
+/* commentBox */
+.commentBox {position:relative;z-index:0;margin-top:12px;}
+.commentBox .dot {line-height:24px;}
+.commentBox .btn {position:absolute;z-index:0;right:0;top:4px;}
+
+.txtBox h3 {margin-bottom:12px;color:#35322d;font-size:16px;font-family:'Nanum Gothic';font-weight:700;}
+.txtBox h5 {margin-bottom:12px;color:#35322d;font-size:16px;font-family:'Nanum Gothic';font-weight:700;}
+.txtBox p.txt {margin-top:26px;color:#434343;font-size:11px;letter-spacing:-0.03em;}
+.txtBox .dot2 {margin-top:8px;}
+
+/* 개인정보취급방침 */
+.indi_terms {height:230px;margin-bottom:14px;color:#434343;}
+.indi_terms h3 {font-size:14px;font-family:'Nanum Gothic';font-weight:700;line-height:14px;}
+.indi_terms .termsWrap {height:133px;margin-top:16px;padding:15px;overflow-y:auto;border:1px solid #e2e5e7;border-radius:3px;line-height:22px;}
+.indi_terms .terms strong {font-weight:700;}
+.checkWrap {margin:18px 0 0 11px;}
+.checkWrap input {height:11px;}
+.checkWrap label {font-size:11px;color:#707070;}
+.termsWrap .tabStyle a {width:200px;}
+.termsWrap .tabStyle a.on {background:url("/waterpark/_img/ui/boardTab1_on.png") 0 0 no-repeat;}
+
+/* search_area
+.search_area {position:relative;z-index:0;width:900px;height:51px;margin-bottom:30px;padding-top:19px;background:url("/waterpark/_img/ui/searchArea_bg.gif") no-repeat;text-align:center;}
+.search_area .subText {position:absolute;z-index:0;left:0;bottom:7px;padding-left:218px;color:#fff;font-size:11px;text-align:left;letter-spacing:-0.03em;}
+.search_area .searchTxt {color:#fff;}
+.search_area label,
+.search_area .searchTxt label {padding:0 7px 0 16px;background:url("/waterpark/_img/ui/searchArea_circle.png") no-repeat left center;font-size:13px;font-family:'Nanum Gothic';font-weight:700;color:#fff;}
+*/
+.search_area {position:relative;z-index:0;width:900px;margin-bottom:30px;padding-top:19px;text-align:center;}
+.search_area .subText {position:absolute;z-index:0;left:0;bottom:7px;padding-left:218px;font-size:11px;text-align:left;letter-spacing:-0.03em;}
+.search_area .searchTxt {height:51px;}
+.search_area label,
+.search_area .searchTxt label {padding:0 7px 0 0;}
+
+/* searchBar_area */
+.searchBar_area {position:relative;z-index:0;background:url("/waterpark/_img/ui/bg_searchBar.gif") no-repeat left bottom;color:#434343;}
+.searchBar_area .bg_top {background:url("/waterpark/_img/ui/bg_searchBar_t.gif") no-repeat;}
+.searchBar_area .bb {border-bottom:1px solid #e0e0e0;}
+.searchBar_area .bt {border-top:1px solid #ffffff;}
+.searchBar_area .barArea {padding-right:120px;}
+.searchBar_area .barArea .head {float:left;width:64px;padding:13px 0 13px 16px;border-right:1px solid #f2f0f0;font-size:11px;font-family:'Nanum Gothic';font-weight:700;}
+.searchBar_area .barArea .input {padding:8px 0 7px 0;}
+.searchBar_area .barArea .input li {float:left;margin-right:18px;line-height:24px;}
+.searchBar_area .barArea .input li {float:left;margin-right:18px;}
+.searchBar_area .barArea .input li label,
+.searchBar_area .barArea .input li input {line-height:18px;vertical-align:middle;}
+.searchBar_area .barArea .cont {float:left;padding:0 0 0 12px;}
+.searchBar_area .barArea .cont .comment {padding:2px 0 0 20px;background:url("/waterpark/_img/ui/bg_point.png") no-repeat left center;color:#636363;font-size:11px;line-height:14px;}
+.searchBar_area .barArea .cont .date {float:left;font-size:18px;font-family:'Shanti';font-weight:300;}
+.searchBar_area .barArea .cont .pageSlideCont {position:relative;z-index:0;margin-left:78px;}
+.searchBar_area .btnArea {position:absolute;z-index:0;right:0;top:0;width:120px;}
+.searchBar_area .btnArea a.btn_st {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;color:#fff;font-size:13px;font-family:'Nanum Gothic';font-weight:700;line-height:13px;text-align:center;}
+.searchBar_area .btnArea a.btn_st:active span {letter-spacing:0;}
+.searchBar_area .btnArea .btn_search1 {margin-left:34px;}
+.searchBar_area .btnArea .btn_search1 span {height:41px;padding-left:18px;background:url("/waterpark/_img/ui/bg_search.png") no-repeat left center;line-height:41px;}
+.searchBar_area .btnArea .btn_search2 {width:84px;height:83px;margin-left:23px;background:url("/waterpark/_img/ui/btn_search.png") no-repeat;}
+.searchBar_area .btnArea .btn_search2 span {height:13px;margin-top:64px;padding-left:18px;background:url("/waterpark/_img/ui/bg_searchB.png") no-repeat left center;color:#0067a6;line-height:13px;}
+.searchBar_area .style1 {height:41px;background:url("/waterpark/_img/ui/bg_search1.png") no-repeat;}
+.searchBar_area .style2 {height:96px;padding-top:12px;background:url("/waterpark/_img/ui/bg_search2.png") no-repeat;}
+.searchBar_area .style3 {height:104px;padding-top:17px;background:url("/waterpark/_img/ui/bg_search3.png") no-repeat;}
+
+.facility .searchBar_area {height:108px;}
+.facility .searchBar_area .barArea .cont .comment {margin-top:7px;}
+.facility .searchBar_area .bg_top {height:65px;}
+.facility .searchBar_area .bg_top .head {height:39px;}
+.facility .searchBar_area .bg_top .cont {padding-top:10px;padding-bottom:11px;}
+.facility .searchBar_area .pageSlideCont {width:476px;padding:0 20px;}
+.facility .searchBar_area .pageSlideCont .btn {width:20px;height:20px;top:0;background-repeat:no-repeat;}
+.facility .searchBar_area .pageSlideCont .btn_prev {left:0;background-image:url("/waterpark/_img/ui/date_prev.png");}
+.facility .searchBar_area .pageSlideCont .btn_next {right:0;background-image:url("/waterpark/_img/ui/date_next.png");}
+.facility .searchBar_area .pageSlideCont .btn:hover {background-position:0 -40px;}
+.facility .searchBar_area .pageSlideCont .btn:active {background-position:0 -80px;}
+.facility .searchBar_area .pageSlideCont .btn.disabled {background-position:0 -120px;}
+.facility .searchBar_area .pageSlideCont .viewport ul li {float:left;}
+.facility .searchBar_area .pageSlideCont .viewport ul li a {display:block;width:24px;height:21px;margin:0 5px;color:#636363;font-size:13px;font-family:'Shanti';line-height:21px;text-align:center;}
+.facility .searchBar_area .pageSlideCont .viewport ul li a:active {letter-spacing:-0.03em;}
+.facility .searchBar_area .pageSlideCont .viewport ul li a.today {background:url("/waterpark/_img/ui/bg_today.png") no-repeat;}
+.facility .searchBar_area .pageSlideCont .viewport ul li a.sunday {color:#de1827;}
+.facility .imgList ul li .one .txt em {display:block;height:36px;overflow:hidden;}
+.facility .imgList ul li .one .txt .tit {height:18px;}
+
+.restaurant .searchBar_area {height:121px;}
+.restaurant .imgList ul li .one .txt em {display:block;height:36px;overflow:hidden;}
+.restaurant .imgList ul li .one .txt .tit {height:18px;}
+
+.shop .searchBar_area {height:41px;}
+.shop .imgList ul li .one .txt em {display:block;height:36px;overflow:hidden;}
+.shop .imgList ul li .one .txt .tit {height:18px;}
+
+.special .searchBar_area {height:41px;}
+
+/* itemSummary */
+.itemSummary {position:relative;z-index:0;width:420px;padding-top:280px;}
+.itemSummary .pageSlideCont {position:relative;z-index:0;width:360px;padding-right:60px;overflow:hidden;background:url("/waterpark/_img/ui/bg_itemBtn.gif") no-repeat right 5px;}
+.itemSummary .pageSlideCont a.btn {position:absolute;z-index:0;display:block;width:17px;height:17px;background-repeat:no-repeat;background-position:0 0;}
+.itemSummary .pageSlideCont a.btn_prev {right:32px;top:14px;background-image:url("/waterpark/_img/ui/item_prev.png");}
+.itemSummary .pageSlideCont a.btn_next {right:9px;top:37px;background-image:url("/waterpark/_img/ui/item_next.png");}
+.itemSummary .pageSlideCont a.btn:hover {background-position:0 -50px;}
+.itemSummary .pageSlideCont a.btn:active {background-position:0 -100px;}
+.itemSummary .pageSlideCont a.btn.disabled {background-position:0 -150px;}
+.itemSummary .pageSlideCont .viewport ul {width:360px;}
+.itemSummary .pageSlideCont .viewport ul li {float:left;width:90px;height:58px;padding-top:5px;background:url("/waterpark/_img/ui/item_default.gif") no-repeat 0 5px;}
+.itemSummary .pageSlideCont .viewport ul li .item {display:block;position:relative;z-index:0;width:87px;height:58px;margin-right:3px;}
+.itemSummary .pageSlideCont .viewport ul li .item .over {display:none;position:absolute;z-index:0;top:0;left:0;width:87px;height:58px;}
+.itemSummary .pageSlideCont .viewport ul li .item .pic {display:block;width:87px;height:58px;}
+.itemSummary .pageSlideCont .viewport ul li .item .pic img {width:87px;height:58px;vertical-align:top;}
+.itemSummary .pageSlideCont .viewport ul li.on {background:url("/waterpark/_img/ui/item_arrow.gif") no-repeat center 1px;}
+.itemSummary .pageSlideCont .viewport ul li.on .item .over {display:block;background:url("/waterpark/_img/ui/item_on.gif") no-repeat;}
+.itemSummary .itemView {position:absolute;z-index:0;left:0;top:0;}
+.itemSummary .itemView .dimmed {position:absolute;z-index:0;left:0;top:0;display:block;width:420px;height:280px;background:url("/waterpark/_img/ui/item_dimmed.png") no-repeat;}
+.itemSummary .itemView .pic {width:420px;height:280px;overflow:hidden;}
+.itemSummary .itemView .pic img {width:420px;height:280px;vertical-align:top;}
+.itemSummary .itemView .itemIframe {width:420px;height:280px;vertical-align:top;}
+.itemSummary .caption {display:none;position:relative;z-index:0;margin-top:5px;padding-top:36px;}
+.itemSummary .caption .btn {display:block;position:absolute;z-index:0;left:0;top:0;width:403px;height:34px;padding-left:15px;border:1px solid #dddddd;color:#333333;font-family:'Nanum Gothic';font-weight:700;line-height:34px;}
+.itemSummary .caption .btn span {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;padding-left:15px;background:url("/waterpark/_img/ui/bg_caption.png") no-repeat left center;}
+.itemSummary .caption .btn:hover span {text-decoration:underline;}
+.itemSummary .caption .btn_open {background:url("/waterpark/_img/ui/btn_open.gif") no-repeat right top;}
+.itemSummary .caption .btn_close {background:url("/waterpark/_img/ui/btn_close.gif") no-repeat right top;}
+.itemSummary .caption .captionBox {overflow-y:auto;height:46px;padding:15px 15px;border:1px solid #dddddd;border-top:none;color:#636363;line-height:19px;}
+.itemSummary .caption.on {display:block;}
+.itemSummary .caption.on .captionBox {display:none;}
+.itemSummary .caption.on .captionBox.on {display:block;}
+
+/* anotherList */
+.anotherContainer {position:relative;}
+.anotherList {position:relative;}
+.anotherList .pageSlideCont {position:relative;z-index:0;width:840px;height:120px;overflow:hidden;padding:0 29px 0 30px;}
+.anotherList .pageSlideCont .btn {position:absolute;z-index:0;top:0;display:block;width:30px;height:120px;background-repeat:no-repeat;background-position:0 0;}
+.anotherList .pageSlideCont .btn:hover {background-position:0 -200px;}
+.anotherList .pageSlideCont .btn:active {background-position:0 -400px;}
+.anotherList .pageSlideCont .btn.disabled {background-position:0 -600px;}
+.anotherList .pageSlideCont .btn_prev {left:0;background-image:url("/waterpark/_img/ui/anotherList_prev.gif");}
+.anotherList .pageSlideCont .btn_next {right:0;background-image:url("/waterpark/_img/ui/anotherList_next.gif");}
+.anotherList .pageSlideCont .viewport ul {}
+.anotherList .pageSlideCont .viewport ul li {width:140px;height:118px;border-top:1px solid #e6e1e1;border-bottom:1px solid #e6e1e1;}
+.anotherList .pageSlideCont .viewport ul li .item {display:block;width:130px;height:113px;padding:5px 4px 0 5px;border-right:1px solid #eeeaea;background:url("/waterpark/_img/ui/anotherList_default.gif") no-repeat center 5px;}
+.anotherList .pageSlideCont .viewport ul li .item .pic img {width:130px;height:87px;vertical-align:top;}
+.anotherList .pageSlideCont .viewport ul li .item .txt {display:block;height:26px;color:#636363;text-align:center;line-height:26px;}
+.anotherList .pageSlideCont .viewport ul li .item:hover .txt {color:#007dbd;}
+.anotherList .pageSlideCont .viewport ul li.on .item .txt {color:#007dbd;font-weight:700;}
+
+/* imgList */
+.imgList ul {width:920px;}
+.imgList ul li {float:left;margin:20px 18px 0 0;padding-bottom:4px;background:url("/waterpark/_img/ui/bg_imgListone.gif") no-repeat left bottom;}
+.imgList ul li .one {display:block;border:1px solid #e6e1e1;border-bottom:0;color:#636363;}
+.imgList ul li .one span {display:block;}
+.imgList ul li .one .pic {width:210px;height:140px;}
+.imgList ul li .one .pic img {width:210px;height:140px;vertical-align:top;}
+.imgList ul li .one .txt {width:192px;height:63px;overflow:hidden;margin:0 9px;padding:13px 0 11px 0;line-height:18px;}
+.imgList ul li .one .txt .tit {display:block;margin-bottom:9px;color:#434343;font-size:14px;font-weight:700;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.imgList ul li .one .txt .bg_dot {display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.imgList ul li .one:focus .txt em,
+.imgList ul li .one:hover .txt em {color:#007dbd;text-decoration:underline;}
+.imgList ul li .one:active {text-decoration:none;}
+.imgList ul li .one:active .txt em {text-decoration:none;}
+.imgList ul li .one .info {width:192px;height:16px;margin:0 9px;padding:12px 0 13px 0;border-top:1px dashed #e6e1e1;}
+.imgList ul li .one .info span {height:14px;padding-top:1px;line-height:14px;font-size:11px;}
+.imgList ul li .one .info .bg_type,
+.imgList ul li .one .info .bg_icon {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;}
+.imgList ul li .one .info .bg_type {padding-left:8px;background:url("/waterpark/_img/ui/barGray_1x8.gif") no-repeat 0 3px;}
+.imgList ul li .one .info .icon_zone {margin-right:7px;padding-left:14px;background:url("/waterpark/_img/ui/icon_zone.png") no-repeat;line-height:14px;}
+.imgList ul li .one {position:relative;z-index:0;}
+.imgList ul li .flag {position:absolute;z-index:0;right:0;top:0;padding-bottom:13px;background:url("/waterpark/_img/ui/bg_flag_bottom.png") no-repeat left bottom;}
+.imgList ul li .flag em {width:36px;padding:10px 0 3px 0;background:url("/waterpark/_img/ui/bg_flag.png") no-repeat;color:#fff;font-size:10px;font-family:'Nanum Gothic';font-weight:700;line-height:11px;text-align:center;}
+
+/* imgList - more */
+.moreWrap {margin-top:40px;}
+.moreWrap a.btn_more {display:block;height:32px;background:url("/waterpark/_img/ui/btn_more.gif") no-repeat;color:#636363;line-height:32px;text-align:center;letter-spacing:-0.03em;}
+.moreWrap a.btn_more .rightBg {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;padding-right:18px;background:url("/waterpark/_img/ui/btn_moreArrow.png") no-repeat right 13px;}
+.moreWrap a.btn_more .rightBg strong {font-weight:bold;}
+.moreWrap a.btn_more .rightBg em {font-size:11px;}
+.moreWrap a.btn_more:focus .rightBg,
+.moreWrap a.btn_more:hover .rightBg {background-position:right -27px;color:#007bc7;text-decoration:underline;}
+.moreWrap a.btn_more:active {background-position:0 -50px;}
+.moreWrap a.btn_more:active .rightBg {background-position:right -27px;text-decoration:none;}
+
+/* pageView */
+.pageView {position:relative;z-index:0;color:#636363;font-family:'Nanum Gothic';}
+.pageView h3 {color:#35322d;font-size:14px;font-weight:700;}
+.pageView .pageTitle {padding-bottom:4px;background:url("/waterpark/_img/ui/bg_pageTitle.gif") repeat-x left bottom;font-family:'Nanum Gothic';}
+.pageView .pageTitle h2 {float:left;height:50px;color:#434343;font-size:26px;font-weight:700;line-height:50px;}
+.pageView .pageTitle .info {float:right;margin-top:-26px;}
+.pageView .pageTitle .info .icon_posi {height:50px;padding-left:15px;background:url("/waterpark/_img/ui/icon_zone.png") no-repeat left center;line-height:50px;}
+.pageView .pageTitle .info .btn_map {margin-left:12px;text-align:center;}
+.pageView .pageTitle .info .btn_map span {width:66px;height:18px;padding-top:44px;background:url("/waterpark/_img/ui/btn_map.png") no-repeat;}
+.pageView .pageTitle .info .btn_map:hover span {text-decoration:underline;}
+.pageView .pageContainer {padding:18px 0 20px 0;font-family:'Nanum Gothic';line-height:19px;}
+.pageView .pageContainer {}
+.pageView .pageContainer .pageWrap {float:left;width:450px;}
+.pageView .pageContainer .pageWrap .tit {color:#35322d;font-size:14px;font-weight:700;}
+.pageView .pageContainer .pageWrap .txt {margin-top:8px;}
+.pageView .pageContainer .pageWrap .contBox {position:relative;z-index:0;margin-top:6px;padding-left:70px;}
+.pageView .pageContainer .pageWrap .contBox p {position:relative;}
+.pageView .pageContainer .pageWrap .contBox p strong {left:-70px;}
+.pageView .pageContainer .pageWrap .contBox strong {position:absolute;z-index:0;left:0;top:0;display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;width:70px;color:#35322d;font-weight:700;}
+.pageView .pageContainer .pageWrap .contBox .limit li {float:left;width:42px;margin-right:5px;text-align:center;letter-spacing:-1px;}
+.pageView .pageContainer .pageWrap .contBox .icon_clock {padding-left:17px;background:url("/waterpark/_img/ui/icon_clock.gif") no-repeat left center;}
+.pageView .pageContainer .pageWrap .contBox .icon_tel {padding-left:17px;background:url("/waterpark/_img/ui/icon_tel.gif") no-repeat left center;}
+.pageView .pageContainer .pageWrap .contBox.info {padding-top:10px;margin-top:10px;border-top:1px dashed #e6e1e1;}
+.pageView .pageContainer .pageWrap .contBox.info strong {top:10px;}
+.pageView .pageContainer .itemSummary {float:right;width:420px;}
+.pageView .facilityContainer {border-top:1px solid #f2f0f0;}
+.pageView .facilityContainer .calWrap,
+.pageView .facilityContainer .surrounding {min-height:272px;}
+.pageView .facilityContainer .calWrap {position:relative;z-index:0;float:left;width:423px;padding:20px 28px 20px 0;}
+.pageView .facilityContainer .calWrap .btn_small {position:absolute;z-index:0;right:28px;top:14px;margin-top:-4px;font-weight:normal;}
+.pageView .facilityContainer .calWrap .btn_small:active span {letter-spacing:0;}
+.pageView .facilityContainer .calWrap .comment {margin-top:8px;padding:2px 0 0 20px;background:url("/waterpark/_img/ui/bg_point.png") no-repeat left center;color:#636363;font-size:11px;line-height:14px;}
+.pageView .facilityContainer .calendar {width:423px;margin-top:7px;background:url("/waterpark/_img/facility/bg_cal_b.gif") no-repeat left bottom;}
+.pageView .facilityContainer .calendar .inner {width:363px;padding:35px 35px 30px 25px;background:url("/waterpark/_img/facility/bg_cal_t.gif") no-repeat left top;}
+.pageView .facilityContainer .calendar .inner .selectDate {position:absolute;z-index:0;float:left;width:50px;margin-top:38px;padding:0 30px;}
+.pageView .facilityContainer .calendar .inner .selectDate a {position:absolute;z-index:0;top:22px;display:block;width:20px;height:20px;}
+.pageView .facilityContainer .calendar .inner .selectDate .btn_prev {left:0;background:url("/waterpark/_img/ui/cal_prev.png") no-repeat;}
+.pageView .facilityContainer .calendar .inner .selectDate .btn_next {right:0;background:url("/waterpark/_img/ui/cal_next.png") no-repeat;}
+.pageView .facilityContainer .calendar .inner .selectDate p {text-align:center;line-height:15px;}
+.pageView .facilityContainer .calendar .inner .selectDate p span {color:#636363;font-size:15px;font-family:'Shanti';}
+.pageView .facilityContainer .calendar .inner .selectDate p em {line-height:50px;color:#434343;font-size:50px;font-family:'Shanti';}
+.pageView .facilityContainer .calendar .inner .stopDate {float:right;}
+.pageView .facilityContainer .calendar .inner .stopDate table {width:224px;}
+.pageView .facilityContainer .calendar .inner .stopDate table th,
+.pageView .facilityContainer .calendar .inner .stopDate table td {height:22px;font-size:11px;line-height:22px;text-align:center;letter-spacing:-1px;}
+.pageView .facilityContainer .calendar .inner .stopDate table th {font-weight:700;}
+.pageView .facilityContainer .calendar .inner .stopDate table .sunday {color:#de3333;}
+.pageView .facilityContainer .calendar .inner .stopDate table .stop {background:url("/waterpark/_img/ui/bg_today.png") no-repeat center center;}
+.pageView .facilityContainer .calendar .inner .stopDate table .prev,
+.pageView .facilityContainer .calendar .inner .stopDate table .next {color:#737373;}
+.pageView .facilityContainer .surrounding {float:right;width:420px;padding:20px 0 20px 28px;border-left:1px solid #f2f0f0;}
+.pageView .facilityContainer .surrounding ul {width:429px;margin-top:6px;}
+.pageView .facilityContainer .surrounding ul li {float:left;width:132px;height:115px;margin:9px 9px 0 0;border-right:1px solid #efeded;border-left:1px solid #efeded;border-bottom:1px solid #dcdada;background:url("/waterpark/_img/ui/sur_default.gif") no-repeat -1px 0;}
+.pageView .facilityContainer .surrounding ul li .sur {display:block;color:#636363;text-align:center;}
+.pageView .facilityContainer .surrounding ul li .sur span {display:block;}
+.pageView .facilityContainer .surrounding ul li .sur .pic {width:134px;height:89px;margin:0 -1px;}
+.pageView .facilityContainer .surrounding ul li .sur .pic img {width:134px;height:89px;vertical-align:top;}
+.pageView .facilityContainer .surrounding ul li .sur .txt {height:25px;line-height:25px;}
+.pageView .facilityContainer .surrounding ul li .sur:hover {color:#007dbd;}
+.pageView .facilityContainer .surrounding ul li .sur:active {text-decoration:none;}
+.pageView .anotherContainer {padding-top:20px;border-top:1px solid #f2f0f0;}
+.pageView .restContainer .restTop {margin-top:20px;padding-top:4px;background:url("/waterpark/_img/facility/bg_rest.gif") no-repeat;}
+.pageView .restContainer .restTop .inner {border:1px solid #f0f0f0;}
+.pageView .restContainer .restList {margin-top:-1px;}
+.pageView .restContainer .restList li {height:80px;padding:19px 0;border-top:1px dashed #f0f0f0;}
+.pageView .restContainer .restList li .pic {float:left;display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;width:120px;height:80px;}
+.pageView .restContainer .restList li .pic img {width:120px;height:80px;vertical-align:top;}
+.pageView .restContainer .restList li .info {height:60px;padding:10px 0 10px 140px;}
+.pageView .restContainer .restList li .txt {margin-top:6px;line-height:18px;}
+.pageView .restContainer .restList li .menu {color:#434343;font-weight:700;}
+.pageView .restContainer .restList li .bg_type {height:18px;margin-left:10px;background:url("/waterpark/_img/ui/bg_type.gif") no-repeat right top;line-height:18px;}
+.pageView .restContainer .restList li .bg_type em {height:18px;padding:0 7px;background:url("/waterpark/_img/ui/bg_type_l.gif") no-repeat left top;line-height:18px;font-size:11px;vertical-align:top;}
+.pageView .restContainer .restList li.l {float:left;width:410px;margin:0 50px 0 19px;}
+.pageView .restContainer .restList li.r {float:right;width:400px;margin:0 19px 0 0;}
+.pageView .restContainer .restWrap {margin-top:10px;background:url("/waterpark/_img/facility/bg_restList_m.gif") repeat-y left top;}
+.pageView .restContainer .restWrap .inner {background:url("/waterpark/_img/facility/bg_restList_t.gif") no-repeat left top;}
+.pageView .restContainer .restWrap .inner .cont {background:url("/waterpark/_img/facility/bg_restList_b.gif") no-repeat left bottom;}
+.pageView .restContainer .restWrap .inner .restList li {padding:20px 0;}
+
+
+/* 메인 */
+
+
+/* 워터파크 소개 */
+.waterpark {margin:-80px -30px;}
+.waterpark img {vertical-align:top;}
+.waterpark h2 {font-size:36px;font-family:"Nanum Gothic";font-weight:700;letter-spacing:-1px;}
+.waterpark .sub {margin-top:14px;font-size:18px;font-family:"Nanum Gothic";font-weight:700;}
+.waterpark .waterTop {width:1144px;height:459px;margin-left:-92px;background:url("/waterpark/_img/about/bg_waterpark.png") no-repeat;text-align:center;}
+.waterpark .ride {padding:55px 0 70px 0;text-align:center;}
+.waterpark .ride h2 {color:#313335;}
+.waterpark .ride .sub {color:#707070;}
+.waterpark .ride .pageSlideCont {position:relative;z-index:0;width:828px;margin:40px 16px 0 16px;padding:0 50px;}
+.waterpark .ride .pageSlideCont .btn {top:108px;width:40px;height:40px;background-repeat:no-repeat;background-position:0 -100px;}
+.waterpark .ride .pageSlideCont .btn.disabled {background-position:0 0;}
+.waterpark .ride .pageSlideCont .btn_prev {left:0;background-image:url("/waterpark/_img/about/ride_prev.png");}
+.waterpark .ride .pageSlideCont .btn_next {right:0;background-image:url("/waterpark/_img/about/ride_next.png");}
+.waterpark .ride .pageSlideCont .viewport ul li {position:relative;z-index:0;width:276px;font-family:"Nanum Gothic";font-weight:700;}
+.waterpark .ride .pageSlideCont .viewport ul li .point {position:absolute;z-index:0;right:2px;top:6px;width:67px;height:68px;}
+.waterpark .ride .pageSlideCont .viewport ul li .tit {margin-top:10px;color:#35322d;font-size:24px;}
+.waterpark .ride .pageSlideCont .viewport ul li .txt {margin-top:6px;color:#7e8183;font-size:16px;}
+.waterpark .gimhae {height:487px;padding:65px 30px 0 30px;background:url("/waterpark/_img/about/water_gimhae.gif") no-repeat;color:#fff;font-family:"Nanum Gothic";font-weight:700;text-align:center;}
+.waterpark .gimhae ul {margin-top:37px;}
+.waterpark .gimhae ul li {float:left;width:300px;padding-top:205px;}
+.waterpark .gimhae ul li .txt1 {font-size:16px;}
+.waterpark .gimhae ul li .txt2 {margin-top:10px;}
+.waterpark .gimhae ul li .txt2 strong {font-size:32px;font-weight:700;}
+.waterpark .gimhae ul li .txt2 span {font-size:22px;}
+.waterpark .gimhae ul li .txt3 {margin-top:15px;font-size:14px;}
+.waterpark .gimhae ul li .txt4 {margin-top:6px;font-weight:400;}
+.waterpark .gimhae ul li.gim1 {background:url("/waterpark/_img/about/water_gimhae1.png") no-repeat;}
+.waterpark .gimhae ul li.gim2 {background:url("/waterpark/_img/about/water_gimhae2.png") no-repeat;}
+.waterpark .gimhae ul li.gim3 {background:url("/waterpark/_img/about/water_gimhae3.png") no-repeat;}
+.waterpark .years {padding:65px 0 70px 0;text-align:center;}
+.waterpark .years h2 {color:#313335;}
+.waterpark .years .sub {margin-bottom:40px;color:#707070;}
+.waterpark .bottom {height:326px;background:url("/waterpark/_img/about/water_bottom.jpg") no-repeat;text-align:center;}
+.waterpark .bottom p {padding:126px 0 6px 0;color:#fff;font-size:40px;font-family:"Nanum Gothic";font-weight:700;}
+
+.character {margin:-80px -30px 0 -30px;}
+.character h2 {height:290px;background:url("/waterpark/_img/about/character_bg.jpg") no-repeat;}
+.character .title {height:160px;padding-top:20px;font-family:"Nanum Gothic";text-align:center;}
+.character .title h3 {margin:6px 0;color:#404040;font-size:60px;font-weight:700;letter-spacing:-2px;}
+.character .title p {color:#707070;font-size:14px;font-weight:700;line-height:20px;}
+.character .charCont {height:2108px;padding:0 30px;background:url("/waterpark/_img/about/character_contBg.jpg") no-repeat center top;}
+.character .charCont .num {color:#007bc7;font-size:84px;font-family:'Shanti';letter-spacing:-2px;line-height:60px;}
+.character .charCont h4 {color:#35322d;font-family:"Nanum Gothic";letter-spacing:-1px;}
+.character .charCont h4 strong {font-size:34px;font-weight:700;line-height:40px;}
+.character .charCont h4 span {font-size:20px;font-weight:700;line-height:26px;}
+.character .charCont .txt {padding-top:15px;color:#737373;line-height:18px;}
+.character .charCont .left {padding-right:464px;text-align:right;}
+.character .charCont .left h4 {margin-top:10px;}
+.character .charCont .right {padding-left:372px;}
+.character .charCont .right .num {float:left;width:90px;margin-right:15px;}
+.character .charCont .right .txt {padding-left:105px;}
+.character .charCont .char1 {padding-left:250px;padding-top:85px;}
+.character .charCont .char2 {padding-top:315px;}
+.character .charCont .char3 {padding-top:225px;}
+.character .charCont .char4 {padding-top:215px;}
+.character .charCont .char5 {padding-top:205px;}
+
+.promote {position:relative;z-index:0;margin-top:20px;}
+.promote .promTop .promoteIframe {width:694px;height:434px;vertical-align:top;}
+.promote .promTop .promoteImg {width:353px;vertical-align:top;}
+.promote .promBtm {margin-top:18px;}
+.promote .promBtm .inner {line-height:18px;}
+.promote .promBtm .inner strong {font-weight:700;}
+.promote .promBtm .inner .txtCont {position:relative;z-index:0;}
+.promote .promBtm .inner .txtCont h3 {position:absolute;z-index:0;left:0;top:0;width:47px;padding-left:15px;color:#313335;font-size:14px;font-family:"Nanum Gothic";font-weight:700;line-height:18px;}
+.promote .promBtm .inner .txtCont .txt {padding:2px 0 0 62px;margin-bottom:14px;color:#636363;font-size:11px;font-family:'돋움', 'Dotum', 'Apple Gothic', 'sans-serif';line-height:16px;}
+.promote .caption {display:block;position:relative;z-index:0;padding-top:42px;}
+.promote .caption .btn {display:block;position:absolute;z-index:0;left:0;top:0;width:677px;height:40px;padding-left:15px;border:1px solid #dddddd;color:#333333;font-family:'Nanum Gothic';font-weight:700;line-height:40px;}
+.promote .caption .btn span {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;padding-left:15px;background:url("/waterpark/_img/ui/bg_caption.png") no-repeat left center;}
+.promote .caption .btn:hover span {text-decoration:underline;}
+.promote .caption .btn_open {background:url("/waterpark/_img/ui/btn_open2.gif") no-repeat right top;}
+.promote .caption .btn_close {display:none;background:url("/waterpark/_img/ui/btn_close2.gif") no-repeat right top;}
+.promote .caption .captionBox {display:none;overflow-y:auto;height:46px;padding:15px 15px;border:1px solid #dddddd;border-top:none;color:#636363;font-family:"Nanum Gothic";line-height:19px;}
+.promote .caption .captionBox.on {display:block;}
+.promote .caption .captionBox.on .btn_close {display:block;}
+
+.promote .pageSlideContV {position:absolute;z-index:0;right:0;top:0;overflow:hidden;border:1px solid #e6e1e1;}
+.promote .pageSlideContV .btn {position:absolute;z-index:1;display:block;width:57px;height:31px;background-repeat:no-repeat;background-position:0 0;}
+.promote .pageSlideContV .btn.disabled {background-position:0 -600px;}
+.promote .pageSlideContV .btn_prev {top:0;background-image:url("/waterpark/_img/common/blank.gif");background-repeat:repeat;}
+.promote .pageSlideContV .btn_next {bottom:0;background-image:url("/waterpark/_img/common/blank.gif");background-repeat:repeat;}
+.promote .pageSlideContV.on .btn_prev {background-image:url("/waterpark/_img/ui/vertical_prev.png");}
+.promote .pageSlideContV.on .btn_next {background-image:url("/waterpark/_img/ui/vertical_next.png");}
+.promote .pageSlideContV.on .btn_prev.disabled {background-image:url("/waterpark/_img/common/blank.gif");background-repeat:repeat;}
+.promote .pageSlideContV.on .btn_next.disabled {background-image:url("/waterpark/_img/common/blank.gif");background-repeat:repeat;}
+
+.promote .pageSlideContV .viewport {width:100%;height:100%;overflow:hidden;position:relative;}
+.promote .pageSlideContV .viewport ul li .item {position:relative;z-index:0;display:block;padding:10px 10px 0 10px;border-bottom:1px solid #eeeaea;}
+.promote .pageSlideContV .viewport ul li .item span {display:block;}
+.promote .pageSlideContV .viewport ul li .item .txt {height:30px;font-family:"Nanum Gothic";line-height:30px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center;}
+.promote .pageSlideContV .viewport ul li .item .pic img {vertical-align:top;}
+.promote .pageSlideContV .viewport ul li.on .item .txt {color:#007dbd;font-weight:700;}
+.promote .pageSlideContV .viewport ul li.on .item .over {position:absolute;z-index:0;left:10px;top:10px;display:block;border:3px solid #007bc7;}
+
+.print .promote {width:704px;padding:20px;margin-right:154px;border:1px solid #e6e1e1;}
+.print .promote .promTop {text-align:center;}
+.print .promote .promTop .bottom {text-align:center;}
+.print .promote .promTop .bottom {height:64px;color:#636363;font-size:11px;line-height:64px;border-bottom:1px solid #f2f0f0;}
+.print .promote .promTop .bottom .btn_down {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;width:54px;height:24px;padding-left:24px;color:#434343;line-height:24px;background:url("/waterpark/_img/about/btn_down.gif") no-repeat;font-family:'돋움', 'Dotum', 'Apple Gothic', 'sans-serif';letter-spacing:-1px;}
+.print .promote .promTop .bottom .btn_down:active {letter-spacing:-2px;}
+.print .promote .promBtm .inner .txtCont h3 {padding-left:0;}
+.print .pageSlideContV {right:-154px;width:142px;height:558px;}
+.print .pageSlideContV .btn {left:45px;}
+.print .pageSlideContV .viewport ul li {width:142px;height:186px;background:url("/waterpark/_img/ui/default_print.gif") no-repeat 10px 10px;}
+.print .pageSlideContV .viewport ul li .item {width:122px;height:175px;}
+.print .pageSlideContV .viewport ul li .item .pic img {width:122px;height:146px;}
+.print .pageSlideContV .viewport ul li.on .item .over {width:116px;height:140px;}
+
+.tv .promote {width:694px;padding-right:206px;}
+.tv .pageSlideContV {width:194px;height:474px;}
+.tv .pageSlideContV .btn {left:70px;}
+.tv .pageSlideContV .viewport ul li {width:194px;height:158px;background:url("/waterpark/_img/ui/default_tv.gif") no-repeat 10px 10px;}
+.tv .pageSlideContV .viewport ul li .item {width:174px;height:147px;}
+.tv .pageSlideContV .viewport ul li .item .pic {width:174px;height:117px;overflow:hidden;}
+.tv .pageSlideContV .viewport ul li .item .pic img {width:206px;height:157px;margin:-20px 0 0 -16px;}
+.tv .pageSlideContV .viewport ul li.on .item .over {width:168px;height:111px;}
+
+.weatherWrap {margin:-80px -30px 0 -30px;}
+.weatherWrap .winfo {height:264px;background-repeat:no-repeat;background-position:0 0;}
+.weatherWrap .winfo .inner {position:relative;z-index:0;height:264px;background:url("/waterpark/_img/about/winfo_bg.png") no-repeat left bottom;}
+.weatherWrap .winfo .inner h2 {position:absolute;z-index:0;left:50%;top:0;width:260px;height:91px;margin-left:-130px;padding:231px 0 0 0;background:url("/waterpark/_img/about/winfo_title.png") no-repeat;text-align:center;}
+.weatherWrap .winfo .inner h2 span,
+.weatherWrap .winfo .inner h2 em {color:#fff;font-size:24px;font-family:'Nanum Gothic';font-weight:700;text-shadow:1px 1px 1px #633e20;line-height:24px;}
+.weatherWrap .winfo .inner .wNow {float:left;width:393px;height:160px;padding:55px 0 0 56px;}
+.weatherWrap .winfo .inner .wNow .wIconB {float:left;width:160px;height:160px;margin-right:23px;}
+.weatherWrap .winfo .inner .wNow .wIconB img {width:160px;height:160px;vertical-align:top;}
+.weatherWrap .winfo .inner .wNow .wNowDate {float:left;width:210px;padding:14px 0 0 0;color:#fff;font-family:'Nanum Gothic';font-weight:700;}
+.weatherWrap .winfo .inner .wNow .wNowDate .wTime {margin-bottom:4px;padding-left:18px;background:url("/waterpark/_img/about/wClock.png") no-repeat left center;font-size:14px;}
+.weatherWrap .winfo .inner .wNow .wNowDate .wTemp {margin-bottom:5px;height:58px;line-height:58px;font-size:58px;font-weight:700;}
+.weatherWrap .winfo .inner .wNow .wNowDate .wTemp span {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;width:31px;height:42px;text-indent:-100%;*text-indent:0;white-space:nowrap;overflow:hidden;font-size:0;line-height:0;text-shadow:none;color:transparent;}
+.weatherWrap .winfo .inner .wNow .wNowDate .wTemp span {width:31px;height:42px;}
+.weatherWrap .winfo .inner .wNow .wNowDate .wTemp .wTempC {background:url("/waterpark/_img/about/wTemp_c.png") no-repeat;vertical-align:middle;}/*2014-06-03*/
+.weatherWrap .winfo .inner .wNow .wNowDate .wWeather {font-size:28px;}
+.weatherWrap .winfo .inner .wNow .wNowDate .wRainfall {margin-top:10px;padding-left:15px;background:url("/waterpark/_img/about/wRainfall.png") no-repeat left center;font-size:14px;}
+.weatherWrap .winfo .inner .wToday {float:right;width:286px;padding:65px 45px 0 0;}
+.weatherWrap .winfo .inner .wToday ul {padding-bottom:20px;background:url("/waterpark/_img/about/wLine.png") repeat-x left bottom;}
+.weatherWrap .winfo .inner .wToday ul li {float:left;color:#fff;font-size:14px;font-family:'Nanum Gothic';font-weight:700;}
+.weatherWrap .winfo .inner .wToday ul li span {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;}
+.weatherWrap .winfo .inner .wToday ul li .tit {margin-bottom:10px;padding-left:8px;background:url("/waterpark/_img/about/wDot.png") no-repeat left center;}
+.weatherWrap .winfo .inner .wToday ul li .wIconB {width:50px;height:50px;}
+.weatherWrap .winfo .inner .wToday ul li .wIconB img {width:50px;height:50px;vertical-align:top;}
+.weatherWrap .winfo .inner .wToday ul li .txt {margin-top:5px;}
+.weatherWrap .winfo .inner .wToday ul li.after1 {width:78px;padding-right:13px;background:url("/waterpark/_img/about/wArrow.png") no-repeat right 50px;}
+.weatherWrap .winfo .inner .wToday ul li.after2 {width:95px;padding-right:13px;background:url("/waterpark/_img/about/wArrow.png") no-repeat right 50px;}
+.weatherWrap .winfo .inner .wToday ul li.after3 {width:87px;}
+.weatherWrap .winfo .inner .wToday ul li.after2,
+.weatherWrap .winfo .inner .wToday ul li.after3 {text-align:center;}
+.weatherWrap .winfo .inner .wToday .stop {margin-top:14px;color:#fff;font-weight:700;}
+.weatherWrap .winfo .inner .wToday .stop strong,
+.weatherWrap .winfo .inner .wToday .stop a {float:left;display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;}
+.weatherWrap .winfo .inner .wToday .stop strong {width:60px;}
+.weatherWrap .winfo .inner .wToday .stop a {width:226px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#fff;}
+.weatherWrap .wDetail {padding:40px 30px 0 30px;}
+.weatherWrap .wDetail h3 {margin-bottom:18px;font-family:"Nanum Gothic";font-size:16px;font-weight:700;}
+.weatherWrap .wDetail img {width:50px;height:50px;}
+.weatherWrap .wDetail .stau {display:block;}
+.weatherWrap .wDetail .notice {font-size:11px;color:#717171;}
+.weatherWrap .wDetail .notice em {font-size:12px;}
+
+.bestPlace {margin-top:-80px;}
+.bestPlace h2 {width:960px;height:80px;margin:0 -30px;padding-top:173px;background:url("/waterpark/_img/about/bestplace_bg.jpg") no-repeat;}
+.bestPlace h2 {color:#fff;text-align:center;text-shadow:1px 1px 1px #633e20;}
+.bestPlace h2 span {font-size:20px;font-family:'Nanum Gothic';font-weight:700;}
+.bestPlace_info .route {overflow:hidden;position:relative;z-index:1;min-height:200px;padding-bottom:40px;}
+.bestPlace_info .route .dtime {position:absolute;left:371px;top:0;z-index:999;width:160px;height:1200px;}
+.bestPlace_info .route .dtime span{overflow:hidden;position:absolute;left:0;top:0;width:0;height:0;font-size:0;line-height:0;}
+.bestPlace_info .route .dtime.dt01 {background:url("/waterpark/_img/about/dtime01.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt02 {background:url("/waterpark/_img/about/dtime02.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt03 {background:url("/waterpark/_img/about/dtime03.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt04 {background:url("/waterpark/_img/about/dtime04.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt05 {background:url("/waterpark/_img/about/dtime05.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt06 {background:url("/waterpark/_img/about/dtime06.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt07 {background:url("/waterpark/_img/about/dtime07.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt08 {background:url("/waterpark/_img/about/dtime08.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt09 {background:url("/waterpark/_img/about/dtime09.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt10 {background:url("/waterpark/_img/about/dtime10.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt11 {background:url("/waterpark/_img/about/dtime11.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt12 {background:url("/waterpark/_img/about/dtime12.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt13 {background:url("/waterpark/_img/about/dtime13.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt14 {background:url("/waterpark/_img/about/dtime14.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt15 {background:url("/waterpark/_img/about/dtime15.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.dt16 {background:url("/waterpark/_img/about/dtime16.png") 0 0 no-repeat;}
+.bestPlace_info .route .dtime.on {background-position:-160px 0;}
+.bestPlace_info .route.odd .snap_img{float:left;width:370px;}
+.bestPlace_info .route.odd .placeinfo{float:right;width:397px;}
+.bestPlace_info .route.even .snap_img{float:right;width:370px;}
+.bestPlace_info .route.even .placeinfo{float:left;width:397px;}
+.bestPlace_info .route .placeinfo{position:relative;z-index:0;}
+.bestPlace_info .route .placeinfo dl {background:url("/waterpark/_img/about/placeinfo_mid_bg.gif") left top repeat-y;}
+.bestPlace_info .route .placeinfo dl dt{padding:20px 30px 18px 34px;font-size:14px;font-weight:bold;background:url("/waterpark/_img/about/placeinfo_top_bg.gif") left top no-repeat;color:#434343;}
+.bestPlace_info .route .placeinfo dl dt .type{margin-right:10px;padding:0 0 3px 10px;background:url("/waterpark/_img/about/type_l_btn.gif") left top no-repeat;}
+.bestPlace_info .route .placeinfo dl dt .type em{padding:3px 10px 3px 0;font-size:11px;background:url("/waterpark/_img/about/type_r_btn.gif") right top no-repeat;color:#fff;}
+.bestPlace_info .route .placeinfo dl dd{padding:0 30px 15px 34px;color:#737373;line-height:150%;}
+.bestPlace_info .route .placeinfo dl dd.last{padding:0 30px 0 34px;background:url("/waterpark/_img/about/placeinfo_bottom_bg.gif") left bottom no-repeat;}
+.bestPlace_info .route .placeinfo dl dd.last ul{padding:15px 0;border-top:1px dashed #e6e1e1;}
+.bestPlace_info .route .placeinfo dl dd.last ul li{font-size:11px;color:#767676;}
+.bestPlace_info .route .placeinfo dl dd.last ul li a{color:#767676;text-decoration:underline;}
+.bestPlace_info .route .placeinfo dl dd.last ul li a:active{letter-spacing:-1px;}
+.bestPlace_info .route .placeinfo dl dd.last li .icon{display:inline-block;width:12px;height:14px;margin-right:5px;vertical-align:middle;}
+.bestPlace_info .route .placeinfo dl dd.last li .icon.loca{background:url("/waterpark/_img/ui/icon_zone.png") 0 0 no-repeat;}
+.bestPlace_info .route .placeinfo dl dd.last li .icon.tel{background:url("/waterpark/_img/ui/icon_tel.png") 0 0 no-repeat;}
+.bestPlace_info .route .placeinfo dl dd.last li .icon.web{background:url("/waterpark/_img/ui/icon_home.png") 0 0 no-repeat;}
+.bestPlace_info .route .placeinfo .mapBtn{position:absolute;right:30px;bottom:15px;z-index:9;}
+.bestPlace_info .route.even .placeinfo dl {background:url("/waterpark/_img/about/placeinfo2_mid_bg.gif") left top repeat-y;}
+.bestPlace_info .route.even .placeinfo dl dt{padding:20px 34px 18px 25px;font-size:14px;font-weight:bold;background:url("/waterpark/_img/about/placeinfo2_top_bg.gif") left top no-repeat;color:#434343;}
+.bestPlace_info .route.even .placeinfo dl dt .type{margin-right:10px;padding:0 0 3px 10px;background:url("/waterpark/_img/about/type_l_btn.gif") left top no-repeat;}
+.bestPlace_info .route.even .placeinfo dl dt .type em{padding:3px 10px 3px 0;font-size:11px;background:url("/waterpark/_img/about/type_r_btn.gif") right top no-repeat;color:#fff;}
+.bestPlace_info .route.even .placeinfo dl dd{padding:0 34px 15px 25px;color:#737373;line-height:150%;}
+.bestPlace_info .route.even .placeinfo dl dd.last{padding:0 34px 0 25px;background:url("/waterpark/_img/about/placeinfo2_bottom_bg.gif") left bottom no-repeat;}
+
+/* 시설안내 */
+.zone {color:#636363;font-family:'Nanum Gothic';}
+.zone .zoneTab {position:relative;z-index:1;}
+.zone .zoneTab ul {width:904px;}
+.zone .zoneTab ul li {float:left;margin-right:4px;background:url("/waterpark/_img/facility/bg_zoneTab.png") no-repeat;}
+.zone .zoneTab ul li.on {background:url("/waterpark/_img/facility/bg_zoneTab_on.png") no-repeat;}
+.zone .zoneTab ul li a {display:block;width:448px;height:198px;}
+.zone .zoneTab ul li a img {width:448px;height:198px;vertical-align:top;}
+.zone .zoneCont {position:relative;z-index:0;width:900px;height:591px;top:-20px;}
+.zone .zoneCont .map {position:relative;z-index:0;left:0;top:0;width:900px;height:591px;}
+.zone .zoneCont .map img {width:900px;height:591px;vertical-align:top;}
+.zone .zoneCont .map .dimmed {position:absolute;z-index:0;left:0;top:0;display:block;width:900px;height:591px;background:url("/waterpark/_img/facility/map_dimmed.png") no-repeat;}
+.zone .zoneCont .pinCont {position:absolute;z-index:0;left:0;top:0;width:900px;height:600px;}
+.zone .zoneCont .pinCont .btn_pin {position:absolute;z-index:0;display:block;width:33px;height:40px;margin:-40px 0 0 -16px;background:url("/waterpark/_img/facility/bg_pin2.png") no-repeat;}
+.zone .zoneCont .pinCont .btn_pin .pin {display:block;width:33px;height:40px;}
+.zone .zoneCont .pinCont .btn_pin .mini {display:none;width:140px;height:105px;margin:-150px 0 0 -64px;padding:10px 14px 25px 10px;background:url("/waterpark/_img/facility/bg_over.png") no-repeat;}
+.zone .zoneCont .pinCont .btn_pin .mini .mtit,
+.zone .zoneCont .pinCont .btn_pin .mini .logo {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;}
+.zone .zoneCont .pinCont .btn_pin .mini .logo {width:129px;height:75px;padding:0 5px 0 6px;background:url("/waterpark/_img/facility/bg_over_logo.gif") no-repeat;}
+.zone .zoneCont .pinCont .btn_pin .mini .logo img {vertical-align:top;}
+.zone .zoneCont .pinCont .btn_pin .mini .mtit {width:115px;height:20px;margin-bottom:4px;padding-left:25px;background:url("/waterpark/_img/facility/bg_plus.png") no-repeat;color:#fff;font-size:14px;font-weight:700;line-height:20px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.zone .zoneCont .pinCont .btn_pin.on .mini {display:block;}
+.zone .zoneCont .pinCont .layer {position:absolute;z-index:2;top:55px;padding-bottom:41px;background:url("/waterpark/_img/facility/bg_layer_b.png") no-repeat left bottom;}
+.zone .zoneCont .pinCont .layer .inner {width:261px;min-height:365px;padding:20px 25px 19px 20px;background:url("/waterpark/_img/facility/bg_layer_t.png") no-repeat left top;}
+.zone .zoneCont .pinCont .layer.position1 {left:20px;}
+.zone .zoneCont .pinCont .layer.position2 {left:50%;margin-left:-153px;}
+.zone .zoneCont .pinCont .layer.position3 {left:580px;}
+.zone .zoneCont .pinCont .layer a.btn_layerClose {position:absolute;left:123px;bottom:12px;display:block;width:40px;height:17px;padding-right:18px;background:url("/waterpark/_img/facility/bg_close.png") no-repeat right center;color:#fff;font-weight:700;line-height:17px;}
+.zone .zoneCont .pinCont .layer .pic img {vertical-align:top;}
+.zone .zoneCont .pinCont .layer h3 {margin:11px 0 4px 0;color:#35322d;font-size:22px;font-weight:900;}
+.zone .zoneCont .pinCont .layer .txt {line-height:19px;}
+.zone .zoneCont .pinCont .layer .clfix {margin-top:6px;}
+.zone .zoneCont .pinCont .layer .clfix .logo {float:left;display:block;width:129px;height:78px;border:1px solid #dddddd;background:url("/waterpark/_img/facility/no_logo.gif") no-repeat;}
+.zone .zoneCont .pinCont .layer .clfix .logo em {display:block;position:absolute;z-index:0;width:129px;height:75px;padding-top:3px;background-color:#fff;}
+.zone .zoneCont .pinCont .layer .clfix .desc {float:right;width:129px;height:78px;border:1px solid #dddddd;border-left:none;background:url("/waterpark/_img/facility/no_txt.gif") no-repeat;}
+.zone .zoneCont .pinCont .layer .clfix .desc p {height:38px;padding-left:10px;font-size:14px;line-height:38px;background:#fff;}
+.zone .zoneCont .pinCont .layer .clfix .desc p.bb {border-bottom:1px solid #dddddd;}
+.zone .zoneCont .pinCont .layer .clfix .desc p strong {color:#35322d;font-weight:700;}
+.zone .zoneCont .pinCont .layer .clfix .desc p span.num {color:#007bc7;font-weight:800;}
+.zone .zoneCont .pinCont .layer .btnWrap {margin-top:3px;}
+.zone .zoneCont .pinCont .layer .btn_more {width:260px;height:36px;background:url("/waterpark/_img/facility/bg_more.gif") no-repeat;color:#35322d;font-weight:700;line-height:36px;}
+.zone .zoneCont .pinCont .layer {display:none;}
+.zone .zoneCont .pinCont .layer.on {display:block;}
+.zone .facilityTab {margin-top:-16px;}
+.zone .facilityTab ul {width:904px;}
+.zone .facilityTab ul li {float:left;margin-right:4px;}
+.zone .facilityTab ul li a {display:block;width:202px;height:60px;padding-left:20px;background:url("/waterpark/_img/facility/bg_facilityTab.gif") no-repeat;color:#35322d;font-size:14px;font-family:'Nanum Gothic';font-weight:700;line-height:60px;}
+
+.viewMap .cont .name,
+.viewMap .cont .lineL,
+.viewMap .cont .bg_posi {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;}
+.viewMap .cont .name {margin:10px 0 7px 0;}
+.viewMap .cont .lineL {margin-left:8px;padding-left:9px;background:url("/waterpark/_img/ui/barGray_1x10.gif") no-repeat left center;}
+.viewMap .cont .bg_posi {height:14px;padding-left:15px;background:url("/waterpark/_img/ui/icon_zone.png") no-repeat left center;color:#636363;font-size:11px;}
+.viewMap .cont .map {position:relative;z-index:0;width:560px;height:373px;}
+.viewMap .cont .map img {width:560px;height:373px;vertical-align:top;}
+.viewMap .cont .map .pin {position:absolute;z-index:0;display:block;width:36px;height:46px;margin:-46px 0 0 -18px;background:url("/waterpark/_img/ui/spot.png") no-repeat;}
+
+.spa .imgList ul li .one .txt {height:65px;}
+.spa .imgList ul li .one .txt em {display:block;height:36px;overflow:hidden;letter-spacing:-0.03em;}
+.spa .imgList ul li .one .txt em.tit {height:18px;}
+.spa .spaInfo {width:887px;height:129px;margin-bottom:-9px;padding:20px 0 0 20px;background:url("/waterpark/_img/facility/bg_spa.gif") no-repeat;}
+.spa .spaInfo p {font-family:'Nanum Gothic';}
+.spa .spaInfo .tit {color:#35322d;font-size:16px;font-weight:700;}
+.spa .spaInfo .txt {margin:8px 0 12px 0;color:#636363;line-height:18px;}
+
+/* Now */
+.nowVisual {width:960px;height:217px;margin:-80px -30px 30px -30px;}
+.nowListCon {background:url("/waterpark/_img/facility/now_bg.gif") 0px 0px repeat-y;}
+.nowListCon .dayBox {min-height:260px;padding-left:260px;position:relative;}
+.nowListCon .dayBox .inner {}
+.nowListCon .dayBox .dateBox {width:164px;height:210px;padding:29px 58px 0 28px;position:absolute;top:0;left:0;font-family:"Nanum Gothic";font-weight:700;color:#ffffff;background-position:0 0;background-repeat:no-repeat;}
+.nowListCon .dayBox .dateBox.c1 {background-image:url("/waterpark/_img/facility/now_date1.png");}
+.nowListCon .dayBox .dateBox.c2 {background-image:url("/waterpark/_img/facility/now_date2.png");}
+.nowListCon .dayBox .dateBox.c3 {background-image:url("/waterpark/_img/facility/now_date3.png");}
+.nowListCon .dayBox .dateBox.c4 {background-image:url("/waterpark/_img/facility/now_date4.png");}
+.nowListCon .dayBox .dateBox h3 {font-size:28px;height:30px;line-height:30px;margin-bottom:25px;letter-spacing:-1px;}
+.nowListCon .dayBox .dateBox p {font-size:12px;height:46px;line-height:14px;}
+.nowList {width:660px;}
+.nowList .box {margin:0 20px 20px 0;float:left;width:200px;}
+.nowList div.box {border:#dddddd 1px solid;width:198px;}
+.nowList div.box a.nowItem {display:block;padding-bottom:8px;width:198px;z-index:1;}
+.nowList div.box a.nowItem span {display:block;margin:0;color:#636363;font-size:11px;height:18px;line-height:18px;}
+.nowList div.box a.nowItem .pic {display:block;height:122px;width:198px;margin-bottom:13px;overflow:hidden;}
+.nowList div.box a.nowItem .pic img {width:100%;}
+.nowList div.box a.nowItem.video .pic {position:relative;z-index:0;width:198px;height:198px;}
+.nowList div.box a.nowItem.video .pic img {position:absolute;z-index:0;left:50%;top:50%;margin:-180px 0 0 -240px;width:480px;height:360px;vertical-align:top;}
+.nowList div.box a.nowItem .title {color:#35322d;font-size:14px;font-family:"Nanum Gothic";margin-bottom:7px;font-weight:700;padding-left:10px;}
+.nowList div.box a.nowItem .loc {margin-bottom:2px;padding-left:26px;background:url("/waterpark/_img/ui/icon_pin.gif") 10px 3px no-repeat;}
+.nowList div.box a.nowItem .date {padding-left:26px;background:url("/waterpark/_img/ui/icon_date.gif") 10px 3px no-repeat;}
+.nowList div.box a.nowItem:hover {text-decoration:none;}
+.nowList div.box a.nowItem:hover span {color:#007bc7;}
+.nowList div.box a.nowItem:active span {font-weight:400;}
+.nowList div.box a.nowItem:hover .title {color:#007bc7;text-decoration:underline;}
+.nowList div.box a.nowItem:active .title {font-weight:700;}
+.nowList div.box a.nowItem:hover .loc {background-image:url("/waterpark/_img/ui/icon_pin_on.gif");}
+.nowList div.box a.nowItem:hover .date {background-image:url("/waterpark/_img/ui/icon_date_on.gif");}
+.nowListCon .hiddenLayer {width:0;height:0;text-indent:-100%;*text-indent:0;white-space:nowrap;overflow:hidden;font-size:0;line-height:0;text-shadow:none;color:transparent;}
+.nowPop {width:620px;background:#ffffff;}
+.nowPop .innerPop {width:580px;padding:20px;background:url("/waterpark/_img/facility/nowPop_bg.jpg") no-repeat;}
+.nowPop h4 {color:#ffffff;font-size:24px;font-family:"Nanum Gothic";font-weight:700;margin-bottom:16px;}
+.nowPop p.meta {font-size:12px;color:#ffffff;margin-bottom:22px;}
+.nowPop p.meta span {height:14px;line-height:14px;padding-left:16px;display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;vertical-align:middle;}
+.nowPop p.meta span.date {background:url("/waterpark/_img/ui/icon_date_white.png") 0px 0px no-repeat;}
+.nowPop p.meta span.bar {width:1px;height:11px;background:#80bcdc;padding:0;margin:0 4px;}
+.nowPop p.meta span.marker {background:url("/waterpark/_img/ui/icon_marker_white.png") 0px 0px no-repeat;}
+.nowPop .share {margin-bottom:45px;}
+.nowPop .share a {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;height:21px;color:#ffffff;font-size:10px;margin-right:12px;}
+.nowPop .share a:hover {font-weight:normal;text-decoration:none;}
+.nowPop .share a:active {font-weight:normal;text-decoration:none;}
+.nowPop .share a span {display:block;height:21px;line-height:21px;margin-left:36px;padding-right:8px;min-width:28px;background:url("/waterpark/_img/facility/nowPop_snsbg.png") right 0px no-repeat;}
+.nowPop .share a.fb {background:url("/waterpark/_img/facility/nowPop_fb.png") 0px 0px no-repeat;}
+.nowPop .share a.tw {background:url("/waterpark/_img/facility/nowPop_tw.png") 0px 0px no-repeat;}
+.nowPop .share a.url {background:url("/waterpark/_img/facility/nowPop_url.png") 0px 0px no-repeat;}
+.nowPop .share a.kt {background:url("/waterpark/_img/facility/nowPop_kt.png") 0px 0px no-repeat;}
+.nowPop .share a.ks {background:url("/waterpark/_img/facility/nowPop_ks.png") 0px 0px no-repeat;}
+.nowPop .itemSummary {width:580px;background:none;padding:0;}
+.nowPop .itemSummary .inner {background:none;}
+.nowPop .itemSummary .itemView {top:18px;}
+.nowPop .itemSummary .itemView .pic {width:580px;height:387px;}
+.nowPop .itemSummary .itemView .pic img {width:580px;height:387px;}
+.nowPop .itemSummary .itemView .itemIframe {width:580px;height:387px;}
+.nowPop .itemSummary .caption .btn {width:563px;}
+.nowPop .itemSummary .indi {height:18px;line-height:18px;text-align:right;font-size:11px;color:#333333;font-family:arial;}
+.nowPop .itemSummary .indi strong {font-weight:bold;color:#007bc7;}
+.nowPop .itemSummary .pageSlideCont {width:510px;margin-top:390px;padding-right:70px;bottom:0;background:url("/waterpark/_img/ui/now_bg_itemBtn.gif") no-repeat right 5px;}
+.nowPop .itemSummary .pageSlideCont .viewport ul {width:360px;}
+.nowPop .itemSummary .pageSlideCont .viewport ul li {width:102px;height:67px;padding-top:5px;background:url("/waterpark/_img/ui/now_item_default.gif") no-repeat 0 5px;}
+.nowPop .itemSummary .pageSlideCont .viewport ul li .item {width:100px;height:67px;margin-right:2px;}
+.nowPop .itemSummary .pageSlideCont .viewport ul li .item .over {width:100px;height:67px;}
+.nowPop .itemSummary .pageSlideCont .viewport ul li .item .pic {width:100px;height:67px;}
+.nowPop .itemSummary .pageSlideCont .viewport ul li .item .pic img {width:100px;height:67px;}
+.nowPop .itemSummary .pageSlideCont .viewport ul li.on {background:url("/waterpark/_img/ui/item_arrow.gif") no-repeat center 1px;}
+.nowPop .itemSummary .pageSlideCont .viewport ul li.on .item .over {background:url("/waterpark/_img/ui/now_item_on.gif") no-repeat;}
+.nowPop .popClose {display:block;width:41px;height:41px;background:url("/waterpark/_img/ui/btn_popClose.png") 0px 0px no-repeat;text-indent:-100%;*text-indent:0;white-space:nowrap;overflow:hidden;font-size:0;line-height:0;text-shadow:none;color:transparent;position:absolute;top:16px;right:16px;}
+.nowPop .itemSummary .pageSlideCont a.btn_prev {right:39px;top:16px;}
+.nowPop .itemSummary .pageSlideCont a.btn_next {right:11px;top:44px;}
+
+.snsTab span {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;vertical-align:middle;}
+.snsTab span.icon {background-image:url("/waterpark/_img/ui/icon_snsTab.png");background-repeat:no-repeat;margin-right:6px;}
+.snsTab span.icon_fb {width:16px;height:16px;background-position:0px -50px;}
+.snsTab span.icon_yt {width:21px;height:18px;background-position:-50px -50px;}
+.snsTab span.icon_ig {width:16px;height:16px;background-position:-100px -50px;}
+.snsTab a:active span {letter-spacing:-1px;}
+.snsTab a.on span.icon_fb {background-position:0px 0px;}
+.snsTab a.on span.icon_yt {background-position:-50px 0px;}
+.snsTab a.on span.icon_ig {background-position:-100px 0px;}
+.snsList {margin-left:-8px;}
+.snsList .box {border:#e7e7e8 1px solid;border-bottom:#bfbfc0 1px solid;width:217px;margin-left:8px;margin-bottom:8px;float:left;}
+.snsList .box .innerBox {display:block;border:#ffffff 4px solid;padding-bottom:4px;width:209px;}
+.snsList .box span {display:block;color:#636363;font-size:11px;}
+.snsList .box .pic {}
+.snsList .box .pic img {width:100%;display:block;}
+.snsList .box .cat {height:41px;line-height:41px;padding:0 10px;}
+.snsList .box .cat a {font-family:"Nanum Gothic";font-size:14px;font-weight:700;display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;height:18px;line-height:18px;}
+.snsList .box .cat a span.icon {width:16px;height:16px;display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;vertical-align:middle;background-image:url("/waterpark/_img/ui/icon_snsTab.png");background-repeat:no-repeat;margin-right:6px;}
+.snsList .box .cat a {text-decoration:none;}
+.snsList .box .fb .cat a {color:#3b589e;}
+.snsList .box .yt .cat a {color:#444444;}
+.snsList .box .ig .cat a {color:#30618a;}
+.snsList .box .fb .cat a span.icon {background-position:0px -50px;}
+.snsList .box .yt .cat a span.icon {background-position:-50px -50px;width:21px;height:18px;}
+.snsList .box .ig .cat a span.icon {background-position:-100px -50px;}
+.snsList .box .article {line-height:16px;padding:0 10px;}
+.snsList .box .btm {margin:10px 10px 0 10px;border-top:#e8e9e9 1px dashed;padding-top:10px;}
+.snsList .box .date {height:20px;line-height:20px;color:#636363;padding-left:15px;background:url("/waterpark/_img/ui/icon_date.gif") 0px 4px no-repeat;}
+.snsList .box .like {height:20px;line-height:20px;color:#636363;padding-left:15px;background:url("/waterpark/_img/ui/icon_heart.png") 0px 4px no-repeat;}
+.snsList .box strong {font-weight:bold;}
+.snsList .box.banner {border:none;}
+.snsList .box.banner a {display:block;}
+.snsList .box.banner a img {display:block;}
+
+/* 편의 시설 */
+.convenience {position:relative;width:930px;margin:-37px -30px -80px 0;background:#ffffff url("/waterpark/_img/facility/convenience_bg.gif ") 0px 0px repeat;}
+.convenience .c_article {position:relative;z-index:1;width:732px;background:url("/waterpark/_img/facility/convenience_cont_bg.png") 0px 0px repeat-y;min-height:800px;padding:37px 33px 100px 0;}
+.convenience .c_article h3 {height:26px;line-height:26px;margin-bottom:14px;font-size:24px;font-weight:700;font-family:"Nanum Gothic";color:#000000;}
+.convenience .c_article .c_image {position:relative;margin-top:-40px;padding-top:40px;height:466px;margin-bottom:20px;}
+.convenience .c_article .c_image a.cbtn {display:block;width:32px;height:32px;position:absolute;top:0;text-indent:-100%;*text-indent:0;white-space:nowrap;overflow:hidden;font-size:0;line-height:0;text-shadow:none;color:transparent;background-image:url("/waterpark/_img/facility/convenience_ui.png");background-repeat:no-repeat;}
+.convenience .c_article .c_image a.cbtn_photo {right:38px;background-position:0px 0px;}
+.convenience .c_article .c_image a.cbtn_photo.on {background-position:0px -50px;}
+.convenience .c_article .c_image a.cbtn_map {right:0;background-position:-50px 0px;}
+.convenience .c_article .c_image a.cbtn_map.on {background-position:-50px -50px;}
+.convenience .c_article .c_image .frame {padding:10px;border:#d3d3d4 1px solid;border-bottom:#919193 1px solid;width:710px;height:444px;overflow:hidden;display:none;}
+.convenience .c_article .c_image .frame.on {display:block;}
+.convenience .c_article dl {position:relative;font-size:12px;color:#737373;margin-bottom:12px;padding-left:70px;font-family:"Nanum Gothic";}
+.convenience .c_article dl dt {color:#313335;min-height:20px;height:20px;position:absolute;top:0;left:0;font-weight:700;padding-left:10px;background:url("/waterpark/_img/facility/convenience_ui.png") 0px -100px no-repeat;height:22px;line-height:22px;margin-bottom:18px;}
+.convenience .c_article dl dd {min-height:22px;line-height:22px;}
+.convenience .c_article dl dd ul {}
+.convenience .c_article dl dd ul li {line-height:20px;}
+.convenience .infoTxt {margin-bottom:20px;line-height:20px;font-size:14px;font-weight:700;font-family:"Nanum Gothic";color:#313335;width:580px;}
+.convenience .c_menu {position:absolute;padding:28px 0 0 20px;width:150px;top:0;right:0;bottom:0;background:url("/waterpark/_img/facility/convenience_menu_bg.png") 0px 0px no-repeat;}
+.convenience .c_menu h2 {color:#ffffff;font-size:14px;font-family:"Nanum Gothic";font-weight:700;height:16px;line-height:16px;margin-bottom:44px;}
+.convenience .c_menu ul {}
+.convenience .c_menu ul li {display:block;height:30px;line-height:30px;}
+.convenience .c_menu ul li a {font-family:"Nanum Gothic";font-size:12px;font-weight:700;color:#ffffff;line-height:14px;}
+.convenience .c_menu ul li a:hover {text-decoration:none;border-bottom:#ffffff 1px solid;padding-bottom:1px;}
+.convenience .c_menu ul li.on a {border-bottom:#ffffff 1px solid;padding-bottom:1px;}
+.convenience .c_chr {width:171px;height:229px;position:absolute;z-index:2;right:81px;bottom:0;background:url("/waterpark/_img/facility/convenience_bg_chr.png") 0px 0px no-repeat;}
+
+/* 이용정보 */
+.useWay {}
+.useWay .iconContTab h2.iconTab1 a span {background-image:url("/waterpark/_img/useinfo/wiconTab1.gif");}
+.useWay .iconContTab h2.iconTab2 a span {background-image:url("/waterpark/_img/useinfo/wiconTab2.gif");}
+.useWay .noteBox .inner {padding-right:0;padding-left:0;}
+.useWay .noteBox .inner dl{padding:0 20px;}
+.useWay .noteBox .inner dl.first{padding-bottom:15px;margin-bottom:23px;border-bottom:1px solid #e2e5e7;}
+.useWay .noteBox .inner dl dt{margin-bottom:15px;font-family: 'Nanum Gothic';font-size:16px;font-weight:700;color:#35322d;}
+.useWay .noteBox .inner dl dd{margin:0 0 10px 0;padding:0 0 0 12px;font-size:11px;background: url("/waterpark/_img/useinfo/dot_bg.gif") no-repeat 0px 5px;color:#737373;letter-spacing:-0.5px;line-height:150%;}
+.useWay .noteBox .inner dl dd ul{padding:0;padding-top:5px;}
+.useWay .noteBox .inner dl dd ul li{background:none;padding:0;margin-bottom:5px;}
+.useWay .noteBox .inner dl.style2 {position:relative;z-index:0;padding-left:129px;}
+.useWay .noteBox .inner dl.style2 dt {position:absolute;z-index:0;left:20px;top:0;}
+.wayWaterpark {width:900px;margin:0 30px;}
+.wayWaterpark .stepWrap {padding:32px 46px 0 62px;background:url("/waterpark/_img/useinfo/line1_bg.png") 0 0 no-repeat;}
+.wayWaterpark .stepWrap .stepbox {margin-bottom:44px;}
+.wayWaterpark .stepWrap .stepbox.step01{height:177px;background:url("/waterpark/_img/useinfo/step01_water_bg.jpg") right top no-repeat;}
+.wayWaterpark .stepWrap .stepbox.step02{float:left;width:43%;height:115px;}
+.wayWaterpark .stepWrap .stepbox.step03{float:right;width:42%;height:115px;}
+.wayWaterpark .stepWrap .stepbox.step04{height:163px;background:url("/waterpark/_img/useinfo/step04_water_bg.jpg") right top no-repeat;}
+.wayWaterpark .stepWrap .stepbox.step05{float:left;width:45%;height:169px;}
+.wayWaterpark .stepWrap .stepbox.step06{float:right;width:42%;height:119px;}
+.wayWaterpark .stepWrap .stepbox.step07{height:229px;background:url("/waterpark/_img/useinfo/step07_water_bg.jpg") right top no-repeat;}
+.wayWaterpark .stepWrap .stepbox.step08{float:left;width:43%;height:134px;}
+.wayWaterpark .stepWrap .stepbox.step09{float:right;width:42%;height:134px;}
+.wayWaterpark .stepWrap .stepbox.step10{height:145px;background:url("/waterpark/_img/useinfo/step10_water_bg.jpg") right top no-repeat;}
+.wayWaterpark .stepWrap .stepbox dl{margin-bottom:15px;}
+.wayWaterpark .stepWrap .stepbox dl dt {margin-bottom:20px;font-family: 'Nanum Gothic';font-size:20px;font-weight:700;color:#35322d;}
+.wayWaterpark .stepWrap .stepbox dl dt .num {display:inline-block;width:28px;height:28px;margin-right:10px;font-family:"Shanti";font-size:18px;background:url("/waterpark/_img/useinfo/num_bg.gif") 0 0 no-repeat;color:#fff;text-align:center;line-height:28px;}
+.wayWaterpark .stepWrap .stepbox dl dd {margin:0 0 5px 0;padding:0 0 0 12px;font-size:11px;background: url("/waterpark/_img/useinfo/dot_bg.gif") no-repeat 0px 4px;color:#737373;letter-spacing:-0.5px;line-height:150%;}
+.waySpa {width:900px;margin:0 30px;}
+.waySpa .stepWrap {padding:32px 46px 0 62px;background:url("/waterpark/_img/useinfo/line2_bg.png") 0 0 no-repeat;}
+.waySpa .stepWrap .stepbox {margin-bottom:44px;}
+.waySpa .stepWrap .stepbox.step01{height:177px;background:url("/waterpark/_img/useinfo/step01_spa_bg.jpg") right top no-repeat;}
+.waySpa .stepWrap .stepbox.step02{float:left;width:40%;height:138px;}
+.waySpa .stepWrap .stepbox.step03{float:right;width:45%;height:138px;}
+.waySpa .stepWrap .stepbox.step04{height:199px;background:url("/waterpark/_img/useinfo/step04_spa_bg.jpg") right top no-repeat;}
+.waySpa .stepWrap .stepbox dl{margin-bottom:15px;}
+.waySpa .stepWrap .stepbox dl dt {margin-bottom:20px;font-family: 'Nanum Gothic';font-size:20px;font-weight:700;color:#35322d;}
+.waySpa .stepWrap .stepbox dl dt .num {display:inline-block;width:28px;height:28px;margin-right:10px;font-family:"Shanti";font-size:18px;background:url("/waterpark/_img/useinfo/num_bg.gif") 0 0 no-repeat;color:#fff;text-align:center;line-height:28px;}
+.waySpa .stepWrap .stepbox dl dd {margin:0 0 5px 0;padding:0 0 0 12px;font-size:11px;background: url("/waterpark/_img/useinfo/dot_bg.gif") no-repeat 0px 4px;color:#737373;letter-spacing:-0.5px;line-height:150%;}
+
+.coin .iconTabStyle .tab1{background:url("/waterpark/_img/ui/iconTab_arrow.gif") center bottom no-repeat;}
+.coin .iconTabStyle .coinSystem{width:500px;margin:0 auto;padding:33px 0 56px 0;background:url("/waterpark/_img/useinfo/coin_coinSystem_bg.gif") 0 0 no-repeat;}
+.coin .iconTabStyle .coinSystem h2{margin:0 0 5px 155px;font-family: 'Nanum Gothic';font-size:24px;font-weight:700;color:#434343;}
+.coin .iconTabStyle .coinSystem p{margin-left:155px;font-family: 'Nanum Gothic';font-size:12px;color:#636363;line-height:130%;word-spacing:-0.5px;}
+.coin .stepWrap {height:1233px;padding:12px 46px 15px 62px;background:url("/waterpark/_img/useinfo/line3_bg.png") 0 0 no-repeat;}
+.coin .stepWrap .stepbox {}
+.coin .stepWrap .stepbox.step01{height:161px;margin-bottom:17px;padding-top:20px;background:url("/waterpark/_img/useinfo/step01_coin_bg.jpg") right top no-repeat;}
+.coin .stepWrap .stepbox.step02{padding:25px 0 0 220px;height:138px;margin-bottom:45px;background:url("/waterpark/_img/useinfo/step02_coin_bg.jpg") left top no-repeat;}
+.coin .stepWrap .stepbox.step03{height:180px;margin-bottom:21px;background:url("/waterpark/_img/useinfo/step03_coin_bg.jpg") right top no-repeat;}
+.coin .stepWrap .stepbox.step04{padding:25px 0 0 220px;height:138px;margin-bottom:45px;background:url("/waterpark/_img/useinfo/step04_coin_bg.jpg") left top no-repeat;}
+.coin .stepWrap .stepbox.step05{padding-top:25px;height:135px;margin-bottom:20px;background:url("/waterpark/_img/useinfo/step05_coin_bg.jpg") right top no-repeat;}
+.coin .stepWrap .stepbox.step06{padding:25px 0 0 220px;height:138px;background:url("/waterpark/_img/useinfo/step06_coin_bg.jpg") left top no-repeat;}
+.coin .stepWrap .stepbox dl{margin-bottom:15px;}
+.coin .stepWrap .stepbox dl dt {margin-bottom:20px;font-family: 'Nanum Gothic';font-size:20px;font-weight:700;color:#35322d;}
+.coin .stepWrap .stepbox dl dt .num {display:inline-block;width:28px;height:28px;margin-right:10px;font-family:"Shanti";font-size:18px;background:url("/waterpark/_img/useinfo/num_bg.gif") 0 0 no-repeat;color:#fff;text-align:center;line-height:28px;}
+.coin .stepWrap .stepbox dl dd {margin:0 0 5px 0;padding:0 0 0 12px;font-size:11px;background: url("/waterpark/_img/useinfo/dot_bg.gif") no-repeat 0px 4px;color:#737373;letter-spacing:-0.5px;line-height:150%;}
+.coin .coin_info .howTo {float:left;width:414px;height:187px;margin:0 10px 0 0;background:url("/waterpark/_img/useinfo/howto_bg.gif") 0 0  no-repeat;}
+.coin .coin_info .howTo  dl dt {margin:0;padding:37px 0 0 0;font-family:'돋움', 'Dotum', 'Apple Gothic', 'sans-serif';font-size:12px;font-weight:bold;color:#007bc7;text-align:center;}
+.coin .coin_info .howTo  dl dd {margin:0;padding:20px 0 0 0;font-size:11px;color:#737373;background:none;text-align:center;}
+.coin .coin_info .howTo  dl dd.last{padding-top:10px;}
+
+.seasonCont{margin:-80px -30px;padding:40px 30px 30px 30px;background:url("/waterpark/_img/useinfo/season_bg.jpg") 0 0 repeat-y;}
+.seasonCont .seasonTopWrap{padding-top:7px;background:url("/waterpark/_img/useinfo/season_wave_bg.png") 0 0 repeat-x;}
+.seasonCont .seasonbottomWrap{padding-bottom:7px;background:url("/waterpark/_img/useinfo/season_wave2_bg.png") left bottom repeat-x;}
+.season {padding:17px 28px 0 28px;background-color:#fff;}
+.season h3 {height:25px;padding-left:29px;margin-bottom:10px;font-family:"Nanum Gothic";font-size:16px;font-weight:700;background:url("/waterpark/_img/useinfo/ic_tree.gif") 0 0 no-repeat;color:#35322d;vertical-align:middle;}
+.season ul li {margin:0 0 5px 10px;padding:0 0 0 12px;font-size:12px;background: url("/waterpark/_img/useinfo/dot_bg.gif") no-repeat 0px 6px;color:#737373;line-height:150%;}
+.season .season_info {margin-bottom:30px;}
+.season .season_info .season_tit {width:856px;height:130px;margin:0 0 28px -6px;padding-top:56px;background:url("/waterpark/_img/useinfo/season_tit_bg.jpg") 0 0 no-repeat;}
+.season .season_info .season_tit h2 {font-family:"Nanum Gothic";font-size:32px;font-weight:700;color:#35322d;text-align:center;}
+.season .season_info .season_tit h2 span {display:block;font-size:26px;font-weight:700;color:#007bc7;}
+.season .season_info .layLeft {float:left;width:50%;}
+.season .season_box {padding:30px 0;background:url("/waterpark/_img/ui/bg_pageTitle.gif") left top repeat-x;}
+.season .season_box .noti{margin-bottom:30px;}
+.season .season_box .noti li{font-size:11px;}
+.season .season_box .noti li ul li{background:none;margin:5px 0;padding-left:0;}
+.season .season_box .season_benefit{position:relative;z-index:1;width:562px;height:304px;padding:31px 21px 0 284px;;background:url("/waterpark/_img/useinfo/season_pass_bg.gif") 0 0 no-repeat;}
+.season .season_box .season_benefit h3{position:absolute;left:42px;top:56px;z-index:9;height:auto;margin:0;padding:0;font-family:"Nanum Gothic";font-size:32px;font-weight:700;background:none;color:#35322d;text-align:center;}
+.season .season_box .season_benefit h3 span{display:block;font-size:20px;font-weight:700;color:#007bc7;display:block;}
+.season .season_box .season_benefit p{position:absolute;left:36px;top:187px;z-index:9;font-size:11px;color:#737373;text-align:center;}
+.season .season_box .season_benefit ul {}
+.season .season_box .season_benefit ul li {position:relative;margin:0 0 10px 0;padding-left:30px;background:none;font-family:"Nanum Gothic";font-size:14px;font-weight:700;color:#42403b;}
+.season .season_box .season_benefit ul li em {display:inline-block;position:absolute;left:0;top:2px;width:20px;height:20px;margin-right:10px;font-family:"Shanti";font-size:13px;font-weight:700;background:url("/waterpark/_img/useinfo/num_small_bg.gif") 0 0 no-repeat;color:#fff;text-align:center;vertical-align:top;}
+.season .season_box .season_benefit ul li span.point{display:inline;font-size:14px;font-weight:700;color:#2e8509;}
+.season .season_box .season_benefit ul li span {display:block;font-size:12px;font-weight:normal;color:#6c7073;}
+.season .season_box p{margin:0 0 5px 10px;padding:0 0 0 12px;font-size:12px;background: url("/waterpark/_img/useinfo/dot_bg.gif") no-repeat 0px 6px;color:#737373;line-height:150%;}
+.season .season_box .season_buy dl {float:left;position:relative;width:234px;padding-right:51px;margin-left:20px;padding-top:184px;}
+.season .season_box .season_buy dl.last {padding-right:0;margin-left:0;}
+.season .season_box .season_buy dl dt{margin-bottom:12px;font-family:"Nanum Gothic";font-size:12px;font-weight:700;color:#434343;}
+.season .season_box .season_buy dl dd{color:#737373;line-height:18px;}
+.season .season_box .season_buy dl dd.img{position:absolute;left:0;top:0;}
+.season .season_box .season_map{width:844px;height:423px;margin-bottom:10px;background-color:#eee;}
+
+.group dl dt {margin-bottom:15px;font-family: 'Nanum Gothic';font-size:16px;font-weight:700;color:#35322d;}
+.group dl dd {margin:0 0 7px 0;padding:0 0 0 12px;font-size:11px;background: url("/waterpark/_img/useinfo/dot_bg.gif") no-repeat left center;color:#636363;letter-spacing:-0.5px;line-height:150%;}
+.group .groupinfo dl {padding-bottom:10px;border-bottom:1px solid #eef0f0;}
+.group .asking {margin-top:20px;}
+.group .ask_num {float:left;width:443px;height:203px;margin:20px 0 0 0;background:url("/waterpark/_img/useinfo/ask_num_bg.gif") 0 0 no-repeat;}
+.group .ask_num dl dt {margin:0;padding:37px 0 0 0;font-family:'돋움', 'Dotum', 'Apple Gothic', 'sans-serif';font-size:12px;font-weight:bold;color:#007bc7;text-align:center;}
+.group .ask_num dl dd {margin:0;padding:20px 0 0 0;font-family:"Shanti";font-size:28px;font-weight:bold;color:#434343;background:none;text-align:center;}
+.group .ask_num dl dd .icon_call{display:inline-block;width:40px;height:40px;margin-right:18px;background:url("/waterpark/_img/useinfo/icon_call.gif") 0 0 no-repeat;vertical-align:top;}
+
+.time {position:relative;z-index:0;margin-top:-80px;}
+.time em.ir {position:absolute;z-index:0;width:0;height:0;}
+.time h2 {width:960px;height:69px;margin:0 -30px;padding-top:131px;background:url("/waterpark/_img/useinfo/time_bg.jpg") no-repeat;text-align:center;}
+.time h2 span,
+.time h2 em {color:#fff;font-size:24px;font-family:'Nanum Gothic';font-weight:700;text-shadow:1px 1px 1px #633e20;line-height:24px;}
+.time .timeInfo {padding-top:4px;background:url("/waterpark/_img/useinfo/calTop_bg.gif") no-repeat;}
+.time .timeInfo .inner .clock_new {position:absolute;z-index:1;left:365px;top:167px;width:171px;height:143px;background:url("/waterpark/_img/useinfo/clock_new.jpg") no-repeat 0 -5720px;}
+.time .timeInfo .inner {padding:23px 37px 14px 37px;border-left:1px solid #e4e1e1;border-right:1px solid #e4e1e1;background:url("/waterpark/_img/useinfo/timebg_logo.gif") no-repeat center 120px;}
+.time .timeInfo .inner h3 {margin-bottom:14px;color:#505050;font-size:14px;font-family:'Nanum Gothic';font-weight:700;text-align:center;}
+.time .timeInfo .inner .left {float:left;width:296px;}
+.time .timeInfo .inner .right {float:right;width:296px;}
+.time .timeInfo .inner .timeBox {float:left;width:296px;margin-bottom:26px;}
+.time .timeInfo .inner .timeBox .clock {width:296px;background:url("/waterpark/_img/useinfo/clock_wave.gif") no-repeat 140px top;}
+.time .timeInfo .inner .timeBox .clock .one {float:left;width:128px;height:32px;padding:8px 0 11px 12px;background:url("/waterpark/_img/useinfo/clock_bg.gif") no-repeat;}/*2014-06-03*/
+.time .timeInfo .inner .timeBox .clock .one span {vertical-align:middle;width:22px;height:32px;display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;text-indent:-100%;*text-indent:0;white-space:nowrap;overflow:hidden;font-size:0;line-height:0;text-shadow:none;color:transparent;}/*2014-06-03*/
+.time .timeInfo .inner .timeBox .clock .one strong {margin-right:16px;width:display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;}
+.time .timeInfo .inner .timeBox .clock .one .num1 {background:url("/waterpark/_img/useinfo/num_1.png") no-repeat center top;}
+.time .timeInfo .inner .timeBox .clock .one .num2 {background:url("/waterpark/_img/useinfo/num_2.png") no-repeat center top;}
+.time .timeInfo .inner .timeBox .clock .one .num3 {background:url("/waterpark/_img/useinfo/num_3.png") no-repeat center top;}
+.time .timeInfo .inner .timeBox .clock .one .num4 {background:url("/waterpark/_img/useinfo/num_4.png") no-repeat center top;}
+.time .timeInfo .inner .timeBox .clock .one .num5 {background:url("/waterpark/_img/useinfo/num_5.png") no-repeat center top;}
+.time .timeInfo .inner .timeBox .clock .one .num6 {background:url("/waterpark/_img/useinfo/num_6.png") no-repeat center top;}
+.time .timeInfo .inner .timeBox .clock .one .num7 {background:url("/waterpark/_img/useinfo/num_7.png") no-repeat center top;}
+.time .timeInfo .inner .timeBox .clock .one .num8 {background:url("/waterpark/_img/useinfo/num_8.png") no-repeat center top;}
+.time .timeInfo .inner .timeBox .clock .one .num9 {background:url("/waterpark/_img/useinfo/num_9.png") no-repeat center top;}
+.time .timeInfo .inner .timeBox .clock .one .num0 {background:url("/waterpark/_img/useinfo/num_0.png") no-repeat center top;}
+.time .timeInfo .inner .timeBox .clock .start {margin-right:16px;}
+.time .timeInfo .inner .tiki {margin-bottom:14px;padding-top:30px;}
+.time .timeInfo .inner .txt {color:#737373;font-size:11px;text-align:center;letter-spacing:-1px;line-height:18px;}
+.time .timeInfo .inner .btn {padding-top:44px;text-align:right} /*20170118 추가*/
+.time .calendar {padding-top:27px;background:url("/waterpark/_img/useinfo/cal_bg.gif") no-repeat;}
+.time .calendar .inner {padding:30px 0;border:1px solid #e4e4e4;border-top:none;background:none;}
+.time .calendar .month {position:relative;z-index:0;width:160px;margin:14px auto 0 auto;padding:0 33px;color:#434343;height:40px;font-size:40px;font-family:'Shanti';font-weight:700;line-height:40px;}
+.time .calendar .month div {text-align:center;}
+.time .calendar .month p {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;}
+.time .calendar .month .y {padding-right:13px;background:url("/waterpark/_img/useinfo/cal_dot.gif") no-repeat right 32px;}
+.time .calendar .month .m {padding-left:4px;}
+.time .calendar .month span {text-align:center;}
+.time .calendar .month a.cal {position:absolute;z-index:0;top:10px;display:block;width:12px;height:22px;}
+.time .calendar .month a.cal_prev {left:0;background:url("/waterpark/_img/useinfo/cal_prev.gif") no-repeat;}
+.time .calendar .month a.cal_next {right:0;background:url("/waterpark/_img/useinfo/cal_next.gif") no-repeat;}
+.time .calendar .calendarInfo {margin-top:24px;padding:0 30px;}
+.time .calendar .calendarInfo table thead tr th {width:119px;border-right:1px solid #e4e4e4;font-family:'Nanum Gothic';text-align:center;line-height:20px;}
+.time .calendar .calendarInfo table thead tr th strong {color:#434343;font-weight:700;}
+.time .calendar .calendarInfo table thead tr th span {color:#737373;}
+.time .calendar .calendarInfo table tbody tr td {height:68px;padding:9px 0 14px 11px;border-right:1px solid #e4e4e4;line-height:16px;vertical-align:top;}
+.time .calendar .calendarInfo table tbody tr td .date {font-size:11px;font-family:'Shanti';font-weight:700;}
+.time .calendar .calendarInfo table tbody tr td .txt {margin-top:4px;color:#737373;font-size:11px;}
+.time .calendar .calendarInfo table tbody tr td .txt a {color:#737373;}
+.time .calendar .calendarInfo table tbody tr td .txt a:focus,
+.time .calendar .calendarInfo table tbody tr td .txt a:hover {color:#007bc7;}
+.time .calendar .calendarInfo table tbody tr td .txt a:active {text-decoration:none;}
+.time .calendar .calendarInfo table tbody tr td.today {background:url("/waterpark/_img/useinfo/cal_on.gif") no-repeat;}
+.time .calendar .calendarInfo table tbody tr td.today .date {color:#fff;}
+.time .calendar .calendarInfo table tbody tr td.today .txt {color:#fff;text-decoration:underline;}
+.time .calendar .calendarInfo table tbody tr td.today .txt a {color:#fff;}
+.time .calendar .calendarInfo table tr .lastOne {border-right:none;}
+.time .comment {margin-top:8px;padding:2px 0 0 20px;background:url("/waterpark/_img/ui/bg_point.png") no-repeat left center;color:#636363;font-size:11px;font-family:'Nanum Gothic';}
+.time .calendar .calendarInfo table tbody tr td .date .stopMore {height:14px;margin-left:4px;background:url("/waterpark/_img/ui/bg_stype.gif") no-repeat right top;line-height:14px;}
+.time .calendar .calendarInfo table tbody tr td .date .stopMore em {height:14px;padding:0 5px;background:url("/waterpark/_img/ui/bg_stype_l.gif") no-repeat left top;color:#636363;font-size:11px;line-height:14px;vertical-align:top;}
+.time.stop h2 {height:66px;padding-top:134px;background:url("/waterpark/_img/useinfo/stop_bg.jpg") no-repeat;}
+.time.stop .stopInfo {position:relative;z-index:0;padding:24px 0 14px 0;border:1px solid #e4e4e4;border-bottom:none;color:#434343;}
+.time.stop .stopInfo h3 {margin-bottom:11px;font-size:14px;font-family:"Nanum Gothic";font-weight:700;line-height:24px;text-align:center;}
+.time.stop .slideCont {position:relative;z-index:0;width:848px;height:173px;margin-bottom:14px;margin-left:-1px;padding:0 26px;}
+.time.stop .slideCont .btn {position:absolute;z-index:0;display:block;width:31px;height:135px;top:0;}
+.time.stop .slideCont .btn.disabled {background:none;}
+.time.stop .slideCont .btn_prev {left:0;background:url("/waterpark/_img/useinfo/stop_prev.gif") no-repeat;}
+.time.stop .slideCont .btn_next {right:0;background:url("/waterpark/_img/useinfo/stop_next.gif") no-repeat;}
+.time.stop .slideCont .viewport ul li {width:212px;text-align:left;}
+.time.stop .slideCont .viewport ul li .img {width:202px;margin:0 5px;}
+.time.stop .slideCont .viewport ul li .img img {width:202px;height:135px;vertical-align:top;}
+.time.stop .slideCont .viewport ul li .txt {margin:10px 5px;}
+.time.stop .slideCont .viewport ul li .txt strong {font-family:"Nanum Gothic";}
+.time.stop .slideCont .viewport ul li .bg_type {height:18px;background:url("/waterpark/_img/ui/bg_type.gif") no-repeat right top;line-height:18px;}
+.time.stop .slideCont .viewport ul li .bg_type strong {height:18px;padding:0 6px;background:url("/waterpark/_img/ui/bg_type_l.gif") no-repeat;color:#636363;font-size:11px;line-height:18px;vertical-align:top;}
+/* 2015-07-02 운휴정보수정 */
+.time.stop .stopInfo .stopInfoCont {position:relative;z-index:0;width:848px;margin-bottom:14px;margin-left:-1px;padding:0 26px;}
+.time.stop .stopInfo .stopInfoCont ul li {float:left;width:212px;min-height:190px;text-align:left;}
+.time.stop .stopInfo .stopInfoCont ul li .img {width:202px;margin:0 5px;}
+.time.stop .stopInfo .stopInfoCont ul li .img img {width:202px;height:135px;vertical-align:top;}
+.time.stop .stopInfo .stopInfoCont ul li .txt {margin:10px 5px;}
+.time.stop .stopInfo .stopInfoCont ul li .txt strong {font-family:"Nanum Gothic";}
+.time.stop .stopInfo .stopInfoCont ul li .bg_type {height:18px;background:url("/waterpark/_img/ui/bg_type.gif") no-repeat right top;line-height:18px;}
+.time.stop .stopInfo .stopInfoCont ul li .bg_type strong {display:inline-block;height:18px;padding:0 6px;background:url("/waterpark/_img/ui/bg_type_l.gif") no-repeat;color:#636363;font-size:11px;line-height:18px;vertical-align:top;}
+
+.time.stop .calendar {padding-top:27px;background:url("/waterpark/_img/useinfo/cal_bg.gif") no-repeat;}
+.time.stop .calendar .calendarInfo {margin-top:24px;}
+.time.stop .calendar .calendarInfo table tbody tr td .btn_dimmedPop {margin-top:4px;color:#737373;font-size:11px;letter-spacing:-0.065em}
+.time.stop .calendar .calendarInfo table tbody tr td .btn_dimmedPop:focus,
+.time.stop .calendar .calendarInfo table tbody tr td .btn_dimmedPop:hover {color:#007bc7;}
+.time.stop .calendar .calendarInfo table tbody tr td .btn_dimmedPop:active {text-decoration:none;}
+.time.stop .calendar .calendarInfo table tbody tr td.today .btn_dimmedPop {color:#fff;text-decoration:underline;}
+.time.stop .alC {padding-bottom:10px;border-left:1px solid #e4e4e4;border-right:1px solid #e4e4e4;font-family:'Nanum Gothic';color:#434343}
+
+.stopStyle {width:676px;}
+.stopStyle .popTit {height:109px;background:url("/waterpark/_img/ui/layerPop2_t.gif") no-repeat;color:#fff;font-family:'Nanum Gothic';text-align:center;}
+.stopStyle .popTit h2 {padding-top:23px;font-size:24px;font-weight:700;}
+.stopStyle .popTit h3 {margin-top:10px;font-size:14px;font-weight:700;}
+.stopStyle .popClose {position:absolute;z-index:1;right:18px;top:18px;display:block;width:41px;height:41px;background:url("/waterpark/_img/ui/layerPop2_close.png") no-repeat;}
+.stopStyle .cont {width:651px;padding:21px 12px 4px 13px;background-color:#fff;}
+.stopStyle .cont .viewport {text-align:center;}
+.stopStyle .cont .viewport ul,
+.stopStyle .cont .viewport ul li {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;}
+.stopStyle .cont .viewport ul li {float:left;width:217px;min-height:187px;text-align:left;}
+.stopStyle .cont .viewport ul li .img {width:202px;margin:0 8px 0 7px;}
+.stopStyle .cont .viewport ul li .img img {width:202px;height:135px;vertical-align:top;}
+.stopStyle .cont .viewport ul li .txt {margin:10px 5px;}
+.stopStyle .cont .viewport ul li .txt strong {font-family:"Nanum Gothic";}
+.stopStyle .cont .viewport ul li .bg_type {height:18px;background:url("/waterpark/_img/ui/bg_type.gif") no-repeat right top;line-height:18px;}
+.stopStyle .cont .viewport ul li .bg_type strong {height:18px;padding:0 6px;background:url("/waterpark/_img/ui/bg_type_l.gif") no-repeat;color:#636363;font-size:11px;line-height:18px;vertical-align:top;}
+
+.fee {margin-top:-80px;}
+.fee .feeInfo {height:54px;margin:0 -30px;padding:172px 0 0 0;background:url("/waterpark/_img/useinfo/fee_bg.jpg") no-repeat;}
+.fee .feeInfo h2 {color:#fff;font-size:24px;font-family:"Nanum Gothic";font-weight:700;text-align:center;text-shadow:1px 1px 1px #46290e;}
+.fee .feeImg {width:912px;}
+.fee .feeImg ul li {float:left;width:200px;margin-right:12px;padding:7px 7px 0 7px;border:1px solid #d6d6d6;}
+.fee .feeImg ul li img {vertical-align:top;}
+.fee .feeImg ul li span {display:block;height:27px;color:#434343;font-family:"Nanum Gothic";line-height:27px;text-align:center;}
+
+/* 교통 안내 */
+.traffice .iconTabStyle ul li.iconTab1 a span {background-image:url("/waterpark/_img/useinfo/traffice_tab01.gif");}
+.traffice .iconTabStyle ul li.iconTab2 a span {background-image:url("/waterpark/_img/useinfo/traffice_tab02.gif");}
+.traffice .iconTabStyle ul li.iconTab3 a span {background-image:url("/waterpark/_img/useinfo/traffice_tab03.gif");}
+.traffice .iconTabStyle ul li.iconTab4 a span {background-image:url("/waterpark/_img/useinfo/traffice_tab04.gif");}
+.traffice .iconTabStyle ul li.iconTab5 a span {background-image:url("/waterpark/_img/useinfo/traffice_tab05.gif");}
+.traffice .iconTabStyle ul li.iconTab1.on a {background-image:url("/waterpark/_img/useinfo/iconTab1_on.gif");}
+.traffice .iconTabStyle ul li.iconTab2.on a {background-image:url("/waterpark/_img/useinfo/iconTab2_on.gif");}
+.traffice .iconTabStyle ul li.iconTab3.on a {background-image:url("/waterpark/_img/useinfo/iconTab3_on.gif");}
+.traffice .iconTabStyle ul li.iconTab4.on a {background-image:url("/waterpark/_img/useinfo/iconTab4_on.gif");}
+.traffice .iconTabStyle ul li.iconTab5.on a {background-image:url("/waterpark/_img/useinfo/iconTab5_on.gif");}
+.traffice .iconTabStyle.tab5 ul {width:865px}
+
+.traffice .mapWrap {border:1px solid #dddddd;background:#fcfcfc;}
+.traffice .mapWrap .mapimg {width:659px;border-right:1px solid #ddd;}
+.traffice .mapWrap .mapimg img {display:block;}
+.traffice .mapWrap .mapinfo {width:213px;padding:16px 11px 0 12px;overflow:hidden;}
+.traffice .mapWrap .mapinfo .inner {padding:9px 4px 0 6px;}
+.traffice .mapWrap .mapinfo .inner .hlogo {width:152px;height:22px;background:url("/waterpark/_img/useinfo/bg_logo.png") 0px 0px no-repeat;}
+.traffice .mapWrap .mapinfo .inner .park_address1 {margin-top:15px;width:200px;background:url("/waterpark/_img/useinfo/cal_bg.png") repeat-x left bottom; padding-bottom:21px;font-family:"Nanum Gothic";font-size:14px;color:#35322d;font-weight:700;line-height:150%;}
+.traffice .mapWrap .mapinfo .inner .park_address2 {margin-top:20px;font-size:11px;line-height:150%;}
+.traffice .mapWrap .mapinfo .inner .park_address2 dt {color:#35322d;font-weight:bold;}
+.traffice .mapWrap .mapinfo .inner .park_address2 dd {color:#636363;margin-top:5px;}
+.traffice .mapWrap .mapinfo .inner .park_tel {margin-top:20px;font-size:11px;line-height:150%;}
+.traffice .mapWrap .mapinfo .inner .park_tel dt {color:#35322d;font-weight:bold;}
+.traffice .mapWrap .mapinfo .inner .park_tel dd {color:#636363;margin-top:5px;}
+.traffice .mapWrap .mapinfo .linkWrap {margin-top:10px;}
+.traffice .mapWrap .mapinfo .linkWrap a {margin-left:1px;}
+.traffice .mapWrap .mapinfo .linkWrap a:first-child {margin:0;}
+.traffice .mapWrap .mapinfo .linkWrap .btn_small{padding-right:5px;}
+.traffice .mapWrap .mapinfo .linkWrap .btn_small span {padding:0 0 0 5px;}
+.traffice .mapWrap .mapinfo .linkWrap .btn_small .ic_print{width:14px; height:13px;background:url("/waterpark/_img/useinfo/ic_print.png") no-repeat;display:inline-block;vertical-align:-3px;padding-right:1px !important;}
+.traffice .mapWrap .mapinfo .linkWrap .btn_small .ic_check{width:12px; height:12px;background:url("/waterpark/_img/useinfo/ic_check.png") no-repeat;display:inline-block;vertical-align:-3px;padding-right:1px !important;}
+.traffice .locboxWrap {margin-top:10px;}
+.traffice .locboxWrap .inner .innerbox {margin-bottom:10px;}
+.traffice .locboxWrap .inner .innerbox dl {width:255px;min-height:88px;padding:18px 19px 10px 19px;background:url("/waterpark/_img/useinfo/car_bg.gif") repeat-x 1px bottom;font-size:11px;border:1px solid #d4d4d4;border-bottom:0;float:left;margin-left:7px;}
+.traffice .locboxWrap .inner .innerbox dl:first-child {margin-left:0;padding-left:20px;}
+.traffice .locboxWrap .inner .innerbox dl dt {font-weight:700;font-family:"Nanum Gothic";font-size:14px;color:#35322d;}
+.traffice .locboxWrap .inner .innerbox dl dt .ic_car {width:21px;height:17px;background:url("/waterpark/_img/useinfo/ic_car.gif") no-repeat;display:inline-block;margin-right:7px;vertical-align:-3px;}
+.traffice .locboxWrap .inner .innerbox dl dd {margin-top:10px;line-height:15px;}
+.traffice .locboxWrap .inner .innerbox dl dd ul li{float:left;margin-left:10px;vertical-align:baseline;}
+.traffice .locboxWrap .inner .innerbox dl dd ul li:first-child {background:url("/waterpark/_img/useinfo/bl_line.gif") no-repeat right 4px;padding-right:10px;margin-left:0;}
+.traffice .locboxWrap .inner .innerbox dl dd ul li .ic_km {width:15px;height:15px;background:url("/waterpark/_img/useinfo/ic_km.gif") no-repeat;display:inline-block;vertical-align:-5px;}
+.traffice .locboxWrap .inner .innerbox dl dd ul li .ic_clock {width:12px;height:12px;background:url("/waterpark/_img/useinfo/ic_clock.gif") no-repeat;display:inline-block;vertical-align:-2px;}
+.traffice .locboxWrap .inner .innerbox dl.nodatabox dt img {width:93px;margin:-10px auto 0 auto;display:block;}
+/* 140704 추가 */
+.shuttleinfo {}
+.shuttleinfo .tab_txt {border-top:1px #ddd solid;border-right:1px #ddd solid;}
+.shuttleinfo .tab_txt ul {}
+.shuttleinfo .tab_txt ul li {float:left;width:298px;border-left:1px #ddd solid;}
+.shuttleinfo .tab_txt ul li.first {width:299px;border-left:none;}
+.shuttleinfo .tab_txt ul li a {display:block;background:#fff;line-height:65px;text-align:center;font-size:14px;font-family:"Nanum Gothic";color:#555;text-decoration:none;}
+.shuttleinfo .tab_txt ul li a em {color:#000;}
+.shuttleinfo .tab_txt ul li.on a {background:#93478f;color:#fff;}
+.shuttleinfo .tab_txt ul li.on a em {color:#fff;}
+.shuttleinfo .shuttleinfo_imgarea {display:none;}
+.shuttleinfo dl {font-size:12px;color:#737373;margin-top:20px;line-height:1.4;}
+.shuttleinfo dl dt {font-size:14px;font-family:"Nanum Gothic";font-weight:700;color:#35322d;margin-right:22px;}
+
+.busbox_title {font-size:16px;font-family:"Nanum Gothic";font-weight:700;color:#35322d;}
+.busbox_title.type2 {display:inline-block;}
+.busbox_title .ic_circlearrow {margin:0 10px;background:url("/waterpark/_img/useinfo/bl_circlearrow.png") no-repeat;width:20px;height:20px;display:inline-block;vertical-align:-5px;*vertical-align:0;}
+.busWrap .inner {margin-top:10px;}
+.busWrap .inner .busbox {width:445px;min-height:180px;float:left;margin-left:10px;}
+.busWrap .inner .busbox:first-child {margin-left:0;}
+.busWrap .inner .busbox .ic_greenbus {width:18px;height:21px;background:url("/waterpark/_img/useinfo/ic_greenbus.png") no-repeat;display:inline-block;vertical-align:-5px;margin-right:5px;}
+.busWrap .inner .busbox .ic_bluebus {width:18px;height:21px;background:url("/waterpark/_img/useinfo/ic_bluebus.png") no-repeat;display:inline-block;vertical-align:-5px;margin-right:5px;}
+.busWrap .inner .busbox .ic_graybus {width:18px;height:21px;background:url("/waterpark/_img/useinfo/ic_graybus.png") no-repeat;display:inline-block;vertical-align:-5px;margin-right:5px;}
+.busWrap .inner .busbox .ic_clock {width:12px;height:12px;background:url("/waterpark/_img/useinfo/ic_clock.gif") no-repeat;display:inline-block;vertical-align:-2px;margin-right:5px;}
+.busWrap .inner .busbox dl {padding:16px 16px 21px 20px;background:url("/waterpark/_img/useinfo/bg_busbox_t.gif") no-repeat;color:#636363;line-height:16px;font-size:11px;vertical-align:middle;}
+.busWrap .inner .busbox dl dt {font-size:16px;font-family:"Nanum Gothic";font-weight:700;color:#35322d;}
+.busWrap .inner .busbox dl dd {margin-top:7px;}
+.busWrap .inner .busbox ol {padding:0 11px 20px 20px;background:url("/waterpark/_img/useinfo/bg_busbox_b.gif") no-repeat left bottom;margin-top:0;}
+.busWrap .inner .busbox ol li {width:118px;height:45px;line-height:45px;background:url("/waterpark/_img/useinfo/bg_bloom.png") no-repeat;float:left;margin-top:5px;margin-right:5px;color:#636363;font-size:12px;padding-left:15px;}
+.busWrap .inner .busbox ol li.line2 {height:40px;line-height:18px;padding-top:5px;}
+.busWrap .inner .busbox ol li.last {background:url("/waterpark/_img/useinfo/bg_bloom_last.png") no-repeat;}
+.busWrap .inner .busbox.h100 ol {height:100px;}
+.busWrap .inner .busbox.h150 ol {height:150px;}
+/* 140605 고속버스 추가 */
+.busWrap .inner .busbox.type2 ol {margin-top:10px;padding:15px 11px 20px 20px;border-top:1px #ddd solid;}
+
+/* 140610 버스수정 */
+.bus_wrap {margin-top:40px; width:110%; *zoom:1;}
+.bus_wrap.top {margin-top:0;}
+.bus_wrap:after {content:" "; display:block; clear:both;}
+.bus_wrap .bus_area {float:left; width:215px; height:529px; border:1px #dedede solid; margin:10px 10px 0 0;}
+.bus_wrap .bus_area.type2 {height:581px;}
+.bus_wrap .inner {float:left; width:293px; margin:0 10px 0 0;}
+.bus_wrap .inner .bus_area {float:none; width:100%; height:351px; margin:10px 0 0 0;}
+.bus_wrap .bus_area dl {height:102px; background:url("/waterpark/_img/useinfo/bg_busbox_top.gif") 0 0 repeat-x; padding:12px 0 0 0;}
+.bus_wrap .bus_area dl dt {padding-left:43px; line-height:21px; font-size:16px; font-family:"Nanum Gothic"; font-weight:bold; color:#35322d;}
+.bus_wrap .bus_area dl dt.green_line {background:url("/waterpark/_img/useinfo/ic_greenbus.png") 15px 0 no-repeat;}
+.bus_wrap .bus_area dl dt.blue_line {background:url("/waterpark/_img/useinfo/ic_bluebus.png") 15px 0 no-repeat;}
+.bus_wrap .bus_area dl dt.gray_line {background:url("/waterpark/_img/useinfo/ic_graybus.png") 15px 0 no-repeat;}
+.bus_wrap .bus_area dl dd {padding:7px 0 0 43px; font-size:11px; color:#636363;}
+.bus_wrap .bus_area dl dd .bustime {margin-top:5px;}
+.bus_wrap .bus_area ol {}
+.bus_wrap .bus_area ol li {height:52px; padding:0 15px; background:url("/waterpark/_img/useinfo/bg_line.gif") 0 100% repeat-x; color:#636363;}
+.bus_wrap .bus_area ol li.noline {background:none;}
+.bus_wrap .bus_area ol li span {display:block; width:100%; background:url("/waterpark/_img/useinfo/icon_busstop.png") 100% -53px no-repeat; line-height:52px;}
+.bus_wrap .bus_area ol li span em {color:#007bc7;}
+.bus_wrap .bus_area ol li.first span {background-position:100% 0;}
+.bus_wrap .bus_area ol li.last span {background-position:100% 100%;}
+
+/* 140812 왕복셔틀 */
+.shuttle_bus {min-height:131px;background:url("/waterpark/_img/useinfo/img_shuttle.gif") 0 0 no-repeat;margin-top:40px;padding-left:234px;}
+.shuttle_bus h3 {font-size:16px;color:#35322d;font-family:"Nanum Gothic";font-weight:700;}
+.shuttle_bus p {margin:20px 0 5px 0;color:#636363;}
+.shuttle_bus em {color:#1a8ed6;}
+.shuttle_bus ul.bus_link {margin-top:20px;*zoom:1;}
+.shuttle_bus ul.bus_link:after {content:"";display:block;clear:both;}
+.shuttle_bus ul.bus_link li {float:left;width:214px;margin-left:11px;}
+.shuttle_bus ul.bus_link li:first-child {margin-left:0;}
+.shuttle_bus ul.bus_link li a {display:block;height:38px;background:url("/waterpark/_img/useinfo/btn_link.png") 0 0 no-repeat;font-size:14px;font-family:"Nanum Gothic";font-weight:700;color:#35322d;text-align:center;line-height:38px;}
+.shuttle_bus ul.bus_link li a span {display:inline-block;background:url("/waterpark/_img/useinfo/ic_redbus.png") 100% 50% no-repeat;padding-right:20px;}
+
+
+.subwayWrap {border:1px solid #ddd;background:#fafafa;}
+.subwayWrap h3 {text-align:center;font-size:18px;font-family:"Nanum Gothic";font-weight:700;color:#35322d;margin-top:23px;}
+.subwayWrap .subwaymapinfo {width:677px;height:77px;margin:15px auto 16px auto;}
+.subwayWrap .subwaymap {padding-top:7px;background:url("/waterpark/_img/useinfo/img_subwaymap_t.gif") no-repeat center top;}
+.subwayWrap .subwaymap img {display:block;}
+.subway {width:426px;height:105px;padding-bottom:4px;float:left;background:url("/waterpark/_img/useinfo/car_bg.gif") repeat-x left bottom;border:1px solid #d4d4d4;border-bottom:0;margin-left:8px;padding:20px 0 0 18px;font-size:11px;color:#737373;}
+.subway:first-child {margin-left:0;}
+.subway h4 {font-size:14px;font-family:"Nanum Gothic";font-weight:700;color:#35322d;margin-bottom:13px;}
+.subway {position: relative;}
+.subway ul .gateway {position:absolute;z-index:0;right:20px;top:30px;width:160px;}
+.subway ul .gateway div {background:url("/waterpark/_img/useinfo/bl_circlearrow.png") no-repeat center 10px;}
+.subway ul .gateway div dl {width:65px;margin-left:28px;}
+.subway ul .gateway div dl:first-child {margin-left:0;}
+.subway ul .gateway div dl dd {width:85px;margin-left:-10px;font-size:14px;font-family:"Nanum Gothic";font-weight:700;color:#35322d;text-align:center;}
+.ic_biggreenbus {width:28px;height:33px;background:url("/waterpark/_img/useinfo/ic_biggreenbus.gif") no-repeat;margin:0 auto 15px auto;}
+.ic_bigbluebus {width:28px;height:33px;background:url("/waterpark/_img/useinfo/ic_bigbluebus.gif") no-repeat;margin:0 auto 15px auto;}
+.ic_gateNo2 {width:30px;height:40px;background:url("/waterpark/_img/useinfo/ic_subno2.gif") no-repeat;margin:0 auto 8px auto;}
+.subway a {margin-top:10px;}
+.tourbus .cardBox {margin-bottom:10px;background:url("/waterpark/_img/useinfo/bg_cardBox_b.gif") no-repeat left bottom;}
+.tourbus .cardBox .inner {background:url("/waterpark/_img/useinfo/bg_cardBox_t.gif") no-repeat;}
+.tourbus .cardBox .left{display:inline-block;vertical-align:middle;}
+.tourbus .cardBox .left {float:left;width:190px;padding:27px 65px 30px 25px;}/*padding:55px 65px 40px 25px;*/
+.tourbus .cardBox .right {float:right;width:589px;padding:27px 31px 30px 0;}
+.tourbus .cardBox .right h3 {font-size:16px;font-family:"Nanum Gothic";font-weight:700;color:#35322d;margin-bottom:18px;}
+.tourbus .cardBox .img {display:block;text-align:center;}
+.tourbus .cardBox .img img {vertical-align:top;}
+.tourbus .cardBox .txt {padding:6px 0 7px 0;border-top:1px dashed #e8e9e9;color:#737373;font-size:11px;line-height:24px;letter-spacing:-0.03em;}
+.tourbus .cardBox .txt li {background:url("/waterpark/_img/useinfo/dot_bg.gif") no-repeat left 8px;padding-left:12px;}
+.tourbus .cardBox .txt li.nobl {background:none;padding-left:0;}
+.tourbus .cardBox .plus {padding:15px 0 0 0;border-top:1px dashed #e8e9e9;color:#737373;font-size:11px;line-height:14px;letter-spacing:-0.03em;}
+
+/*2014-06-03*/
+.parking h2 {font-size:18px;font-family:"Nanum Gothic";font-weight:700;color:#35322d;}
+.parkboxWrap dl {margin-left:4px;float:left;padding:20px 0 33px 18px;background:url("/waterpark/_img/useinfo/car_bg.gif") repeat-x left bottom;border:1px solid #d4d4d4;border-bottom:0;}
+.parkboxWrap dl dt {font-size:14px;font-family:"Nanum Gothic";font-weight:700;color:#35322d;margin-bottom:13px;}
+.parkboxWrap dl dd {font-size:11px;color:#636363;background:url("/waterpark/_img/useinfo/dot_bg2.gif") no-repeat left 5px;padding-left:11px;margin:10px 0 0 1px;}
+.parkboxWrap dl dd:first-child {margin:0 0 0 1px;}
+.parkboxWrap .parkinfo01 {width:260px;margin-left:0;}
+.parkboxWrap .parkinfo02 {width:232px;}
+.parkboxWrap .parkinfo03 {width:340px;padding-bottom:20px;}
+.parkinfo {margin-top:10px;}
+.parkinfo img {display:block;}
+
+/* 온라인예매 */
+.reservation{}
+.reservation h2 {margin-bottom:18px;font-family:"Nanum Gothic";font-size:16px;font-weight:700;color:#35322d;}
+.reservation .buyStep ul {overflow:hidden;}
+.reservation .buyStep ul li {float:left;width:300px;padding-right:19px;background:url("/waterpark/_img/online/step_arrow.gif") right 135px no-repeat;}
+.reservation .buyStep ul li.last{width:260px;padding-right:0;background:none;}
+.reservation .buyStep ul li dl{position:relative;z-index:1;padding-top:256px;}
+.reservation .buyStep ul li dl dt{margin-bottom:16px;font-family:"Nanum Gothic";font-size:12px;font-weight:700;color:#434343;}
+.reservation .buyStep ul li dl dd{color:#434343;line-height:150%;letter-spacing:-1px;}
+.reservation .buyStep ul li dl dd.img{position:absolute;left:0;top:0;z-index:9;}
+
+.reservation .cancelStep ul {overflow:hidden;}
+.reservation .cancelStep ul li {float:left;width:405px;padding-right:43px;background:url("/waterpark/_img/online/step_arrow.gif") right 85px no-repeat;}
+.reservation .cancelStep ul li.last{padding-right:0;background:none;}
+.reservation .cancelStep ul li dl{position:relative;z-index:1;padding-top:178px;}
+.reservation .cancelStep ul li dl dt{margin-bottom:16px;font-family:"Nanum Gothic";font-size:12px;font-weight:700;color:#434343;}
+.reservation .cancelStep ul li dl dd{color:#434343;line-height:150%;letter-spacing:-1px;}
+.reservation .cancelStep ul li dl dd.img{position:absolute;left:0;top:0;z-index:9;}
+.reservation .ticket_map{width:900px;height:452px;margin-bottom:10px;background-color:#eee;}
+
+.infoForm {margin:-80px -30px 38px -30px;padding:70px 30px 26px 40px;background:url("/waterpark/_img/ui/bg_feedback.gif") no-repeat left bottom;}
+.infoForm .infoForm_top {position:relative;z-index:0;min-height:126px;padding:0 0 0 130px;background:url("/waterpark/_img/ui/icon_character.png") no-repeat left top;}
+.infoForm .infoForm_top .info {padding:20px 0 0 0;font-family:"Nanum Gothic";font-size:16px;font-weight:700;line-height:18px;}
+.infoForm .infoForm_top .dot {margin-top:4px;line-height:24px;}
+.infoForm .infoForm_top .dot li {color:#636363;}
+
+.buspackage {}
+.buspackage .busbox {border-top:1px solid #e2e5e7;}
+.buspackage .busbox dl {padding-top:25px;}
+.buspackage .busbox.first {border-top:none;}
+.buspackage .busbox.first dl{padding-top:0;}
+.buspackage .busbox dl dt {margin-bottom:20px;font-family:"Nanum Gothic";font-size:16px;font-weight:700;color:#35322d;}
+.buspackage .busbox dl .buslist li{float:left;margin:0 9px 20px 0;}
+.buspackage .busbox dl .buslist li dl{position:relative;padding:0;padding-bottom:20px;}
+.buspackage .busbox dl .buslist li dl dt {position:absolute;left:0;bottom:0;width:100%;margin:0;font-family:"dotum";font-size:11px;color:#737373;text-align:center;}
+.buspackage .busbox dl .buslist li dl dt a {color:#737373;text-align:center;}
+.buspackage .busbox dl .buslist li dl dt a:hover {color:#007bc7;text-decoration:underline;}
+.buspackage .busbox dl .buslist li dl dd.brand{width:194px;height:109px;padding:13px 10px 16px 10px;background:url("/waterpark/_img/online/bus_bg.gif") 0 0 no-repeat;text-align:center;}
+.buspackage .busbox dl .buslist li dl dd.brand img{display:inline-block;margin:20% 0;;}
+
+.rComplete {width:900px;height:575px;background:url("/waterpark/_img/online/bg_online.png") no-repeat;}
+.rComplete .inner {padding:111px 150px 0 150px;text-align:center;}
+.rComplete .inner img {vertical-align:top;}
+.rComplete .inner .txt {margin-top:198px;color:#434343;font-family:"Nanum Gothic";font-size:14px;font-weight:700;line-height:18px;}
+.rComplete .inner .btnWrap {margin-top:65px;}
+
+.rPrepare {width:900px;height:550px;background:url("/waterpark/_img/online/bg_prepare.png") no-repeat;}
+.rPrepare .inner {padding:192px 150px 0 150px;font-family:"Nanum Gothic";text-align:center;font-weight:700;}
+.rPrepare .inner img {vertical-align:top;}
+.rPrepare .inner .txt1 {margin-top:18px;color:#313335;font-size:34px;line-height:40px;}
+.rPrepare .inner .txt2 {margin-top:17px;color:#737373;font-size:12px;line-height:18px;}
+.rPrepare .inner .txt3 {margin-top:159px;color:#636363;font-size:11px;line-height:18px;}
+
+/* 우대 공연정보 */
+.edit {}
+.edit h3 {margin-bottom:12px;color:#35322d;font-size:16px;font-family:'Nanum Gothic';font-weight:700;}
+.edit h5 {margin-bottom:12px;color:#35322d;font-size:16px;font-family:'Nanum Gothic';font-weight:700;}
+.edit p.txt {margin-top:26px;color:#434343;font-size:11px;letter-spacing:-0.03em;}
+.edit .dot2 {margin-top:8px;}
+
+.special {}
+.special .iconTabStyle ul li.iconTab1 a span {background-image:url("/waterpark/_img/eventinfo/siconTab1.gif");}
+.special .iconTabStyle ul li.iconTab2 a span {background-image:url("/waterpark/_img/eventinfo/siconTab2.gif");}
+.special .iconTabStyle ul li.iconTab3 a span {background-image:url("/waterpark/_img/eventinfo/siconTab3.gif");}
+.special .imgList ul li {margin-right:18px;background:url("/waterpark/_img/ui/bg_imgListone2.gif") no-repeat left bottom;}
+.special .imgList ul li .one .pic {width:210px;height:130px;}
+.special .imgList ul li .one .pic img {width:210px;height:130px;}
+.special .imgList ul li .one .txt {width:190px;height:76px;padding:15px 0 13px 0;line-height:24px;}
+.special .imgList ul li .one .txt .tit {margin-bottom:4px;}
+.special .imgList ul li .one .txt{height:100px;}
+.special .imgList ul li .one .txt .price{padding:2px 0 0 12px;display:block;font-size:14px;font-weight:bold;line-height:24px;color:#007dbd}
+.special .imgList ul li .one:focus .txt em,
+.special .imgList ul li .one:hover,
+.special .imgList ul li .one:hover .txt em {text-decoration:none;}
+.special .imgList ul li .one:hover .txt .tit {text-decoration:underline;}
+.special .imgList ul li .one:hover .txt .bg_dot {color:#636363;}
+.special .imgList ul li .one:focus .txt .tit {text-decoration:underline;}
+.special .imgList ul li .one:focus .txt .bg_dot {color:#636363;}
+.special .imgList ul li .one:active .txt .tit {text-decoration:none;}
+.special .listColTable thead tr th {padding-top:15px;padding-bottom:14px;}
+
+.totalcard .iconTabStyle ul li.iconTab1 a span {background-image:url("/waterpark/_img/eventinfo/ciconTab1.gif");}
+.totalcard .iconTabStyle ul li.iconTab2 a span {background-image:url("/waterpark/_img/eventinfo/ciconTab2.gif");}
+.totalcard .iconTabStyle ul li.iconTab3 a span {background-image:url("/waterpark/_img/eventinfo/ciconTab3.gif");}
+.totalcard .cardTit {height:41px;background:url("/waterpark/_img/eventinfo/bg_cardBox_title.gif") no-repeat;color:#fff;font-size:14px;font-family:'Nanum Gothic';font-weight:700;line-height:41px;text-align:center;}
+.totalcard .cardBox {margin-bottom:10px;background:url("/waterpark/_img/eventinfo/bg_cardBox_b.gif") no-repeat left bottom;}
+.totalcard .cardBox .inner {background:url("/waterpark/_img/eventinfo/bg_cardBox_t.gif") no-repeat;}
+.totalcard .cardBox .left {float:left;width:190px;padding:27px 65px 30px 25px;}
+.totalcard .cardBox .right {float:right;width:589px;padding:27px 31px 30px 0;}
+.totalcard .cardBox .img {display:block;padding-bottom:4px;margin-bottom:26px;text-align:center;}
+.totalcard .cardBox .img img {vertical-align:top;}
+.totalcard .cardBox .quickBtn {margin:0 0 6px 15px;}
+.totalcard .cardBox .quickBtn span {width:116px;}
+.totalcard .cardBox .tit {display:block;margin-bottom:12px;color:#007bc7;font-size:14px;font-family:"Nanum Gothic";font-weight:700;line-height:22px;}
+.totalcard .cardBox .txt {padding:6px 0 7px 0;border-top:1px dashed #e8e9e9;color:#737373;font-size:11px;line-height:24px;letter-spacing:-0.03em;}
+.totalcard .cardBox .plus {padding:15px 0 0 0;border-top:1px dashed #e8e9e9;color:#737373;font-size:11px;line-height:14px;letter-spacing:-0.03em;}
+.totalcard.membership .cardBox .img {margin-top:28px;}
+
+.find .iconTabStyle ul li.iconTab1 a span {background-image:url("/waterpark/_img/eventinfo/ciconTab1.gif");}
+.find .iconTabStyle ul li.iconTab2 a span {background-image:url("/waterpark/_img/eventinfo/ciconTab2.gif");}
+.find .iconTabStyle ul li.iconTab3 a span {background-image:url("/waterpark/_img/eventinfo/ciconTab3.gif");}
+.find .iconTabStyle {background:url("/waterpark/_img/ui/iconTab2_bg.png") no-repeat left bottom;}
+.find .iconTabStyle ul li.on {background-image:url("/waterpark/_img/ui/iconTab2_arrow.png");}
+.find .card {min-height:240px;margin-top:52px;padding-left:548px;background:url("/waterpark/_img/eventinfo/bg_card.gif") no-repeat 157px 0;}
+.find .card .sel {width:168px;padding:9px 0 25px 0;background:url("/waterpark/_img/eventinfo/bg_cardLine.gif") no-repeat center bottom;}
+.find .card .sel label {display:block;line-height:21px;}
+.find .card .btnWrap {width:168px;margin-top:25px;}
+.find .card .btnWrap .btn_blue span {width:115px;text-align:left;}
+.find .card .txt {margin-top:15px;color:#737373;letter-spacing:-1px;}
+.find .cardResult {margin-top:42px;}
+.find .cardResult .sel {padding-bottom:39px;border-bottom:1px solid #f2f0f0;text-align:center;}
+.find .cardResult .sel .btn_find {margin-left:4px;}
+.find .cardResult .cardInfo {padding:50px 0;}
+.find .cardResult .cardInfo .img {float:left;width:394px;margin-right:35px;text-align:right;}
+.find .cardResult .cardInfo .img img {width:160px;height:100px;vertical-align:top;}
+.find .cardResult .cardInfo .txt {padding-top:23px;color:#434343;line-height:24px;}
+.find .cardResult .cardInfo .txt strong {display:block;margin:0 0 5px 0;font-size:14px;font-weight:700;}
+.find .cardResult .desc {padding:15px 20px 13px 20px;background-color:#f7f7f7;color:#737373;font-size:11px;letter-spacing:-0.03em;line-height:24px;}
+.find .cardNum {margin-top:55px;}
+.find .cardNum .rad {padding-bottom:28px;text-align:center;}
+.find .cardNum .rad span {text-align:center;}
+.find .cardNum .rad img {margin-bottom:12px;}
+.find .cardNum .desc {padding:15px 20px 13px 20px;background-color:#f7f7f7;line-height:24px;text-align:center;}
+.find .cardNum .btnWrap {margin-top:28px;padding-bottom:20px;}
+.find .cardNum .btnWrap .btn_blue span {width:115px;}
+
+.couponBox.plus {margin-top:30px;padding-top:33px;background:url("/waterpark/_img/eventinfo/couponBox_bg.gif") repeat-x left top;}
+.couponBox h2 {margin-bottom:16px;color:#35322d;font-size:14px;font-family:'Nanum Gothic';font-weight:700;}
+.couponBox .left {float:left;width:403px;}
+.couponBox .left .btnWrap {margin-top:19px;}
+.couponBox .right {float:right;width:464px;}
+.couponBox .coupon {position:relative;z-index:0;width:218px;height:147px;padding:45px 150px 0 35px;background-repeat:no-repeat;background-position:0 0;}
+.couponBox .coupon img {position:absolute;z-index:-1;left:0;top:0;}
+.couponBox .coupon .tit {color:#636363;font-family:'Nanum Gothic';font-weight:700;line-height:20px;}
+.couponBox .coupon .txt {color:#434343;letter-spacing:-2px;}
+.couponBox .coupon .txt .num {font-size:48px;font-family:'Shanti';font-weight:800;line-height:48px;}
+.couponBox .coupon .txt .m {font-size:24px;font-family:'Nanum Gothic';font-weight:700;line-height:24px;}
+.couponBox .coupon .comment {height:36px;margin-top:25px;color:#737373;font-size:11px;letter-spacing:-0.05em;line-height:18px;}
+.couponBox .coupon .summary {position:absolute;z-index:0;right:32px;top:101px;display:block;width:80px;height:58px;padding-top:12px;text-align:center;line-height:12px;}
+.couponBox .coupon .summary .k {color:#6d6d6d;font-size:11px;font-family:'Nanum Gothic';font-weight:700;}
+.couponBox .coupon .summary .num {color:#434343;font-size:20px;font-family:'Shanti';font-weight:800;line-height:20px;}
+.couponBox .info {padding-top:14px;}
+.couponBox .info p {margin-top:5px;padding-left:12px;background:url("/waterpark/_img/ui/bg_dot.gif") no-repeat 0 4px;color:#737373;font-size:11px;letter-spacing:-0.03em;line-height:16px;}
+
+.show {width:901px;margin:-37px 0 0 -1px;}
+.show .showTit {position:relative;z-index:1;width:259px;height:65px;margin:0 auto;padding-top:105px;background:url("/waterpark/_img/eventinfo/bg_show_tit.png") no-repeat left bottom;text-align:center;}
+.show .showTit h2 {margin-bottom:16px;color:#fff;font-size:26px;font-family:'Shanti';font-weight:700;text-shadow:1px 1px 1px #754b2c;}
+.show .showTit h3 {color:#7f5333;font-size:13px;font-family:'Nanum Gothic';font-weight:700;}
+.show .showWrap {margin-top:-44px;background:url("/waterpark/_img/eventinfo/bg_show_m.gif") repeat-y;}
+.show .showWrap .inner {background:url("/waterpark/_img/eventinfo/bg_show_b.gif") no-repeat left bottom;}
+.show .showWrap .inner .cont {padding:50px 36px 37px 37px;background:url("/waterpark/_img/eventinfo/bg_show_t.gif") no-repeat;}
+.show .showWrap .showBox {margin-top:20px;background:url("/waterpark/_img/eventinfo/bg_showBox_b.gif") no-repeat left bottom;}
+.show .showWrap .showBox .innerBox {padding:27px 21px 28px 21px;background:url("/waterpark/_img/eventinfo/bg_showBox_t.gif") no-repeat;}
+.show .showWrap .showBox .innerBox img {float:left;width:158px;height:114px;vertical-align:top;}
+.show .showWrap .showBox .innerBox .showInfo {float:right;width:608px;}
+.show .showWrap .showBox .innerBox .showInfo .top {margin-bottom:10px;}
+.show .showWrap .showBox .innerBox .showInfo .top h4 {float:left;height:24px;color:#434343;font-size:14px;font-weight:700;line-height:24px;}
+.show .showWrap .showBox .innerBox .showInfo .top .info {float:right;height:24px;line-height:24px;}
+.show .showWrap .showBox .innerBox .showInfo .top .info .btn_link span {padding:0 8px 0 10px;vertical-align:top;}
+.show .showWrap .showBox .innerBox .showInfo .top .info .ib {height:14px;padding-left:15px;color:#767676;font-size:11px;letter-spacing:-0.05em;line-height:16px;}
+.show .showWrap .showBox .innerBox .showInfo .top .info .icon_clock {background:url("/waterpark/_img/ui/icon_clock2.gif") no-repeat left center;}
+.show .showWrap .showBox .innerBox .showInfo .top .info .icon_posi {background:url("/waterpark/_img/ui/icon_zone.png") no-repeat left center;}
+.show .moreWrap {margin-top:30px;}
+.show .moreWrap a.btn_more {background:url("/waterpark/_img/ui/btn_more2.gif") no-repeat;}
+.show .moreWrap a.btn_more:active {background-position:0 -50px;}
+
+.eventList {position:relative;z-index:0;height:421px;margin:-80px -30px 0px -30px;background:url("/waterpark/_img/eventinfo/event_bg.gif") no-repeat;}
+.eventList .slideCont {width:822px;height:370px;margin:0 auto;}
+.eventList .slideCont a.btn {width:41px;height:41px;top:183px;}
+.eventList .slideCont a.btn_prev {left:30px;background:url("/waterpark/_img/ui/circle_prev.png") 0px 0px no-repeat;}
+.eventList .slideCont a.btn_next {right:30px;background:url("/waterpark/_img/ui/circle_next.png") 0px 0px no-repeat;}
+.eventList .slideCont a.btn:hover {background-position:0px -50px;}
+.eventList .slideCont a.btn:active {background-position:0px -100px;}
+.eventList .slideCont a.btn.disabled {background-position:0px -150px;}
+.eventList .slideCont .viewport ul li {position:relative;z-index:0;width:274px;background:url("/waterpark/_img/eventinfo/rope.png") no-repeat center top;}
+.eventList .slideCont .viewport ul li a {display:block;width:220px;height:76px;margin:0 27px;padding:160px 0 67px 0;background:url("/waterpark/_img/eventinfo/event_box.png") no-repeat center top;text-align:center;}
+.eventList .slideCont .viewport ul li a span {display:block;background-repeat:no-repeat;background-position:center top;}
+.eventList .slideCont .viewport ul li a .tit {width:180px;margin:0 auto 6px auto;color:#313332;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.eventList .slideCont .viewport ul li a .img {position:absolute;z-index:0;left:50%;width:120px;height:100px;margin-left:-60px;line-height:0;}
+.eventList .slideCont .viewport ul li a .type {position:absolute;z-index:0;left:39px;}
+.eventList .slideCont .viewport ul li a .type em {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;width:70px;height:70px;text-indent:-100%;*text-indent:0;white-space:nowrap;overflow:hidden;font-size:0;line-height:0;text-shadow:none;color:transparent;}
+.eventList .slideCont .viewport ul li a .type1 em {background-image:url("/waterpark/_img/eventinfo/event_type1.png");}
+.eventList .slideCont .viewport ul li a .type2 em {background-image:url("/waterpark/_img/eventinfo/event_type2.png");}
+.eventList .slideCont .viewport ul li a .type3 em {background-image:url("/waterpark/_img/eventinfo/event_type3.png");}
+.eventList .slideCont .viewport ul li a .type4 em {background-image:url("/waterpark/_img/eventinfo/event_type4.png");}
+.eventList .slideCont .viewport ul li a .date {color:#7e8183;font-size:11px;text-align:center;}
+.eventList .slideCont .viewport ul li a:hover .tit {color:#313332;text-decoration:underline;}
+.eventList .slideCont .viewport ul li a:hover .date {color:#7e8183;text-decoration:underline;}
+.eventList .slideCont .viewport ul li a:active {letter-spacing:-1px;}
+.eventList .slideCont .viewport ul li.on a .tit {color:#007dbd;font-weight:700;letter-spacing:-1px;}
+.eventList .slideCont .viewport ul li.on a {background:url("/waterpark/_img/eventinfo/event_box_on.png") no-repeat center top;}
+.eventList .slideCont .viewport ul li.item1 a {margin-top:66px;}
+.eventList .slideCont .viewport ul li.item1 a .type {top:88px;}
+.eventList .slideCont .viewport ul li.item1 a .img {top:114px;}
+.eventList .slideCont .viewport ul li.item2 a {margin-top:50px;}
+.eventList .slideCont .viewport ul li.item2 a .type {top:72px;}
+.eventList .slideCont .viewport ul li.item2 a .img {top:84px;}
+
+.eventView {}
+.eventView .cont {line-height:18px;}
+
+/* 고객의소리 */
+.complete {padding-top:40px;}
+.complete .cont {width:450px;height:309px;margin:0 auto;padding:0 170px;background:url("/waterpark/_img/ui/bg_complete.gif") no-repeat center top;color:#fff;text-align:center;}
+.complete .tit {padding-top:60px;color:#007bc7;font-size:22px;font-family:'Nanum Gothic';font-weight:700;line-height:28px;}
+.complete .txt {margin-top:17px;color:#434343;font-size:11px;}
+.complete .btnWrap {margin-top:27px;}
+
+/* 고객의소리 유실물 팝업 */
+#popWrap {width:100%;min-width:440px;}
+#popInner {color:#636363;line-height:18px;}
+#popInner .popTitle {height:90px;padding:0 0 0 30px;background:url("/waterpark/_img/ui/bg_popTitle.gif") repeat-x left top;}
+#popInner .popTitle h1 {padding-top:29px;color:#fff;font-size:18px;font-family:'Nanum Gothic';font-weight:700;}
+#popInner .popCont {padding:0 30px 6px 30px;background:url("/waterpark/_img/ui/bg_wave.gif") repeat-x left bottom;}
+#popInner .popCont .popBox {padding:17px 0 20px 0;}
+#popInner .popCont .popBox h2 {color:#313335;font-size:14px;font-family:'Nanum Gothic';font-weight:700;}
+#popInner .btnWrap {margin-top:20px;}
+#popInner .bg_dot {padding-left:8px;background:url("/waterpark/_img/ui/bg_dot.gif") no-repeat left 6px;}
+#popInner .icon_pop {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;text-indent:-100%;*text-indent:0;white-space:nowrap;overflow:hidden;font-size:0;line-height:0;text-shadow:none;color:transparent;}
+#popInner .arrow47 {width:4px;height:7px;margin:0 2px;background:url("/waterpark/_img/ui/arrow_4x7.gif") no-repeat;}
+#popInner .bg_tab {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;width:55px;height:55px;background:url("/waterpark/_img/ui/iconTab_off.gif") no-repeat;color:#fff;font-weight:700;line-height:55px;text-align:center;}
+#popInner .bg_tab.on {background:url("/waterpark/_img/ui/iconTab_on.gif") no-repeat;}
+
+/* 마이페이지 */
+.member {margin:0 -30px;padding-top:54px;}
+.member .logo {margin-bottom:50px;text-align:center;}
+.member .logo img {vertical-align:top;}
+.member .modify {width:520px;margin:0 auto;padding-top:108px;background:url("/waterpark/_img/mypage/bg_modify_02.gif") no-repeat;}
+.member .modify ul li {float:left;width:130px;text-align:center;}
+.member .modify ul li p {margin-bottom:16px;color:#434343;}
+.member .memberInfo {height:130px;margin-top:60px;padding-top:70px;background:url("/waterpark/_img/mypage/bg_member.gif") no-repeat;}
+.member .memberInfo p {color:#fff;font-size:14px;font-family:'Nanum Gothic';font-weight:700;line-height:22px;text-align:center;}
+.reserve {}
+.myopinion {margin-top:34px;}
+.myopinion .cont .board_view {border-top:1px solid #e2e5e7;}
+.myevent {margin-top:34px;}
+
+/* 기타 */
+.termsWrap {}
+.termsWrap .termsCont {}
+.termsBtn {padding:13px 16px 6px 16px;border:1px solid #e2e5e7;}
+.termsBtn ul {float:left;width:433px;}
+.termsBtn ul li a {margin-left:15px;color:#434343;font-size:12px;font-weight:700;}
+.termsBtn ul li a:hover, .termsBtn ul li a:active {color:#007bc7;}
+.terms {padding:27px 0;border-bottom:1px solid #e2e5e7;color:#434343;line-height:22px;}
+.terms h3 {font-weight:700;}
+.terms h4 {font-weight:700;}
+.terms h4.policyTit {margin-top:14px; color:black; font-weight:normal;}
+.terms p.policyCon {font-size:14px; font-weight:bold;}
+.terms h4.f16 {font-size:16px;}
+.terms ul li ul li {margin-left:10px;}
+.terms ul li p {margin-left:10px;}
+.terms table {margin:10px 0 25px 0;}
+.terms table .w3 {width:33%;}
+.terms table .w5 {width:20%;}
+.terms .subCont {display:none;}
+.terms .subCont.on {display:block;}
+
+.sitemap {margin:-80px -30px;padding:43px 36px 80px 36px;background:url("/waterpark/_img/etc/sitemap_bg.gif") no-repeat center 43px;}
+.sitemap .menuBox {width:204px;padding:0 9px;text-align:center;}
+.sitemap .menuBox h2 {width:174px;height:52px;padding:80px 15px 0 15px;background:url("/waterpark/_img/etc/menuBox.png") no-repeat;color:#313335;font-size:14px;font-family:'Nanum Gothic';font-weight:700;line-height:52px;}
+.sitemap .menuBox .inner {width:174px;padding:0 15px 30px 15px;background:url("/waterpark/_img/etc/menuBox_b.png") no-repeat left bottom;}
+.sitemap .menuBox .inner a:hover {color:#009bc7;}
+.sitemap .menuBox .inner a:active {letter-spacing:-1px;}
+.sitemap .menuBox .inner ul li {padding-top:11px;line-height:18px;}
+.sitemap .menuBox .inner ul li span {padding-top:0;}
+.sitemap .menuBox .inner ul li span a {color:#797979;font-size:11px;}
+.sitemap .menuBox.on h2 {color:#fff;background:url("/waterpark/_img/etc/menuBox_on.png") no-repeat;}
+
+/* 팝업 */
+.commonStyle {width:620px;background-color:#fff;font-family:'Nanum Gothic';}
+.commonStyle h3 {height:90px;padding:0 30px 7px 30px;background:url("/waterpark/_img/ui/layerPop_t.png") no-repeat;color:#fff;font-size:22px;font-weight:700;line-height:90px;}
+.commonStyle h4 {margin:23px 0 3px 0;color:#434343;font-size:14px;font-weight:700;}
+.commonStyle .popClose {position:absolute;z-index:1;right:26px;top:26px;display:block;width:37px;height:37px;background:url("/waterpark/_img/ui/layerPop_close.png") no-repeat;}
+.commonStyle .head {padding:0 30px 15px 23px;background:url("/waterpark/_img/ui/layerPop_head.gif") repeat-x left bottom;}
+.commonStyle .head .inner {min-height:55px;padding:12px 0 0 78px;background:url("/waterpark/_img/ui/layerPop_icon.gif") no-repeat;color:#35322d;font-weight:700;line-height:22px;}
+.commonStyle .cont {width:560px;padding:0 30px 25px 30px;}
+.commonStyle .dot li {font-size:12px;letter-spacing:0;}
+.commonStyle .dot li ul li {margin-bottom:0;padding-left:0;background:none;}
+
+.lostPop .popCont .popBox div {width:440px;}
+.lostPop .popCont .bg_2type {margin-left:220px;padding-left:22px;background:url("/waterpark/_img/ui/bg_2type.gif") no-repeat 0 24px;}
+.lostPop .popCont .bg_2type li span {vertical-align:middle;}
+.lostPop .popCont .bg_2type li .arrow74 {margin:-4px 0;padding:10px 0 0 50px;background:url("/waterpark/_img/ui/arrow_7x4.gif") no-repeat 120px 0;}
+
+#popInner.loginPop .popTitle {height:135px;background:url("/waterpark/_img/ui/bg_popTitle2.gif") repeat-x left top;}
+#popInner.loginPop .popTitle h1 {padding-top:24px;font-size:48px;font-weight:800;line-height:48px;}
+#popInner.loginPop .popTitle h1 span {font-size:11px;font-weight:700;}
+#popInner.loginPop .popTitle p {color:#fff;font-family:"Nanum Gothic";line-height:20px;}
+.loginPop .loginForm {position:relative;z-index:0;width:416px;padding:29px 32px;border-bottom:1px solid #f2f0f0;}
+.loginPop .loginForm .inputBox {width:308px;padding-right:108px;}
+.loginPop .loginForm .inputBox input.iText {width:296px;margin-bottom:8px;padding-top:11px;padding-bottom:11px;}
+.loginPop .loginForm .inputBox .ib,
+.loginPop .loginForm .inputBox .ib a {height:18px;color:#737373;font-size:11px;line-height:18px;vertical-align:middle;}
+.loginPop .loginForm .inputBox .ib a:active {letter-spacing:-1px;}
+.loginPop .loginForm .inputBox .ib label,
+.loginPop .loginForm .inputBox .ib input {height:18px;line-height:18px;vertical-align:middle;}
+.loginPop .loginForm .btn_login {position:absolute;z-index:0;right:32px;top:-31px;display:block;width:70px;height:90px;padding:60px 22px 0 0;background:url("/waterpark/_img/ui/btn_login.png") no-repeat;color:#fff;font-size:14px;font-family:"Nanum Gothic";font-weight:700;line-height:90px;text-align:center;text-shadow:1px 1px 1px #004773;}
+.loginPop .loginInfo {position:relative;z-index:0;width:416px;padding:29px 32px;}
+.loginPop .loginInfo .txt {padding-left:12px;background:url("/waterpark/_img/ui/bg_dot.gif") no-repeat 0 6px;color:#737373;font-size:11px;letter-spacing:-1px;line-height:18px;}
+.loginPop .loginInfo .box {margin-top:15px;padding:19px 16px;background-color:#f7f7f7;color:#737373;font-size:11px;letter-spacing:-1px;line-height:22px;}
+.loginPop .loginInfo .quickBtn {position:absolute;right:32px;top:32px;}
+
+/* 예약 */
+.loginPopdimmed {width:100%;height:100%;position:absolute;top:0;left:0;background:#000000;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";/* IE 5-7 */filter: alpha(opacity=50);/* Netscape */-moz-opacity: 0.5;/* Safari 1.x */-khtml-opacity: 0.5;/* Good browsers */opacity: 0.5;z-index:99998 ;}
+.loginPopContainer {position:absolute;z-index:99999;width:900px;min-height:300px;background-color:transparent;top:220px;left:50%;margin-left:-450px;}
+.loginPopContainer iframe {display:block;width:900px;height:695px;background:transparent;}
+.loginPopClose {position:absolute;width:14px;height:14px;background:url("/waterpark/_img/common/loginLayerClose.gif") 0px 0px no-repeat;display:block;top:62px;left:866px;text-indent:-100%;*text-indent:0;white-space:nowrap;overflow:hidden;font-size:0;line-height:0;text-shadow:none;color:transparent;}
+body.reservationBody #contents {background:none;padding:0;min-height:659px;}
+
+/* 에디터 */
+.editWrap {width:840px;margin:0 auto;padding:30px 0;}
+.editWrap .listColTable .bbnone {border-bottom:none;}
+.editWrap .commonTit {font-size:14px;font-family:'Nanum Gothic';font-weight:700;line-height:18px;}
+.editWrap .editTit {position:relative;z-index:0;height:180px;margin-bottom:33px;background:url("/waterpark/_img/upload/noImg.jpg") no-repeat;}
+.editWrap .editTit img {vertical-align:top;}
+.editWrap .editTit .wave {position:absolute;z-index:0;left:0;bottom:0;display:block;width:840px;height:12px;background:url("/waterpark/_img/upload/bg_wave.png") no-repeat;}
+.editWrap .editCont h5 {margin-bottom:14px;color:#35322d;font-size:16px;font-family:'Nanum Gothic';font-weight:700;line-height:18px;}
+.editWrap .editCont .dot {margin-top:26px;}
+.editWrap .noteBox {margin-top:10px;background-position:center top;}
+.editWrap .noteBox .inner {background-position:center bottom;}
+/* 140701 추가 */
+.editWrap .editTit .txt_area {position:absolute;top:25px;left:25px;font-family:'Nanum Gothic';font-size:32px;font-weight:700;color:#fff; line-height:1.2em;}
+.editWrap .editTit .txt_area span {display:block;padding-top:3px;font-size:16px;}
+
+/* 페이지 로그인 */
+.pageLogin {margin:-80px 0;padding-top:27px;}
+.pageLogin .logo {text-align:center;}
+.pageLogin .pageLoinCont {width:740px;margin:22px auto 0 auto;background:url("/waterpark/_img/etc/pageLogin_b.gif") no-repeat left bottom;}
+.pageLogin .pageLoinCont .inner {width:740px;padding:55px 0 66px 0;background:url("/waterpark/_img/etc/pageLogin_t.gif") no-repeat;}
+.pageLogin .pageLoinCont .inner .tit {color:#434343;font-size:20px;font-family:"Nanum Gothic";font-weight:700;line-height:28px;text-align:center;}
+.pageLogin .loginForm {position:relative;z-index:0;width:416px;padding:29px 144px 29px 180px;}
+.pageLogin .loginForm .inputBox {width:308px;padding-right:108px;}
+.pageLogin .loginForm .inputBox input.iText {width:296px;margin-bottom:8px;padding-top:11px;padding-bottom:11px;}
+.pageLogin .loginForm .inputBox .ib,
+.pageLogin .loginForm .inputBox .ib a {height:18px;color:#737373;font-size:11px;line-height:18px;vertical-align:middle;}
+.pageLogin .loginForm .inputBox .ib a:active {letter-spacing:-1px;}
+.pageLogin .loginForm .inputBox .ib label,
+.pageLogin .loginForm .inputBox .ib input {height:18px;line-height:18px;vertical-align:middle;}
+.pageLogin .loginForm .btn_login {position:absolute;z-index:0;right:144px;top:-31px;display:block;width:70px;height:90px;padding:60px 22px 0 0;background:url("/waterpark/_img/ui/btn_login.png") no-repeat;color:#fff;font-size:14px;font-family:"Nanum Gothic";font-weight:700;line-height:90px;text-align:center;text-shadow:1px 1px 1px #004773;}
+.pageLogin .pageLoinCont .loginCont .loginInfo {position:relative;z-index:0;width:584px;margin:0 auto;padding-top:25px;background:url("/waterpark/_img/etc/pageLogin_line.gif") no-repeat;}
+.pageLogin .pageLoinCont .loginCont .loginInfo .txt {padding-left:32px;background:url("/waterpark/_img/ui/bg_dot.gif") no-repeat 20px 6px;color:#737373;font-size:11px;line-height:18px;}
+.pageLogin .pageLoinCont .loginCont .loginInfo .quickBtn {position:absolute;z-index:0;right:20px;top:28px;}
+.pageLogin .pageLoinCont .loginCont .loginInfo .box {margin-top:25px;padding:8px 20px 6px 20px;background-color:#f3f3f3;border-radius:3px;}
+.pageLogin .pageLoinCont .loginCont .loginInfo .box p {color:#636363;font-size:11px;line-height:22px;}
+
+/*이용약관탭추가*/
+.termsWrap .boardTab {margin-bottom:25px;}
+.termsWrap .tabStyle2 {height:40px;margin-bottom:25px;background:url("/waterpark/_img/etc/bg_tab.gif") no-repeat;line-height:40px;text-align:center;}
+.termsWrap .tabStyle2 a {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;color:#636363;padding-right:3px;background:url("/waterpark/_img/etc/bg_dot2.gif") no-repeat right center;}
+.termsWrap .tabStyle2 a span {display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;padding:0 20px;font-family:'Nanum Gothic';font-weight:700;}
+.termsWrap .tabStyle2 a.last {padding-right:0;background:none;}
+.termsWrap .tabStyle2 a:hover span {color:#007dbd;text-decoration:underline;}
+.termsWrap .tabStyle2 a:active span {text-decoration:none;}
+.termsWrap .tabStyle2 a.on {color:#007dbd;}
+.termsWrap .termsCont .terms .subCont  .first_num {margin-right:3px;}
+.termsWrap .termsCont .terms .subCont  ol li em {display:block;font-weight:bold;margin-top:7px;}
+
+/* 140814 이미지리스트 */
+.bottom_img_wrap {margin: 20px 0 20px 10px;*zoom:1;}
+.bottom_img_wrap ul:after {content:"";display:block;clear:both;}
+.bottom_img_wrap ul li {float:left; width:49%;}
+.bottom_img_wrap ul li strong {display:block;padding-top:15px;}
+
+/* 140822 상시우대추가 */
+.special_regular {}
+.special_regular h2 {margin-bottom:18px;font-family:"Nanum Gothic";font-size:16px;font-weight:700;color:#35322d;}
+.special_regular .listColTable tbody td {padding:19px 0 18px 0}
+
+/* 150603 공지사항 폼 */
+.notice_wrap {background:url("/waterpark/_img/news/bg_notice_cont.jpg") 0 0 repeat-y;}
+.notice_wrap .inner {background:url("/waterpark/_img/news/bg_notice_bt.jpg") 0 100% no-repeat;padding-bottom:72px}
+.notice_wrap .inner h4 {background:url("/waterpark/_img/news/bg_notice_top.jpg") 0 0 repeat-y;height:110px;padding-top:75px;font-family:"Nanum Gothic";font-size:36px;color:#fff;text-align:center;}
+.notice_wrap .con_area {min-height:300px;padding:30px 30px 0;font-family:"Nanum Gothic";font-size:24px;color:#474747;text-align:center;}
+
+/* 2015-09-23 운휴정보 수정 */
+.suspendDate {position:relative;width:550px;margin:30px auto;text-align:center;font-family:"Nanum Gothic";}
+.suspendDate .today {color:#313131;}
+.suspendDate .today strong {display:block;font-size:70px;letter-spacing:-0.085em;}
+.suspendDate .date {display:inline-block;position:absolute;top:32px;width:100px;height:47px;background:url("/waterpark/_img/useinfo/btn_arrow.png") no-repeat;line-height:47px;text-decoration:none;font-size:14px;}
+.suspendDate .date.prev {background-position:0 0;left:0;padding-left:46px;text-align:left;}
+.suspendDate .date.next {background-position:0 -47px;right:0;padding-right:46px;text-align:right;}
+.suspendDate .date strong {margin:0 2px;font-size:24px;vertical-align:middle;}
+
+.suspendInfo {margin-top:25px;}
+.suspendInfo .state_info {margin-bottom:10px;text-align:right;}
+.suspendInfo .state_info .state {margin-left:15px;}
+.suspendInfo .state {background:url("/waterpark/_img/useinfo/icon_state.png") no-repeat;padding-left:15px;}
+.suspendInfo .state.run {background-position:0 0;color:#007bc7}
+.suspendInfo .state.close {background-position:0 -40px;color:#e60013}
+.suspendInfo .state.inst {background-position:0 -80px;color:#009944}
+.suspendInfo .state.none {background-position:0 -120px;color:#cccccc}
+.suspendInfo table {}
+.suspendInfo table thead th {background:#007bc7;padding:15px 0;border:1px #006db1 solid;border-right:none;color:#fff;font-family:"Nanum Gothic";font-size:16px;text-align:center;}
+.suspendInfo table thead th:first-child {border-left:none;}
+.suspendInfo table tbody th {border-top:1px #eef0f0 solid;border-bottom:1px #eef0f0 solid;font-family:"Nanum Gothic";font-size:16px;text-align:center;}
+.suspendInfo table tbody th.dep01 {background:#e7f2f8;color:#007bc7;}
+.suspendInfo table tbody th.dep02 {background:#f2eee6;color:#bd1200;}
+.suspendInfo table tbody th.dep01_01 {color:#007bc7;}
+.suspendInfo table tbody th.dep02_01 {color:#bd1200;}
+.suspendInfo table tbody td {padding:10px 0;border:1px #eef0f0 solid;border-right:none;text-align:center;}
+.suspendInfo table tbody td.line {height:3px;padding:0;border-left:none;}
+.suspendInfo .btn_toggle {margin-top:10px;text-align:right;}
+.suspendInfo .btn_toggle a {display:inline-block;width:169px;height:42px;background:url("/waterpark/_img/useinfo/btn_suspendInfo.gif") no-repeat;text-indent:-100%;white-space:nowrap;overflow:hidden;font-size:0;line-height:0;text-shadow:none;color:transparent;}
+.suspendInfo .btn_toggle a.on {background-position:0 -42px;}
+#outFacility {/* display:none; 20160524 */margin-top:3px;}
+
+/*2016-01-28 장애인편의제도 추가*/
+.disAbled .conbox .info_txt {margin:0 26px;}
+.disAbled .conbox .info_txt.type2 {padding:30px 0}
+.disAbled .conbox .info_txt li {background:url(/waterpark/_img/ui/bg_star_dot.jpg) 0 4px no-repeat; padding:0 0 5px 15px; font-size:14px; font-weight:bold; font-family:Nanum Gothic;color:#434343}
+.disAbled .conbox .impt{margin-left:26px}
+.disAbled .conbox .free_rental{position:relative;min-height:170px}
+.disAbled .conbox .free_rental img{position:absolute;right:26px;top:0}
+.disAbled .conbox {width:836px; background:url(/waterpark/_img/ui/bg_radius_bot.gif) 0 100% no-repeat; padding:0 0 21px 0; margin:0 auto; margin-top:50px;}
+.disAbled .conbox .inner_wrap {background:url(/waterpark/_img/ui/bg_radius_mid.gif) 0 0 repeat-y; padding-bottom:10px;}
+.disAbled .conbox .inner_wrap h4 {padding:35px 0 40px 0; font-size:28px; color:#181818; text-align:center; font-weight:bold; line-height:100%; font-family:Nanum Gothic;}
+.disAbled .conbox .inner_wrap h4.tit_top {position:relative; top:-21px; padding:30px 0 25px; background:url(/waterpark/_img/ui/bg_radius_top2.gif) 0 0 no-repeat;}
+.disAbled .comment {margin-top:20px;}
+.disAbled .comment strong {display:block;font-weight:bold}
+.disAbled .comment.txt_em {font-family:Nanum Gothic;font-size:16px;color:#ae0816;}
+
+/* 2016-05-16 단체 수상안전 캠프 안내 */
+.box_grp_prgrm {position:relative; width:960px; margin:-80px -30px; }
+.box_grp_prgrm img {vertical-align:top}
+
+/* 20160119 식음점 타이틀 색상추가 */
+.pageView .pageTitle h2.wtpRestrnt, .pageView .pageTitle h2.wtpTiki, .pageView .pageTitle h2.wtpGift {color:#3D98FF}
+
+/* 20170210 보안문자 추가*/
+.captcha_img {margin-top:5px}
+.captcha_img a {display:inline-block;margin:0 10px 0 5px;vertical-align:middle}
+.captcha_img img {vertical-align:middle;}
+.captcha_img + .strong {color:#de1827}
+
+/* 20170622 공지사항 */
+.noticeWrap {width:836px;margin:0;padding:0;border:20px solid #0058aa;border-bottom-width:8px;box-sizing:border-box;}
+.noticeHead {height:93px;margin:0;}
+.noticeTitle {margin:0;padding:25px 40px 25px 50px;color:#fff;font-size:48px;font-family:'Malgun Gothic';letter-spacing:-5px;background-color:#007bc7}
+.noticeCont {padding:50px;font-size:16px;font-family:'Malgun Gothic';color:#222;letter-spacing:-0.5px;background:#e1f2f8}
+.noticeBottom {margin:0;padding-top:4px;text-align: right; background-color:#0058aa;}
+.noticeCont .blue {color:#0058aa !important}
+.noticeCont .red {color:#da3139 !important}
+.noticeCont .underline {text-decoration:underline !important}
+.noticeCont .strong {font-weight:bold}
+.noticeCont .txt20 {font-size:20px !important}
+
+/* 20170725 단체프로그램 */
+.box_grp_prgrm .profitWrap .pro_list {padding:0 30px;}
+.box_grp_prgrm .profitWrap .clfix > li {padding:20px 0;}
+.box_grp_prgrm .profitWrap .clfix > li:after {clear: both;content:"";display:block;}
+.box_grp_prgrm .profitWrap .clfix > li + li {border-top:1px solid #e5e1e2}
+.box_grp_prgrm .profitWrap li .imgArea {float:left; padding-right:30px; overflow:hidden}
+.box_grp_prgrm .profitWrap li dt {padding:9px 30px 7px 0;font-family:Malgun Gothic;font-weight:bold;font-size:18px;color:#333;letter-spacing:-1px;line-height:24px;}
+.box_grp_prgrm .profitWrap li dd {height:120px; padding:0 30px 0 0; font-family:Malgun Gothic;}
+.box_grp_prgrm .profitWrap .info {overflow:hidden; font-size:12px; color:#666}
+.box_grp_prgrm .profitWrap .info > li {float:left; width:50%; }
+/* .box_grp_prgrm .profitWrap .info > li + li + li + li {width:100%; padding:0 0 5px} */
+.box_grp_prgrm .profitWrap .info > li span {display:inline-block; padding:2px 0 10px 26px; background:url(/waterpark/_img/about/bg_group.png) no-repeat left 0; letter-spacing: -0.3px}
+.box_grp_prgrm .profitWrap .info > li span.pro_time {background-position:0 -79px}
+.box_grp_prgrm .profitWrap .info > li span.pro_desc {background-position:0 -40px}
+.box_grp_prgrm .profitWrap .info > li span.pro_day {background-position:0 -120px}
+
+/* 우대정보 강조 */
+td.txt_blue {background-color: #fff2f4; color:red; font-size:16px; font-weight:bold;}
+th.txt_blue {color:#007bc7; font-weight:bold;}
+.f12 {font-size:12px !important;}
+.fb {font-weight:bold !important;}
+
+/* 개인정보처리방침 추가 */
+.fbfs {font-weight:bold; font-size:14px;}
+
+/* 우대정보 티저 */
+.infoTeaser {text-align:right; margin:-70px 50px 40px 0;}
+

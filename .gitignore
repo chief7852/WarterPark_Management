@@ -1,1 +1,9 @@
-.svn/
+.svn
+
+.project
+
+.settings/
+
+.classpath
+
+.springBeans

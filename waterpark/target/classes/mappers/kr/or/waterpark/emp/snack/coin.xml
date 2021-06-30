@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.emp.team.snack.dao.ICoinDAO">
+
+	<resultMap type="HashMap" id="prodListMap">
+		<id column="lprod_code" property="lprod_code"/>
+		<id column="qty" property="qty"/>
+		<id column="prod_price" property="prod_price"/>
+		<id column="coin_code" property="coin_code"/>
+	</resultMap>
+
+	<select id="balanceCoin" parameterType="string" resultType="Integer">
+		WITH CARGED AS(
+			SELECT  
+			     NVL(SUM(COIN_CHARGE_AMOUNT),0) AS CARG
+			FROM
+			    COIN_CHARGE
+			   WHERE COIN_CODE = #{coin_id}
+			), USED AS(
+			SELECT
+			   NVL(SUM(COIN_USE_AMOUNT),0) AS AMOUN
+			FROM
+			    COIN_USE
+			WHERE COIN_CODE = #{coin_id}
+			)
+		SELECT CARG-AMOUN
+		FROM CARGED A,  USED B
+	</select>
+	
+	<select id="buyProds" resultType="kr.or.waterpark.emp.team.snack.vo.ProdVO" parameterType="hashMap">
+		
+        WITH PRODES AS(SELECT
+		    PROD_CODE,
+		    LPROD_ID,
+		    PROD_NAME,
+		    PROD_PRICE,
+		    FC_ID,
+		    LPROD_CODE,
+		    PROD_DEL
+		FROM
+		    PROD
+		ORDER BY PROD_CODE ASC)
+		SELECT * 
+		FROM PRODES
+		<foreach collection="list" index="index" item="pmap">
+			<choose>
+				<when test="index==0">
+					WHERE PROD_CODE IN ((SELECT PROD_CODE FROM PROD WHERE LPROD_CODE = #{pmap.lprod_code,jdbcType=VARCHAR} AND PROD_DEL = 'N' AND ROWNUM <![CDATA[ < ]]>= #{pmap.qty,jdbcType=NUMERIC}))							
+				</when>
+				<otherwise>
+            		OR PROD_CODE IN ((SELECT PROD_CODE FROM PROD WHERE LPROD_CODE = #{pmap.lprod_code,jdbcType=VARCHAR} AND PROD_DEL = 'N' AND ROWNUM <![CDATA[ < ]]>= #{pmap.qty,jdbcType=NUMERIC}))				
+				</otherwise>
+			</choose>
+			
+		
+		</foreach>
+		
+	</select>
+	
+	
+	<insert id="coinUses" parameterType="kr.or.waterpark.emp.team.snack.vo.ProdVO" >
+		INSERT INTO COIN_USE (
+		    COIN_USE_CODE,
+		    COIN_CODE,
+		    PROD_CODE,
+		    PROD_PAYCNT,
+		    COIN_USE_DATE,
+		    COIN_USE_AMOUNT
+		) VALUES (
+		    (			SELECT 'U' || TO_CHAR(TO_NUMBER(SUBSTR(NVL(MAX(COIN_USE_CODE), 'A'||TO_CHAR(SYSDATE, 'YMMDD') ||LPAD('0', 6, '0' )), 2)) + 1) AS COIN_USE_CODE
+		    FROM COIN_USE
+		    WHERE SUBSTR((COIN_USE_CODE),2, 5) = TO_CHAR(SYSDATE, 'YMMDD')),
+		    #{coin_code},
+		    #{prod_code},
+		    1,
+		    SYSDATE,
+		    #{prod_price}
+		    
+		)
+	</insert>
+	
+	
+	<select id="useHistory" resultType="kr.or.waterpark.emp.team.snack.vo.CoinUseVO" parameterType="String">
+		SELECT
+		    A.COIN_USE_CODE,
+		    A.COIN_CODE,
+		    A.PROD_CODE,
+		    A.PROD_PAYCNT,
+		    TO_CHAR(A.COIN_USE_DATE,'HH:MI:SS') AS COIN_USE_DATE,
+		    A.COIN_USE_AMOUNT,
+		    A.COIN_USE_CANCEL,
+		    B.PROD_NAME,
+		    B.PROD_PRICE,
+		    C.FC_NAME,
+            B.PROD_DEL
+		FROM
+		    COIN_USE A
+		FULL OUTER JOIN PROD B ON (A.PROD_CODE = B.PROD_CODE)
+		FULL OUTER JOIN FACILITIES C
+		ON (C.FC_ID = B.FC_ID)
+		WHERE A.COIN_CODE = #{coin_code} 
+        AND B.PROD_DEL = 'Y'
+        AND A.COIN_USE_CANCEL IS NULL
+		ORDER BY A.COIN_USE_DATE ASC ,A.COIN_USE_CODE ASC
+	</select>
+	
+	<update id="refundProd" parameterType="string">
+		UPDATE COIN_USE
+		    SET
+		        COIN_USE_CANCEL = SYSDATE
+		WHERE
+		    COIN_USE_CODE = #{coin_use_code}
+	</update>
+	
+	<select id="daySales" resultType="java.util.HashMap">
+		SELECT
+		    NVL(CNT,0) CNT,
+		    NVL(AMOUNT,0) AMOUNT,
+		    NVL(CANCEL,0) CANCEL
+		FROM
+		    TODAY_TOTAL_AMOUNT_VIEW
+		    ORDER BY AMOUNT DESC
+	</select>
+	
+	<insert id="insertCoinCode" parameterType="ResInfoVO">
+		<selectKey order="BEFORE" keyProperty="coinList[0].coin_code" resultType="string">
+			SELECT 'CO' || TO_CHAR(SYSDATE, 'YYMMDD') || 
+					LPAD(TO_CHAR(TO_NUMBER(SUBSTR(NVL(MAX(COIN_CODE), 'AA' || TO_CHAR(SYSDATE, 'YYMMDD') || '0000'), 9)) + 1), 4, '0') COIN_CODE
+			  FROM COIN
+			 WHERE TO_CHAR(COIN_START, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+		</selectKey>
+		INSERT INTO COIN (
+		    COIN_CODE,
+		    RES_INFO_CODE,
+		    COIN_START,
+		    COIN_END
+		) VALUES (
+		    #{coinList[0].coin_code, jdbcType=VARCHAR},
+		    #{res_info_code, jdbcType=VARCHAR},
+		    SYSDATE,
+		    NULL
+		)
+	</insert>
+	
+	
+	
+	<!-- 매표소 업무 -->
+	<select id="selectCoinRemain" parameterType="string" resultType="CoinVO">
+		WITH CARGED AS(
+		    SELECT  
+		       NVL(SUM(COIN_CHARGE_AMOUNT),0) AS CARG
+		    FROM
+		        COIN_CHARGE
+		       WHERE COIN_CODE = #{data}
+		    ), 
+		    USED AS(
+		    SELECT
+		         NVL(SUM(COIN_USE_AMOUNT),0) AS AMOUN
+		    FROM
+		        COIN_USE
+		    WHERE COIN_CODE = #{data}
+		    )
+		SELECT NVL(CARG-AMOUN, 0) COIN_REMAIN
+		    , C.COIN_CODE
+		    , TO_CHAR(COIN_START, 'YYYY-MM-DD HH24:MI') COIN_START
+		    , NVL(TO_CHAR(COIN_END, 'YYYY-MM-DD HH24:MI'), '-') COIN_END
+		FROM CARGED A,  USED B, COIN C
+		WHERE COIN_CODE = #{data}
+	</select>
+	
+	<insert id="insertCoinCharge" parameterType="CoinChargeVO">
+		<selectKey order="BEFORE" keyProperty="coin_charge_code" resultType="string">
+			SELECT
+			    'C' || TO_CHAR(SYSDATE, 'YMMDD') || LPAD(TO_CHAR(TO_NUMBER(SUBSTR(NVL(MAX(coin_charge_code), 'C00000000000'  ), 7)) + 1), 6, 0)
+			FROM
+			    coin_charge
+			WHERE TO_CHAR(COIN_CHARGE_DATE, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD') 
+		</selectKey>
+		
+		INSERT INTO COIN_CHARGE (
+		    COIN_CHARGE_CODE,
+		    COIN_CODE,
+		    COIN_CHARGE_AMOUNT,
+		    COIN_CHARGE_DATE,
+		    COIN_CHARGE_STATE
+		) VALUES (
+		    #{coin_charge_code, jdbcType=VARCHAR},
+		    #{coin_code, jdbcType=VARCHAR},
+		    #{coin_charge_amount, jdbcType=NUMERIC},
+		    SYSDATE,
+		    #{coin_charge_state, jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<update id="updateCoin" parameterType="CoinVO">
+		<selectKey order="AFTER" keyProperty="coin_end" resultType="String">
+			SELECT TO_CHAR(COIN_END, 'YYYY-MM-DD HH24:MI') COIN_END
+			  FROM COIN
+			 WHERE COIN_CODE = #{coin_code, jdbcType=VARCHAR}
+		</selectKey>
+		UPDATE COIN
+		    SET
+		       COIN_END = SYSDATE
+		WHERE
+		    COIN_CODE = #{coin_code, jdbcType=VARCHAR}
+	</update>
+	
+	
+	
+	
+	
+	
+</mapper>

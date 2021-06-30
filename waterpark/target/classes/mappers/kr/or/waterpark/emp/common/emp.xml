@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.emp.common.login.dao.IEmpDAO">
+
+	<select id="selectEmpForAuth" parameterType="String" resultType="kr.or.waterpark.customer.common.join.vo.UserVO">
+		 SELECT USER_ID, USER_PASS, USER_AUTH
+		   FROM USER_AUTH_VIEW
+		  WHERE USER_ID =#{user_id} AND USER_PROTECT = 'N' AND USER_AUTH != 'US'
+	</select>
+	
+	<select id="selectEmpDetail" parameterType="String" resultType="kr.or.waterpark.emp.common.login.vo.EmpVO">
+		SELECT 
+              EMP_ID,
+              EMP_PASS,
+              EMP_NAME,
+              EMP_HP,
+              RESPONSE_CODE,
+              EMP_MAIL,
+              TEAM_CODE,
+              TO_CHAR(EMP_HIRE,'YYYY-MM-DD') AS EMP_HIRE,
+              TO_CHAR(EMP_FIRE,'YYYY-MM-DD') AS EMP_FIRE,
+              EMP_VAC,
+              EMP_PROTECT,
+              emp.FC_ID, 
+              GET_CODE_NAME_FUNC(TEAM_CODE, 'TM') as TEAM_NAME,
+              GET_CODE_NAME_FUNC(RESPONSE_CODE, 'RE') as RESPONSE_NAME,
+              B.FC_NAME,
+              EMP_VAC
+         FROM EMP LEFT OUTER JOIN FACILITIES B ON (emp.fc_id = b.fc_id)
+        WHERE EMP_ID = #{data}
+	</select>
+	
+	<select id="selectEmpListWithCode" parameterType="kr.or.waterpark.emp.common.login.vo.EmpVO" resultType="kr.or.waterpark.emp.common.login.vo.EmpVO">
+		SELECT 
+              EMP_ID,
+              EMP_PASS,
+              EMP_NAME,
+              EMP_HP,
+              RESPONSE_CODE,
+              EMP_MAIL,
+              TEAM_CODE,
+              TO_CHAR(EMP_HIRE,'YYYY-MM-DD'),
+              TO_CHAR(EMP_FIRE,'YYYY-MM-DD'),
+              EMP_VAC,
+              EMP_PROTECT,
+              FC_ID, 
+              GET_CODE_NAME_FUNC(TEAM_CODE, 'TM') as TEAM_NAME,
+              GET_CODE_NAME_FUNC(RESPONSE_CODE, 'RE') as RESPONSE_NAME
+         FROM EMP
+        WHERE 1 = 1 
+          <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(team_code)">
+          	 AND TEAM_CODE = #{team_code}
+          </if>
+          <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(response_code)">
+          	 AND RESPONSE_CODE = #{response_code}
+          </if>
+          <choose>
+          <when test='emp_fire != null'>
+	       	  <if test='emp_fire.equals("Y")'>
+	          	 AND EMP_FIRE IS NULL
+	          </if>
+	          <if test='emp_fire.equals("N")'>
+	             AND EMP_FIRE IS NOT NULL
+	           </if>
+           </when>
+           </choose>
+		   <if test="textSearch != null">
+				AND INSTR(emp_name,#{textSearch}) > 0
+		   </if>        
+	</select>
+	
+	<update id="updateEmpForProtect" parameterType="String">
+		UPDATE EMP
+		   SET EMP_PROTECT = 'Y'
+		  WHERE EMP_ID = #{emp_id}
+	</update>
+	
+	<select id="selectEmpForEmailSend" parameterType="String" resultType = "kr.or.waterpark.emp.common.login.vo.EmpVO">
+		SELECT EMP_ID,EMP_NAME, TEAM_CODE, GET_CODE_NAME_FUNC(TEAM_CODE, 'TM') as TEAM_NAME
+ 		  FROM EMP
+         WHERE INSTR(EMP_NAME,#{data}) >0
+	</select>
+	
+	<select id="selectEmpForAuthWhenSendEmail" parameterType="String" resultType = "kr.or.waterpark.emp.common.login.vo.EmpVO">
+		select EMP_ID
+		  FROM EMP
+		 WHERE EMP_ID = substr(#{data},0,12)
+	</select>
+	
+	<insert id="insertNewEmp" parameterType="kr.or.waterpark.emp.common.login.vo.EmpVO">
+		<selectKey resultType="String" keyProperty="emp_id" order="BEFORE">
+			select 'EP' || to_char(to_number(substr(nvl(max(emp_id), 'aa'||to_char(sysdate,'yyyymmdd') || lpad('0', 2, '0')),3)) + 1) as emp_id
+			  from emp
+   			 WHERE SUBSTR((EMP_ID),3, 8) = TO_CHAR(SYSDATE, 'YYYYMMDD')
+		</selectKey> 
+		INSERT INTO EMP
+		 (
+		 	EMP_ID,
+			EMP_PASS,
+			EMP_NAME,
+			EMP_HP,
+			RESPONSE_CODE,
+			EMP_MAIL,
+			TEAM_CODE,
+			EMP_HIRE,
+			EMP_FIRE,
+			EMP_VAC,
+			EMP_PROTECT,
+			FC_ID,
+			FILE_NO
+		 )VALUES(
+		    #{emp_id},
+   			#{emp_pass},
+   			#{emp_name},
+   			#{emp_hp},
+   			#{response_code},
+   			#{emp_mail},
+   			#{team_code},
+   			#{emp_hire},
+   			null,
+   			0,
+   			'N',
+   			#{fc_id},
+   			FILES_SEQ.NEXTVAL
+		 )
+	</insert>
+	
+	<update id="updateEmpInfo" parameterType="kr.or.waterpark.emp.common.login.vo.EmpVO">
+	<selectKey resultType="int" keyProperty="file_no" order="BEFORE">
+			select FILES_SEQ.NEXTVAL
+			  from DUAL
+		</selectKey>
+		UPDATE EMP
+			SET EMP_PASS = #{emp_pass}, 
+			    EMP_NAME = #{emp_name},
+			    EMP_HP = #{emp_hp},
+			    RESPONSE_CODE = #{response_code},
+			    EMP_MAIL  = #{emp_mail},
+			    TEAM_CODE  = #{team_code},
+			    EMP_HIRE = #{emp_hire},
+			    <if test="emp_fire != null">
+			   	    EMP_FIRE = #{emp_fire},
+			    </if>
+			    FC_ID = #{fc_id},
+			    FILE_NO = #{file_no}
+		  WHERE emp_id = #{emp_id}
+	</update>
+	
+	<update id="fireEmp" parameterType="kr.or.waterpark.emp.common.login.vo.EmpVO">
+		UPDATE EMP
+		   SET EMP_FIRE = #{emp_fire}
+		 WHERE EMP_ID = #{emp_id}
+	</update>
+	
+	<select id="getResumeForOneEmp" parameterType="String" resultType="kr.or.waterpark.common.vo.FilesVO">
+		 SELECT MAX(A.FILE_NO) AS FILE_NO,
+			    A.FILE_ORD,
+			    A.FILE_BIZ,
+			    A.FILE_PATH,
+			    A.FILE_ORIGIN,
+			    A.FILE_SAVE,
+			    A.FILE_TYPE,
+			    A.FILE_DEL,
+			    B.LEMPF_CODE,
+			    B.EMPF_DEL
+		   FROM FILES A
+			    LEFT OUTER JOIN EMP_FILES B ON (a.file_no = b.file_no)
+			    WHERE B.EMP_ID = #{data}
+      		    AND B.EMPF_DEL = 'N'
+                AND A.FILE_BIZ = 'CR'
+            GROUP BY  A.FILE_ORD,
+			    A.FILE_BIZ,
+			    A.FILE_PATH,
+			    A.FILE_ORIGIN,
+			    A.FILE_SAVE,
+			    A.FILE_TYPE,
+			    A.FILE_DEL,
+			    B.LEMPF_CODE,
+			    B.EMPF_DEL
+	</select>
+</mapper>
+
+
+

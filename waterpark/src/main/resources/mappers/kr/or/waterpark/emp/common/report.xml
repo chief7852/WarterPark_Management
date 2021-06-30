@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.emp.common.report.dao.IReportDAO">
+<select id="empNoticeList" parameterType="string" resultType="ReportVO">
+SELECT
+    REPORT_NO, EMP_ID, REPORT_TITLE, REPORT_CONT,
+    TO_CHAR(TO_DATE(REPORT_DATE,'YYYY-MM-DD'),'YYYY-MM-DD') REPORT_DATE, GET_CODE_NAME_FUNC(LREPORT_CODE, 'RP')LREPORT_CODE, REPORT_DEL,
+    FILE_NO, REPORT_APP_NEED
+FROM
+    REPORT
+WHERE LREPORT_CODE = #{data}
+ORDER BY REPORT_NO DESC	
+</select>
+
+<select id="empNoticeDetail" parameterType="int" resultType="ReportVO">
+SELECT a.*, b.EMP_NAME
+FROM REPORT a
+    left outer join emp b on(a.emp_id = b.emp_id)
+where a.REPORT_NO = #{data}
+</select>
+
+<delete id="empNoticeDelete" parameterType="int">
+	DELETE FROM REPORT
+	WHERE
+	REPORT_NO = #{report_no}
+</delete>
+
+<insert id="empNoticeInsert" parameterType="ReportVO">
+	<selectKey resultType="int" keyProperty="report_no" order="BEFORE">
+	SELECT REP_SEQ.NEXTVAL
+	FROM DUAL
+	</selectKey>
+	INSERT INTO report (
+    REPORT_NO, EMP_ID, REPORT_TITLE, REPORT_CONT,
+    REPORT_DATE, LREPORT_CODE, REPORT_DEL,
+    FILE_NO, REPORT_APP_NEED
+	) VALUES (
+	#{report_no, jdbcType=NUMERIC},
+	#{emp_id, jdbcType=VARCHAR},
+	#{report_title, jdbcType=VARCHAR},
+	#{report_cont, jdbcType=VARCHAR},
+	to_char(SYSDATE,'YYYYMMDD'),
+	#{lreport_code, jdbcType=VARCHAR},
+	#{report_del, jdbcType=VARCHAR},
+	#{file_no, jdbcType=NUMERIC},
+	#{report_app_need, jdbcType=CHAR}
+)
+</insert>
+
+<select id="empPRODList" parameterType="String" resultType="ReportVO">
+SELECT 
+REPORT_NO, EMP_ID, REPORT_TITLE,
+          CASE
+
+                 WHEN LENGTH(REPORT_CONT) > 10 then SUBSTR(REPORT_CONT,1,10) || '...'
+
+                 ELSE REPORT_CONT 
+
+         END REPORT_CONT
+, 
+TO_CHAR(TO_DATE(REPORT_DATE,'YYYY-MM-DD'),'YYYY-MM-DD') 
+REPORT_DATE, GET_CODE_NAME_FUNC(LREPORT_CODE, 'RP')LREPORT_CODE, REPORT_DEL, FILE_NO, REPORT_APP_NEED 
+FROM REPORT WHERE LREPORT_CODE = 'GD' AND EMP_ID='EP2021062501' ORDER BY REPORT_NO DESC
+</select>
+
+</mapper>

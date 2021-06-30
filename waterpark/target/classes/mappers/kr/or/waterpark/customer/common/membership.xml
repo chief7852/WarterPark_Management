@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.customer.common.reserve.dao.IMembershipDAO">
+
+	<select id="selectMembershipCheck" parameterType="string" resultType="kr.or.waterpark.customer.common.reserve.vo.MembershipVO">
+		SELECT A.RES_INFO_CODE,
+		    A.MEMBERSHIP_END,
+		    A.MEMBERSHIP_PARENT,
+		    A.USER_ID,
+		    <![CDATA[
+		    CASE WHEN TO_DATE(TO_CHAR(SYSDATE, 'YYYY-MM-DD')) - TO_DATE(A.MEMBERSHIP_END, 'YYYY-MM-DD') <= 365 THEN 'OK'
+		    ]]>
+		    ELSE 'DENY'
+		    END EXTEND_AVAILABLE
+		FROM (SELECT *
+		        FROM MEMBERSHIP
+		        WHERE USER_ID = #{data}
+		        ORDER BY MEMBERSHIP_END DESC) A
+		WHERE ROWNUM = 1
+	</select>
+	
+	<insert id="insertMemberShip" parameterType="kr.or.waterpark.customer.common.reserve.vo.MembershipVO">
+		INSERT INTO MEMBERSHIP (
+			    RES_INFO_CODE,
+			    MEMBERSHIP_END,
+			    MEMBERSHIP_PARENT,
+			    USER_ID
+			) VALUES (
+			    #{res_info_code, jdbcType=VARCHAR},
+			    (SELECT TO_CHAR(ADD_MONTHS(SYSDATE, 12), 'YYYYMMDD') FROM DUAL),
+			    #{membership_parent, jdbcType=VARCHAR},
+				#{user_id, jdbcType=VARCHAR}
+			)
+	</insert>
+</mapper>

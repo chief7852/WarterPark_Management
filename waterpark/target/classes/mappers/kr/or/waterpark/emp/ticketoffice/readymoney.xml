@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="kr.or.waterpark.emp.team.ticketoffice.dao.IReadyMoneyDAO">
+	
+	<insert id="insertReadyMoneyAtStart" parameterType="PosVO">
+		INSERT INTO READY_MONEY (
+		    RM_NO,
+		    RM_ORD,
+		    LRM_CODE,
+		    RM_AMOUNT,
+		    RM_DATE,
+		    FC_ID,
+		    EMP_ID,
+		    POS_NO
+		) VALUES (
+		    RM_SEQ.NEXTVAL,
+		    1,
+		    'RM',
+		    300000,
+		    SYSDATE,
+		    #{fc_id, jdbcType=VARCHAR},
+		    #{emp_id, jdbcType=VARCHAR},
+		    #{pos_no, jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<insert id="insertReadyMoneyAtCharge" parameterType="TicketListForResVO">
+		<selectKey keyProperty="rm_no" order="BEFORE" resultType="int">
+			SELECT RM_SEQ.NEXTVAL
+			  FROM DUAL
+		</selectKey>
+		INSERT ALL 
+			<foreach collection="RMList" item="rm" index="idx" >
+			INTO READY_MONEY (
+			    RM_NO,
+			    RM_ORD,
+			    LRM_CODE,
+			    RM_AMOUNT,
+			    RM_DATE,
+			    FC_ID,
+			    EMP_ID,
+			    POS_NO
+			) VALUES (
+			    #{rm_no, jdbcType=VARCHAR},
+			    #{idx} + 1,
+			    #{rm.lrm_code, jdbcType=VARCHAR},
+			    #{rm.rm_amount, jdbcType=VARCHAR},
+			    SYSDATE,
+			    #{rm.fc_id, jdbcType=VARCHAR},
+			    #{rm.emp_id, jdbcType=VARCHAR},
+			    #{rm.pos_no, jdbcType=VARCHAR}
+			)
+			</foreach>
+		SELECT * FROM DUAL
+	</insert>
+</mapper>

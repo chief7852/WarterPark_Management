@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.customer.common.facilitiesinfo.dao.IFacilitiesDAO">
+
+	<select id="selectAttractionList" resultType="FacAttViewVO">
+		SELECT
+		    A.FC_ID,
+		    A.FC_NAME,
+		    A.LFC_CODE,
+		    A.ATT_AVAILABLE,
+		    A.ATT_DESC,
+		    A.ATT_WAIT,
+		    A.FILE_NO,
+		    A.ATT_SDESC,
+            B.FC_PHOTO
+		FROM
+		    FC_ATT_VIEW A 
+            LEFT OUTER JOIN FACILITIES B ON(A.FC_ID = B.FC_ID)
+	</select>
+	
+	<select id="selectAttraction" parameterType="string" resultType="FacAttViewVO">
+		SELECT
+		    A.FC_ID,
+		    A.FC_NAME,
+		    A.LFC_CODE,
+		    A.ATT_AVAILABLE,
+		    A.ATT_DESC,
+		    A.ATT_WAIT,
+		    A.FILE_NO,
+		    A.ATT_SDESC,
+            B.FC_PHOTO
+		FROM
+		    FC_ATT_VIEW A 
+            LEFT OUTER JOIN FACILITIES B ON(A.FC_ID = B.FC_ID)
+		WHERE A.FC_ID = #{data}
+	</select>
+</mapper>

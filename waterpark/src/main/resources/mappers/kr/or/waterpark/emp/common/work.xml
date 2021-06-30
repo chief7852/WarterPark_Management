@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.emp.common.work.dao.IWorkDAO">
+
+<resultMap type="kr.or.waterpark.emp.common.work.vo.WorkVO" id="workData">
+	<result column="WORK_NO" property="work_no"/>
+	<result column="EMP_NAME" property="emp_name"/>
+	<result column="EMP_ID" property="emp_id"/>
+	<result column="LWORK_CODE" property="lwork_code"/>
+	<result column="WORK_START_DATE" property="work_start_date"/>
+	<result column="WORK_END_DATE" property="work_end_date"/>
+</resultMap>
+
+	<select id="selectAllWork" parameterType="String" resultType="kr.or.waterpark.emp.common.work.vo.WorkVO">
+    SELECT
+		    A.WORK_NO,
+		    B.EMP_NAME,
+		    A.EMP_ID,
+		    A.LWORK_CODE,
+		    SUBSTR(A.WORK_START,0,10)||'T'||SUBSTR(A.WORK_START,12) WORK_START,
+		    SUBSTR(A.WORK_END,0,10)||'T'||SUBSTR(A.WORK_END,12) WORK_END
+			,A.WORK_BACK
+			,A.WORK_TEXT
+			,A.WORK_TITLE
+		FROM
+		    WORK A LEFT OUTER JOIN EMP B ON (A.EMP_ID = B.EMP_ID)
+		 WHERE A.EMP_ID =#{emp_id}
+	</select>
+	
+	<insert id="insertWork" parameterType="kr.or.waterpark.emp.common.work.vo.WorkVO">
+		<selectKey resultType="int" keyProperty="work_no" order="BEFORE">
+			SELECT WORK_SEQ.NEXTVAL
+			  FROM DUAL
+		</selectKey>
+	
+		INSERT INTO WORK (
+		    WORK_NO,
+		    EMP_ID,
+		    WORK_DATE,
+		    LWORK_CODE,
+		    WORK_START,
+		    WORK_END,
+		    WORK_BACK,
+		    WORK_TEXT,
+		    WORK_TITLE
+		) VALUES (
+		    #{work_no},
+		    #{emp_id},
+		    #{work_date},
+		    'MH',
+		    #{work_start},
+		    #{work_end},
+		    #{work_back},
+		    #{work_text},
+		    '근무'
+		)
+	
+	</insert>
+	
+	<delete id="deleteWork" parameterType="int">
+		DELETE FROM WORK
+		WHERE
+			WORK_NO = #{work_no}
+	</delete>
+</mapper>

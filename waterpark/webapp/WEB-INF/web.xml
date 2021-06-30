@@ -28,6 +28,27 @@
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<!-- 스프링 시큐리티 -->
+	<!-- DelegatingFilterProxy 역할 : -->
+	<!-- BeanIds에서 필터체인 명을 들고와서 필터이름을넣는다 -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>filterMultipartResolver</filter-name>
+		<filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>filterMultipartResolver</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 시큐리티 끝 -->
 	<filter>
 		<filter-name>xssEscapeServletFilter</filter-name>
 		<filter-class>com.navercorp.lucy.security.xss.servletfilter.XssEscapeServletFilter</filter-class>
@@ -36,14 +57,14 @@
 		<filter-name>xssEscapeServletFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<filter>
 		<filter-name>HiddenHttpMethodFilter</filter-name>
 		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>HiddenHttpMethodFilter</filter-name>
-		<url-pattern>/*</url-pattern>	
+		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
 	<!-- The front controller of this Spring Web application, responsible for 
@@ -56,21 +77,22 @@
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
-		<multipart-config></multipart-config>
+		<multipart-config>
+		</multipart-config>
 	</servlet>
 	<error-page>
 		<error-code>400</error-code>
 		<location>/resources/common/error/e400.jsp</location>
 	</error-page>
-		<error-page>
+	<error-page>
 		<error-code>404</error-code>
 		<location>/resources/common/error/e404.jsp</location>
 	</error-page>
-		<error-page>
+	<error-page>
 		<error-code>403</error-code>
 		<location>/resources/common/error/e403.jsp</location>
 	</error-page>
-		<error-page>
+	<error-page>
 		<error-code>500</error-code>
 		<location>/resources/common/error/e500.jsp</location>
 	</error-page>

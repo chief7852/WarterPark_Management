@@ -14,6 +14,8 @@
 
 	<annotation-driven />
 
+	<beans:bean id="downloadView" class="kr.or.waterpark.common.view.DownloadView" />
+
 	<resources location="/resources/" mapping="/resources/**"
 		cache-period="0" />
 
@@ -34,16 +36,19 @@
 		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"
 		p:order="2" />
 
+	<beans:bean id="handlerChat"
+		class="kr.or.waterpark.testchat.handler.HandlerChat" />
+		
 	<websocket:handlers allowed-origins="*">
 		<websocket:mapping handler="handlerChat"
 			path="/chat" />
 		<websocket:sockjs websocket-enabled="true" />
 	</websocket:handlers>
 
-	<beans:bean id="handlerChat"
-		class="kr.or.waterpark.testchat.handler.HandlerChat" />
-	<beans:bean id="multipartResolver"
-		class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>
+<!-- 	 <beans:bean class="com.vanillasea.mvc.controller.FileController" ></beans:bean>
+ -->	<!-- <beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+		</beans:bean> -->
 
 	<context:component-scan
 		base-package="kr.or.waterpark" use-default-filters="false">

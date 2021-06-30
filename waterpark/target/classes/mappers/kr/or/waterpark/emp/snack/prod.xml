@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.emp.team.snack.dao.IProdDAO">
+
+	<select id="selectProdList" parameterType="string" resultType="ProdVO">
+		SELECT
+		 	DISTINCT(LPROD_CODE),
+		    LPROD_ID,
+		    PROD_NAME,
+		     REGEXP_REPLACE(REVERSE(REGEXP_REPLACE( REVERSE(TO_CHAR(NVL(PROD_PRICE, 0))), '([0-9]{3})','\1,')), '^,','') PROD_PRICE
+		    ,
+		    FC_ID,
+		    PROD_PHOTO
+	   
+		FROM
+	    	PROD
+    	<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(lprod_id)">
+    		WHERE LPROD_ID = #{lprod_id}
+    	</if>
+	</select>
+	
+	
+	<select id="oneProdList" parameterType="string" resultType="kr.or.waterpark.emp.team.snack.vo.ProdVO">
+	
+		SELECT
+		    (SELECT COUNT(*) FROM PROD WHERE PROD_NAME = #{prod_name}) AS QTY,
+		    A.PROD_CODE,
+		    A.LPROD_CODE,
+		    A.LPROD_ID,
+		    A.PROD_NAME,
+		    REGEXP_REPLACE(REVERSE(REGEXP_REPLACE( REVERSE(TO_CHAR(NVL(A.PROD_PRICE, 0))), '([0-9]{3})','\1,')), '^,','') PROD_PRICE,
+		    A.FC_ID,
+		    A.PROD_DEL,
+		    A.PROD_PHOTO,
+		    B.LIFE_PROD_DATE,
+		    C.FC_NAME,
+		    D.INC_DATE
+		FROM
+		    PROD A
+		LEFT OUTER JOIN LIFE_PROD B 
+		ON (B.PROD_CODE = A.PROD_CODE)
+		LEFT OUTER JOIN FACILITIES C
+		ON (C.FC_ID = A.FC_ID)
+		LEFT OUTER JOIN INCOME D
+		ON (A.PROD_NAME = D.PROD_NAME)
+		WHERE A.PROD_NAME = #{prod_name}
+		AND A.PROD_DEL = 'N'
+		ORDER BY D.INC_DATE ASC, A.PROD_CODE ASC
+	</select>
+	
+
+</mapper>

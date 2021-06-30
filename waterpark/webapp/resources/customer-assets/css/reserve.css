@@ -1,0 +1,189 @@
+@charset "UTF-8";
+/*# sourceMappingURL=bootstrap.min.css.map */
+
+.att-select{
+    width:10% !important;
+}
+
+/* customer/use-info/reserve css  */
+.ticket-info{
+    display: inline-block;
+    width:32.3% !important;
+    padding-left: calc(var(--bs-gutter-x)/ 2);
+    padding-bottom: calc(var(--bs-gutter-y)/ 2);
+    margin-top: 15px;
+/*     margin-bottom: 8px; */
+    max-width:none;
+    padding-right: 0px;
+}  
+.ticket-info ul li{
+    padding-bottom: 5px!important;
+}
+input[type="button"], button {
+      border-width: 0px;
+      border-color: none;
+ }
+.blog .ticket-sidebar{
+    margin: 0!important;
+    min-height: 538px;
+    max-height: 538px;
+    overflow: auto;
+}
+.blog .price-sidebar{
+    margin: 0!important;
+    min-height: 240px;
+    
+}
+.buy-del{
+    margin-left: 7px;
+    padding: 4px 3px!important;
+    width: 30px!important;  
+}
+.buy-signal{
+	margin-left: 7px;
+    padding: 4px 3px!important;
+    width: 20px!important;  
+    background: lightgrey!important;
+} 
+.ticket-grp{
+    margin-left: calc(var(--bs-gutter-x)/ 2);
+    margin-bottom: 3px !important;
+    align-items: flex-start;
+    width: 180px;
+}
+.entry th, td{
+    padding: 5px 1px;
+    
+}
+.ticket-sidebar tr{
+    border-bottom: solid 1px lightgrey;
+}
+.ticket-sidebar tr th:nth-child(2),td:nth-child(2){
+	text-align: center;
+}
+
+.modal-body input[type="text"]{
+	padding: 5px;
+	width: 100px;
+}
+.modal-body label{
+	width: 80px;
+}
+.btn-modal{
+	opacity: 0;
+}
+.bi-dash{
+    vertical-align: 0.025rem;
+}
+.res-info table{
+	text-align: center;
+	font-weight: 0px;
+	font-size: 17px;
+}
+
+#searchDate{
+    display: inline-block;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.btn-style {
+  background: #3097f0;
+  display: inline-block;
+  padding: 5px 10px 4px 10px;
+  border-radius: 4px;
+  color: #fff;
+  transition: none;
+  font-size: 17px;
+  font-weight: 0;
+  transition: 0.3s;
+}
+
+.btn-style:hover {
+  background: #e3f2fd;
+  color: #3097f0;
+  border-color: #3097f0;
+/*   color: #BDBDBD; */
+}
+
+.btn-cancel{
+	background: #ffebee;
+	border-width: 1px;
+	color:#000000;
+	border-color: #f44336;
+}
+
+.btn-cancel:hover{
+	background: #f44336;
+	color: #ffebee;
+}
+
+.entry-ticket{
+    min-height: 795px;
+	max-height: 795px;
+	overflow: auto;
+}
+
+.sidebar table{
+	width: 100%;
+}
+
+.table th, .table td{
+	vertical-align: middle;
+}
+
+.table-no{
+	width:60px;
+}
+.table-footer{
+	width: 30%;
+	padding-right:0;
+	margin-left: 70%;
+}
+
+.table-highlight{
+	background-color: #e3f2fd!important;	
+}
+
+.table-res-info .table{
+	margin-bottom: 4%;
+}
+input[type='date']{
+	width: 150px;
+	text-align: center;
+}
+
+body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+    overflow: auto!important;
+    padding-right : 0!important;
+}
+.pricing .advanced{
+	font-weight: 0px;
+    padding: 1px 0px;
+    top: 20px;
+    right: -71px;
+}
+
+
+.select-age{
+	width: 75%;
+}
+
+/* .pricing h3{ */
+/* 	background: #01579b; */
+/* 	color: #556270; */
+/* } */
+.pricing .box{
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 50%);
+}
+
+.blog .sidebar{
+    box-shadow: 0px 0px 3px rgb(0 0 0 / 30%);
+}
+.blog .entry{
+    box-shadow: 0px 0px 3px rgb(0 0 0 / 30%);
+}
+
+th{
+	font-weight: 200;
+}

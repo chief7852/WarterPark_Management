@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.customer.common.reserve.dao.IReserveDAO">
+
+	<insert id="insertUserForNonUser" parameterType="UserVO">
+		<selectKey order="BEFORE" resultType="string" keyProperty="user_id">
+			SELECT 'GUEST' || NVL(MAX(TO_NUMBER(SUBSTR(USER_ID, 6))) + 1, 1) USER_ID
+			FROM USERS
+			WHERE USER_ID LIKE 'GUEST%'
+		</selectKey>
+		INSERT INTO users (
+		    user_id,
+		    user_pass,
+		    user_name,
+		    user_reg,
+		    user_mail,
+		    user_hp,
+		    user_protect,
+		    user_del,
+		    user_date
+		) VALUES (
+		    #{user_id, jdbcType=VARCHAR},
+		    'java',
+		    #{user_name, jdbcType=VARCHAR},
+		    '0',
+		    '0',
+		    #{user_hp, jdbcType=VARCHAR},
+		    'N',
+		    NULL,
+		    SYSDATE
+		)
+	</insert>
+	
+	<insert id="insertReserve" parameterType="kr.or.waterpark.customer.common.reserve.vo.TicketListForResVO">
+		<selectKey order="BEFORE" keyProperty="res_code" resultType="string">
+			SELECT 'RE' || TO_CHAR(SYSDATE, 'YYMMDD') || LPAD(TO_CHAR(TO_NUMBER(SUBSTR(NVL(MAX(RES_CODE), '000000000'), 9)) + 1), 4, '0') RES_CODE
+			FROM RESERVE
+			WHERE TO_CHAR(RES_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+		</selectKey>
+		INSERT INTO RESERVE (
+				    RES_CODE,
+				    USER_ID,
+				    RES_DATE,
+				    RES_PREDATE,
+				    RES_CANCEL
+				    <if test="sale_id != null and @org.apache.commons.lang3.StringUtils@isNotBlank(sale_id)">
+				    ,SALE_ID
+				    </if>
+				) VALUES (
+				   #{res_code, jdbcType=VARCHAR},
+				    #{user_id, jdbcType=VARCHAR},
+				    SYSDATE,
+				    TO_DATE(#{res_predate, jdbcType=DATE}, 'YYYY-MM-DD'),
+				    NULL
+				    <if test="sale_id != null and @org.apache.commons.lang3.StringUtils@isNotBlank(sale_id)">
+				    ,#{sale_id, jdbcType=VARCHAR}
+				    </if>
+				)
+			
+	</insert>
+	
+	<insert id="insertPay" parameterType="kr.or.waterpark.customer.common.reserve.vo.TicketListForResVO">
+		INSERT INTO PAY (
+				    RES_CODE,
+				    PAY_DATE,
+				    PAY_AMOUNT,
+				    PAY_METHOD,
+				    PAY_WAY
+				) VALUES (
+				   #{res_code, jdbcType=VARCHAR},
+				    SYSDATE,
+				    #{pay_amount, jdbcType=VARCHAR},
+				    #{pay_method, jdbcType=VARCHAR},
+<!-- 				    <choose> -->
+<!-- 					    <when test="pay_method != null and @org.apache.commons.lang3.StringUtils@isNotBlank(pay_method)"> -->
+						    #{pay_way, jdbcType=VARCHAR}
+<!-- 					    </when> -->
+<!-- 					    <otherwise> -->
+<!-- 						    'OP' -->
+<!-- 					    </otherwise> -->
+<!-- 				    </choose> -->
+				)
+	</insert>
+	
+	<insert id="insertResInfo" parameterType="map" >
+		<selectKey order="AFTER" keyProperty="res_info_code" resultType="string">
+			SELECT RES_INFO_CODE
+				FROM RES_INFO A
+				LEFT OUTER JOIN TICKET B ON (A.TICKET_ID = B.TICKET_ID)
+				WHERE RES_CODE = #{res_code} AND ROWNUM = 1
+		</selectKey>
+		INSERT INTO RES_INFO (
+		        RES_INFO_CODE,
+		        RES_CODE,
+		        TICKET_ID
+		    ) VALUES (
+		        (SELECT 'RI' || TO_CHAR(SYSDATE, 'YYMMDD') || LPAD(TO_CHAR(TO_NUMBER(SUBSTR(NVL(MAX(RES_INFO_CODE), '000000000'), 9)) + 1), 4, '0') RES_INFO_CODE
+		                                FROM RES_INFO A RIGHT OUTER JOIN RESERVE B ON(A.RES_CODE = B.RES_CODE) ),
+		        #{res_code, jdbcType=VARCHAR},
+		        #{ticket_id, jdbcType=VARCHAR}
+    		)
+	</insert>
+	
+	
+	<sql id="searchReserve">
+		<trim prefix="WHERE" prefixOverrides="AND">
+			
+			<if test="searchMap.date_start != null and @org.apache.commons.lang3.StringUtils@isNotBlank(searchMap.date_start)">
+				AND RES_DATE >= TO_DATE(#{searchMap.date_start}, 'YYYY-MM-DD')
+			</if>
+			<if test="searchMap.date_end != null and @org.apache.commons.lang3.StringUtils@isNotBlank(searchMap.date_end)">
+				<![CDATA[
+				AND RES_DATE <= TO_DATE(#{searchMap.date_end}, 'YYYY-MM-DD')
+				]]>
+			</if>
+		</trim>
+	</sql>
+	
+	<sql id="searchReserveForNonOr">
+		<trim prefix="WHERE" >
+			<choose>
+				<when test="searchMap.user_id != null and @org.apache.commons.lang3.StringUtils@isNotBlank(searchMap.user_id)">
+				A.USER_ID = #{searchMap.user_id}
+				</when>
+				<when test="searchMap.user_name != null and @org.apache.commons.lang3.StringUtils@isNotBlank(searchMap.user_name) and searchMap.user_hp != null and @org.apache.commons.lang3.StringUtils@isNotBlank(searchMap.user_hp)">
+				   USER_NAME=#{searchMap.user_name} AND USER_HP=#{searchMap.user_hp} AND COIN_CODE IS NULL
+			    </when>
+			    <when test="searchMap.res_code != null and @org.apache.commons.lang3.StringUtils@isNotBlank(searchMap.res_code)">
+					A.RES_CODE = #{searchMap.res_code}
+				</when>
+			</choose>
+		</trim>
+	</sql>
+	
+	<select id="selectReserveList" parameterType="PagingVO" resultType="ReserveVO">
+		SELECT RN
+		    , RES_CNT
+		    , RES_CODE
+		   , TO_CHAR(RES_DATE, 'YYYY-MM-DD') RES_DATE
+		   , TO_CHAR(RES_PREDATE, 'YYYY-MM-DD') RES_PREDATE
+		   , TO_CHAR(RES_CANCEL, 'YYYY-MM-DD') RES_CANCEL
+		FROM (SELECT ROWNUM RN
+		        , A.RES_CNT
+		       , A.RES_CODE
+		       , A.RES_DATE
+		       , A.RES_PREDATE
+		       , A.RES_CANCEL
+		    FROM (SELECT COUNT(*) RES_CNT
+		           , RES_CODE
+		           , RES_DATE
+		           , RES_PREDATE
+		           , RES_CANCEL
+		        FROM (SELECT
+		                A.RES_CODE,
+		                A.USER_ID,
+		                RES_DATE,
+		                RES_PREDATE,
+		                RES_CANCEL,
+		                SALE_ID,
+		                B.RES_INFO_CODE,
+		                TICKET_ID,
+		                COIN_CODE
+		            FROM RESERVE A
+		            LEFT OUTER JOIN RES_INFO B ON (A.RES_CODE = B.RES_CODE)
+		            LEFT OUTER JOIN (SELECT USER_ID, USER_NAME, USER_HP FROM USERS) C ON (A.USER_ID = C.USER_ID)
+		            LEFT OUTER JOIN COIN D ON (B.RES_INFO_CODE = D.RES_INFO_CODE)
+		            <include refid="searchReserveForNonOr"/>
+		              )
+		            <include refid="searchReserve"/>
+            GROUP BY RES_CODE, RES_DATE, RES_PREDATE, RES_CANCEL
+            ORDER BY RES_DATE DESC) A)
+            <![CDATA[
+            WHERE RN >= #{startRow} AND RN <= #{endRow}
+            ]]>
+	</select>
+	
+	<select id="selectReserveCount" parameterType="PagingVO" resultType="int">
+		SELECT count(*)
+		    FROM (SELECT COUNT(*) CNT
+		           , RES_CODE
+		        FROM (SELECT
+		                A.RES_CODE,
+		                A.USER_ID,
+		                RES_DATE,
+		                RES_PREDATE,
+		                RES_CANCEL,
+		                SALE_ID,
+		                B.RES_INFO_CODE,
+		                TICKET_ID,
+		                COIN_CODE
+		            FROM RESERVE A
+		            LEFT OUTER JOIN RES_INFO B ON (A.RES_CODE = B.RES_CODE)
+		            LEFT OUTER JOIN (SELECT USER_ID, USER_NAME, USER_HP FROM USERS) C ON (A.USER_ID = C.USER_ID)
+		            LEFT OUTER JOIN COIN D ON (B.RES_INFO_CODE = D.RES_INFO_CODE)
+		            	<include refid="searchReserveForNonOr"/>
+		              )
+			          <include refid="searchReserve"/>
+		            GROUP BY RES_CODE
+		            ORDER BY RES_DATE DESC)
+	
+	</select>
+	
+	
+	<resultMap type="ReserveVO" id="reserveMap" autoMapping="true">
+		<id property="res_code" column="RES_CODE"/>
+<!-- 		<association property="pay" javaType="kr.or.waterpark.customer.common.reserve.vo.PayVO" autoMapping="true"> -->
+<!-- 			<id property="res_code" column="RES_CODE"/> -->
+<!-- 		</association> -->
+<!-- 		<association property="sale" javaType="SaleVO" autoMapping="true"> -->
+<!-- 			<id property="sale_id" column="SALE_ID"/> -->
+<!-- 		</association> -->
+		<collection property="resInfoList" javaType="java.util.ArrayList" ofType="ResInfoVO" autoMapping="true">
+			<id property="res_info_code" column="RES_INFO_CODE"/>
+			<collection property="coinList" javaType="java.util.ArrayList" ofType="CoinVO" autoMapping="true">
+				<id property="coin_code" column="COIN_CODE"/>
+			</collection>
+		</collection>
+	</resultMap>
+	
+	
+	
+	<select id="selectReserveInfoView" parameterType="string" resultMap="reserveMap">
+		SELECT COUNT(TICKET_ID) RES_INFO_CNT, 
+			    RES_CODE,
+			    USER_ID,
+			    USER_NAME,
+			    TO_CHAR(RES_DATE, 'YYYY-MM-DD') RES_DATE,
+			    TO_CHAR(RES_PREDATE, 'YYYY-MM-DD') RES_PREDATE,
+			    TO_CHAR(RES_CANCEL, 'YYYY-MM-DD HH:MM') RES_CANCEL,
+			    TICKET_NAME "ticket.ticket_name",
+			    TICKET_GRP "ticket.ticket_grp",
+			    TICKET_TYPE_NAME "ticket.ticket_type_name",
+			    TICKET_AGE_NAME "ticket.ticket_age_name",
+			    TICKET_PRICE "ticket.ticket_price",
+			    PAY_WAY_NAME "pay.pay_way_name",
+			    TICKET_SALE "ticket.ticket_sale"
+			    , REGEXP_REPLACE(REVERSE(REGEXP_REPLACE( REVERSE(TO_CHAR(PAY_AMOUNT)), '([0-9]{3})','\1,')), '^,','') "pay.pay_amount"
+			    , SALE_NAME "sale.sale_name"
+			    , SALE_PERCENT "sale.sale_percent"
+			    , TO_CHAR(TO_DATE(MEMBERSHIP_END, 'YYYY-MM-DD'), 'YYYY-MM-DD') "membership.membership_end"
+			FROM ALL_RES_INFO_VIEW
+		    WHERE RES_CODE = #{data}
+		    GROUP BY  RES_CODE,
+					    USER_ID,
+					    USER_NAME,
+					    RES_DATE,
+					    RES_PREDATE,
+					    RES_CANCEL,
+					    TICKET_NAME,
+					    TICKET_GRP,
+					    TICKET_TYPE_NAME,
+					    TICKET_AGE_NAME,
+					    TICKET_PRICE,
+					    PAY_WAY_NAME,
+					    TICKET_SALE
+					    , PAY_AMOUNT
+					    , SALE_NAME
+					    , SALE_PERCENT
+					    , MEMBERSHIP_END
+	</select>
+	
+	<update id="deleteReserve" parameterType="string">
+		UPDATE RESERVE
+		    SET
+		        RES_CANCEL = SYSDATE
+		WHERE
+	
+		    RES_CODE = #{data}
+	</update>
+
+
+	<!-- ticket office -->
+
+	<select id="selectResInfoCodeList" parameterType="string" resultMap="reserveMap">
+		SELECT
+		    A.RES_CODE,
+		    USER_ID,
+		    RES_DATE,
+		    RES_PREDATE,
+		    RES_CANCEL,
+		    RES_INFO_CODE
+		FROM
+		    RESERVE A
+		LEFT OUTER JOIN RES_INFO B ON (A.RES_CODE = B.RES_CODE)
+		WHERE A.RES_CODE = #{data}
+	</select>	
+
+
+	<select id="selectAllResInfoAtTO" parameterType="ReserveVO" resultMap="reserveMap">
+		SELECT A.RES_CODE,
+		       A.USER_ID,
+       			E.USER_NAME,
+		        TO_CHAR(RES_DATE, 'YYYY-MM-DD') RES_DATE,
+		        TO_CHAR(RES_PREDATE, 'YYYY-MM-DD') RES_PREDATE,
+		        RES_CANCEL,
+		        SALE_ID,
+		        B.RES_INFO_CODE,
+		        C.TICKET_NAME "ticket.ticket_name",
+		        B.TICKET_ID "ticket.ticket_id",
+		        TICKET_GRP "ticket.ticket_grp",
+		        GET_CODE_NAME_FUNC(TICKET_TYPE, 'TT') "ticket.ticket_type_name",
+		        GET_CODE_NAME_FUNC(TICKET_AGE, 'TA') "ticket.ticket_age_name",
+		        COIN_CODE,
+		        TO_CHAR(COIN_START, 'YYYY-MM-DD HH24:MI') COIN_START
+		  FROM RESERVE A
+		  LEFT OUTER JOIN RES_INFO B ON(A.RES_CODE = B.RES_CODE)
+		  LEFT OUTER JOIN TICKET C ON(B.TICKET_ID = C.TICKET_ID)
+		  LEFT OUTER JOIN COIN D ON(B.RES_INFO_CODE = D.RES_INFO_CODE)
+		  LEFT OUTER JOIN USERS E ON (A.USER_ID = E.USER_ID)
+		 WHERE A.RES_CODE = #{res_code}
+	</select>
+	
+	<select id="selectCoin" parameterType="string" resultMap="reserveMap">
+		SELECT COIN_CODE,
+		        B.RES_INFO_CODE,
+		        COIN_START,
+		        COIN_END,
+		        A.RES_CODE,
+		        RES_DATE,
+		        RES_PREDATE,
+		        RES_CANCEL
+		  FROM RESERVE A 
+		  LEFT OUTER JOIN RES_INFO B ON (A.RES_CODE = B.RES_CODE)
+		  LEFT OUTER JOIN COIN C ON (B.RES_INFO_CODE = C.RES_INFO_CODE)
+		  WHERE COIN_CODE = #{data}
+	
+	</select>
+
+</mapper>

@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+.prod-img{
+    width: 44px;
+    height: 44px;
+    border-radius: 100%;
+}
+#container .dark-bg{
+	padding: 0;
+}
+#titleImage{
+	width:176px;
+	height: 70px;
+}
+#empHeadnav{
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: end;
+	align-content: center;
+	margin-bottom: 0px;
+}
+.navbar{
+	padding-top: 0px;
+}
+.notification-row{
+	margin-left: auto;
+	margin-bottom: 10px;
+}
+ul.sidebar-menu{
+	margin-top: 0;
+}
+ul.nav.pull-right.top-menu{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.aList{
+	margin-left: 220px;
+	color: white;	
+}

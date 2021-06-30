@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.emp.team.manage.emp.dao.IManageTeamDAO">
+	
+	<select id="selectEmpList" resultType="kr.or.waterpark.emp.common.login.vo.EmpVO">
+        SELECT EMP_ID,
+               EMP_PASS,
+               EMP_NAME,
+               EMP_HP,
+               RESPONSE_CODE,
+               EMP_MAIL,
+               TEAM_CODE,
+               EMP_HIRE,
+               EMP_FIRE,
+               EMP_VAC,
+               EMP_PROTECT,
+               FC_ID, 
+               GET_CODE_NAME_FUNC(TEAM_CODE, 'TM') as TEAM_NAME,
+               GET_CODE_NAME_FUNC(RESPONSE_CODE, 'RE') as RESPONSE_NAME
+         FROM EMP
+	</select>
+	
+	<select id="selecetAllEmpFiles" parameterType="String" resultType="kr.or.waterpark.common.vo.FilesVO">
+	 SELECT
+		    a.FILE_NO,
+		    FILE_ORD,
+		    FILE_BIZ,
+		    FILE_PATH,
+		    FILE_ORIGIN,
+		    FILE_SAVE,
+		    FILE_TYPE,
+		    FILE_DEL,
+		    emp_files.empf_del,
+		    emp_files.emp_id,
+		    emp_files.lempf_code
+	   FROM files a
+		    left outer join emp_files on(a.file_no = emp_files.file_no)
+	  where emp_files.emp_id = #{data}
+	</select>
+	
+	<select id="selectAllEmpReports" parameterType="String" resultType="kr.or.waterpark.emp.common.report.vo.ReportVO">
+	     SELECT D.*
+	      FROM (
+        SELECT ROWNUM AS rnum,
+               A.REPORT_NO,
+	           A.EMP_ID,
+		       A.REPORT_TITLE,
+		       A.REPORT_CONT,
+		       A.REPORT_DATE,
+		       A.LREPORT_CODE,
+		       A.REPORT_DEL,
+		       A.FILE_NO,
+		       A.REPORT_APP_NEED,
+		       B.COM_CODE_NAME AS REPORT_TYPE
+	      FROM REPORT A
+	           LEFT OUTER JOIN COM_CODE B ON (A.LREPORT_CODE = B.COM_CODE)
+               WHERE B.COM_CODE_GRP = 'RP'
+                 AND EMP_ID = #{data}
+               )D
+	</select>	
+
+	<select id="selectAllEmpLisences" parameterType="String" resultType="kr.or.waterpark.common.vo.LisenceVO">
+	SELECT C.*
+      FROM (
+	     SELECT ROWNUM AS RNUM,
+	            A.LISENCE_CODE,
+	            EMP_ID,
+	            LISENCE_PN,
+	            TO_CHAR(TO_DATE(LISENCE_GET,'YYYY-MM-DD'),'YYYY-MM-DD') AS LISENCE_GET,
+	             TO_CHAR(TO_DATE(LISENCE_EXP,'YYYY-MM-DD'),'YYYY-MM-DD') AS LISENCE_EXP,
+	            B.LISENCE_NAME,
+	            B.LISENCE_PUB,
+	            FILE_NO
+	       FROM EMP_LISENCE A
+           LEFT OUTER JOIN LISENCES B ON ( A.LISENCE_CODE = B.LISENCE_CODE)
+            WHERE EMP_ID = #{data}
+           ) C 
+	</select>
+</mapper>

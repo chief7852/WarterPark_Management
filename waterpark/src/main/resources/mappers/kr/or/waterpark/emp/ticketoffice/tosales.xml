@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.emp.team.ticketoffice.dao.ITOSalesDAO">
+	<insert id="insertToSales" parameterType="kr.or.waterpark.emp.team.ticketoffice.vo.TOSalesVO">
+		<selectKey order="BEFORE" keyProperty="pos_no" resultType="int">
+			SELECT MAX(POS_NO)
+	        FROM POS
+	        WHERE FC_ID = #{fc_id} AND POS_WORK_DATE = TO_CHAR(SYSDATE, 'YYYYMMDD') AND EMP_ID = #{emp_id}
+	        
+		</selectKey>
+		INSERT INTO to_sales (
+		    RES_CODE,
+		    FC_ID,
+		    EMP_ID,
+		    POS_NO
+		) VALUES (
+		    #{res_code, jdbcType=VARCHAR},
+			#{fc_id, jdbcType=VARCHAR},
+			#{emp_id, jdbcType=VARCHAR},
+			#{pos_no}
+		)
+		
+	</insert>
+	
+</mapper>

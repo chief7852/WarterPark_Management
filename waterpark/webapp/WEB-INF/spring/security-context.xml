@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+
+	<beans:bean id="shaPasswordEncoder"
+		class="org.springframework.security.authentication.encoding.ShaPasswordEncoder"
+		c:strength="512" p:encodeHashAsBase64="true" />
+
+	<!-- 인증확인 -->
+	<authentication-manager>
+		<!-- authentication정보제공 user-service-ref=""DAO가필요함(UserDetailsService) 
+			, AuthenticateServiceImpl에서 어뎁터를 만든후받아와서 user service ref를 작성한다 (ref== service어노테이션 
+			value) -->
+		<authentication-provider
+			user-service-ref="authService">
+			<!-- 저장되어있는 값들고오기위해 <user-service> <user name="park123" authorities="US" 
+				password="SknbGf+Gu+UwwxddYCnEA/VQEEQFwQfzyqJon3AzmlXS6txg7Wd6I5SkAsZqtIsRNAQ81NH2+l9XITTvSi3k/A=="/> 
+				</user-service> -->
+			<password-encoder ref="shaPasswordEncoder"></password-encoder>
+		</authentication-provider>
+
+		<authentication-provider
+			user-service-ref="EmpAuthService">
+			<!-- 저장되어있는 값들고오기위해 <user-service> <user name="park123" authorities="US" 
+				password="SknbGf+Gu+UwwxddYCnEA/VQEEQFwQfzyqJon3AzmlXS6txg7Wd6I5SkAsZqtIsRNAQ81NH2+l9XITTvSi3k/A=="/> 
+				</user-service> -->
+			<password-encoder ref="shaPasswordEncoder"></password-encoder>
+		</authentication-provider>
+	</authentication-manager>
+
+	<!-- 시큐리티에서 js와 css를 받지 않겠다고 선언한다 최종프로젝트에서는 /resources/**로 하면됨 -->
+	<http pattern="/**/*.js" security="none" />
+	<http pattern="/**/*.css" security="none" />
+
+	<!-- 고객용 login 설정 -->
+	<http pattern="/customer/**" auto-config="true"
+		use-expressions="true">
+		<form-login
+			login-page="/customer/login/customerLoginForm.jsp"
+			login-processing-url="/customer/login" username-parameter="user_id"
+			password-parameter="user_pass"
+			authentication-failure-handler-ref="UserLoginFailureHandler"
+			authentication-success-handler-ref="UserLoginSuccessHandler" />
+		<!-- 로그아웃 로직과 보호자원 로직들 -->
+		<logout logout-url="/customer/logout"
+			logout-success-url="/" invalidate-session="true" />
+
+		<intercept-url pattern="/resources/**"
+			access="permitAll" />
+		<intercept-url pattern="/customer/**" access="permitAll" />
+		<intercept-url pattern="/customer/mypage"
+			access="isAuthenticated()" />
+		<csrf disabled="true" />
+	</http>
+
+	<!-- 고객 로그인 성공 처리 빈 등록 -->
+	<beans:bean id="UserLoginSuccessHandler"
+		class="kr.or.waterpark.common.loginSuccess.UserLoginSuccessHandler">
+		<beans:property name="defaultUrl" value="/customer" />
+	</beans:bean>
+
+	<!-- 로객 로그인 실패 처리 빈 등록 -->
+	<beans:bean id="UserLoginFailureHandler"
+		class="kr.or.waterpark.common.loginSuccess.UserLoginFailureHandler">
+		<beans:property name="defaultFailureUrl"
+			value="/waterpark/customer/login" />
+	</beans:bean>
+
+	<!-- 직원용 login 설정 -->
+	<http pattern="/emp/**" auto-config="true" use-expressions="true">
+		<form-login login-page="/emp/common/emplog.jsp"
+			login-processing-url="/emp/empLogin" 
+			username-parameter="user_id"
+			password-parameter="user_pass"
+			
+			authentication-success-handler-ref="EmpLoginSuccessHandler"
+			authentication-failure-handler-ref="EmpLoginFailureHandler" />
+		<!-- 로그아웃 로직과 보호자원 로직들 -->
+		<logout logout-url="/emp/logout" logout-success-url="/emp/empLogin"
+			invalidate-session="true" />
+		<intercept-url pattern="/resources/**"
+			access="permitAll" />
+		<intercept-url pattern="/emp/empLogin"
+			access="permitAll" />
+		<intercept-url pattern="/emp/**"
+			access="isAuthenticated()" />
+		<csrf disabled="true" />
+	</http>
+
+	<!-- 직원용 로그인 성공 처리용 빈 등록 -->
+	<beans:bean id="EmpLoginSuccessHandler"
+		class="kr.or.waterpark.emp.common.loginSuccess.EmpLoginSuccessHandler">
+		<beans:property name="empDefaultUrl" value="/emp" />
+	</beans:bean>
+	<!-- 로객 로그인 실패 처리 빈 등록 -->
+	<beans:bean id="EmpLoginFailureHandler"
+		class="kr.or.waterpark.emp.common.loginSuccess.EmpLoginFailureHandler">
+		<beans:property name="empDefaultFailureUrl"
+			value="/waterpark/emp/empLogin" />
+	</beans:bean>
+
+</beans:beans>

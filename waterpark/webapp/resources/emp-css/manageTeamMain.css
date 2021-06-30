@@ -1,0 +1,257 @@
+@charset "UTF-8";
+
+#main-content{
+	min-width: 1848px;
+}
+
+.bodyPart {
+	display: flex;
+}
+
+.panel{
+	height:89%;
+	margin-bottom: 0px;
+}
+
+.search-modal-content{
+	height:24%!important;
+}
+
+.hr {
+	height: 1px;
+	background-color: #2196F3;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+
+.selectBar {
+	height: 70px;
+	padding: 10px;
+	margin: 10px auto;
+}
+
+.empBar {
+	width: 450px;
+}
+.wrapper{
+	width:88%;
+}
+
+.empBarBody {
+	height: 600px;
+	overflow: auto;
+}
+
+.head {
+	width: 31%;
+}
+
+.head-info {
+	width: 16%;
+}
+
+.searchForm {
+	width: 25%;
+}
+
+.panel-heading {
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.first {
+	width: 100%;
+	display: flex;
+	padding: 40px;
+	height: 276px;
+	align-items: center;
+	background-color: #B9E2FA;
+	margin-top: 10px;
+}
+
+.searchModal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 10; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+/* Modal Content/Box */
+.search-modal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */
+	height:16%;
+}
+
+#img {
+	width:200px;
+	height:200px;
+}
+
+#img-position{
+	width: 100%;
+    height: 100%;
+}
+
+.empInfo {
+	width: 70%;
+	margin-left: 30px;
+	display: flex;
+}
+
+.picture {
+	width: 20%;
+	text-align: center;
+}
+
+#picture-form{
+	width:110%;	
+}
+
+.empInfo1  {
+	width : 45%;
+	margin-left: 36px;
+}
+
+.empInfo2{
+	width : 45%;
+}
+
+.buttons {
+    width: 56%;
+	align-items: center;
+	text-align: center;
+}
+
+.button {
+	margin: 10px;
+	width: 75px;
+}
+
+.barItems {
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+	margin-top: 10px;
+	border: 1px;
+}
+
+.barItem {
+	width: 25%;
+	font-weight: 100;
+	transition: all ease 0.7s;
+}
+
+#teamBox, #isWorking {
+	margin-right: 20px;
+}
+
+#isWorking, #teamBox, #responseBox{
+	width: 24.5%;
+}
+
+#selectTeam, #selectPosition, #selectFC, .emp_hire, .emp_fire {
+	width: 191px;
+	height: 25px;
+}
+
+#inputForm {
+	display: flex;
+	 width: 80%;
+}
+
+table th, table tr {
+	text-align: center;
+	overflow: auto;
+}
+
+.barItems:hover {
+	color: red;
+	background-color: #C4B4E1;
+	cursor: pointer;
+	transition: 0.3s;
+	text-decoration: underline;
+}
+
+.onlyread {
+	background-color: #C4B4E1!important;
+	color : white!important;
+}
+
+/* <!-- 파일 확인 및 상세정보 입력, 조회--> */
+.bottom-part{
+	display:flex;
+	height:450px;
+}
+
+.licenses, .experience{
+	width:50%;
+	height:100%;
+	overflow:auto;
+}
+
+.adjust-panel{
+	height:100%;
+}
+
+.col-lg-12{
+	width:1614px;
+}
+
+.report-title{
+	width:150px;
+}
+
+.lisence-width{
+	width:146px;	
+}
+
+.lisence-rnum{
+	width:60px;                                    	
+}
+
+.lisence{
+	text-align:center;	
+}
+
+.item-width{
+	width:56%;
+}
+
+.item-wrapper{
+	display:flex;
+	width:100%;
+}
+
+.info-item {
+	width : 303px!important;
+	margin: 10px auto;
+	margin-left: 28px;
+}
+
+.form-control{
+	height:31%!important;
+}
+.checking{
+	width : 250%;
+}
+
+.info-item1{
+	width : 114px!important;
+	margin: 10px auto;
+	margin-left: 10px;
+}
+
+.checking2{
+	width: 70%;
+}
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.emp.team.ticketoffice.dao.IPosDAO">
+	
+	<insert id="insertPos" parameterType="PosVO">
+		<selectKey order="BEFORE" keyProperty="pos_no" resultType="int">
+			SELECT POS_SEQ.NEXTVAL
+			FROM DUAL
+		</selectKey>
+		
+		INSERT INTO POS (
+		    POS_NO,
+		    EMP_ID,
+		    FC_ID,
+		    POS_WORK_DATE,
+		    POS_START
+		    , POS_END
+		    , POS_CLOSE
+		) VALUES (
+		    #{pos_no, jdbcType=VARCHAR},
+		    #{emp_id, jdbcType=VARCHAR},
+		    #{fc_id, jdbcType=VARCHAR},
+		    TO_CHAR(SYSDATE, 'YYYYMMDD'),
+		    SYSDATE
+		    <choose>
+		    	<when test="pos_close != null and @org.apache.commons.lang3.StringUtils@isNotBlank(pos_close)">
+		    	, SYSDATE
+		    	, 'Y'
+		    	</when>
+		    	<otherwise>
+			    , NULL
+			    ,'N'
+		    	</otherwise>
+		    </choose>
+		)
+	</insert>
+
+	<select id="selectPos" parameterType="TOSalesVO" resultType="PosVO">
+		SELECT MAX(POS_NO) POS_NO
+        FROM POS
+        WHERE FC_ID = #{fc_id} AND POS_WORK_DATE = TO_CHAR(SYSDATE, 'YYYYMMDD') AND EMP_ID = #{emp_id}
+	</select>
+</mapper>

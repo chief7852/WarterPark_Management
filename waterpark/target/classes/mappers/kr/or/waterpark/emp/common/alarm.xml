@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.emp.common.alarm.dao.AlarmDAO">
+	<insert id="alarmCreate" parameterType="kr.or.waterpark.emp.common.alarm.vo.AlarmVO">
+
+		INSERT INTO ALARM (
+		    ALARM_NO,
+		    EMP_ID,
+		    ALARM_CONT,
+		    ALARM_DATE
+		) VALUES (
+			ALARMRES_SEQ.NEXTVAL,
+			SUBSTR(#{emp_id},0,12),
+			#{alarm_cont},
+			SYSDATE
+		)
+	</insert>
+	
+	<select id="alarmList" parameterType="String" resultType="kr.or.waterpark.emp.common.alarm.vo.AlarmVO">
+		SELECT
+		    A.ALARM_NO,
+		    A.EMP_ID,
+		    A.ALARM_CONT,
+		    A.ALARM_DATE,
+		    B.ALARM_CHECK_DATE
+		FROM
+		    ALARM A 
+		LEFT OUTER JOIN ALARM_RECEIVER B
+		ON ( A.ALARM_NO = B.ALARM_NO AND A.EMP_ID = B.EMP_ID)
+		WHERE A.EMP_ID = #{emp_id}
+		AND B.ALARM_CHECK_DATE IS NULL 
+		ORDER BY A.ALARM_DATE DESC
+	</select>
+	
+	<select id="alarmCount" parameterType="String" resultType="int">
+		SELECT 
+		    COUNT(*)
+		    FROM ALARM_RECEIVER
+		WHERE EMP_ID = SUBSTR(#{emp_id},0,12)
+		AND ALARM_CHECK_DATE IS NULL 
+	</select>
+
+	<update id="alarmDelete" parameterType="int">
+		UPDATE ALARM_RECEIVER
+		    SET
+		        ALARM_CHECK_DATE = SYSDATE
+		WHERE
+		    ALARM_NO = #{alarm_no}
+	</update>
+</mapper>
+

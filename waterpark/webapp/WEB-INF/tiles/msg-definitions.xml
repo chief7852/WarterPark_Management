@@ -2,29 +2,114 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd" >
 <tiles-definitions>
 
-  <definition name="super" template="/WEB-INF/views/customerTemplate.jsp">
-     <put-attribute name="title" value="DaeDeok WaterPark" />	  
-     <put-attribute name="preScript" value="/includee/preScript.jsp" />
-     <put-attribute name="headerMenu" value="/includee/headerMenu.jsp" />
-     <put-attribute name="headData" value="/includee/headData.jsp"/>
-     <put-attribute name="footer" value="/includee/footer.jsp" />
-     <put-attribute name="postScript" value="/includee/postScript.jsp" />
+  <definition name="customer" template="/WEB-INF/views/customer/customerTemplate.jsp">
+     <put-attribute name="customerTitle" value="DaeDeok WaterPark" />	  
+     <put-attribute name="customerHeaderMenu" value="/customer-includee/headerMenu.jsp" />
+     <put-attribute name="customerHeadData" value="/customer-includee/headData.jsp"/>
+     <put-attribute name="customerFooter" value="/customer-includee/footer.jsp" />
+     <put-attribute name="customerPostScript" value="/customer-includee/postScript.jsp" />
   </definition>
   
-   <definition name="*" extends="super">
-     <put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
+  <definition name="customer/**" extends="customer">
+      <put-attribute name="customerContent" value="/WEB-INF/views/customer/{1}.jsp" />
+      <put-attribute name="customerPreScript" value="/customer-includee/preScript.jsp" />
   </definition>
   
-  <definition name="*/*" extends="super">
-     <put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
+  <definition name="customer/reserve/reserveForm" extends="customer">
+  	<put-attribute name="customerContent" value="/WEB-INF/views/customer/reserve/reserveForm.jsp" />
+  	<put-attribute name="customerPreScript" value="/customer-includee/preScriptForCalendar.jsp" />
   </definition>
   
-<!--   <definition name="prod/*" extends ="super">
-  	<put-attribute name="content" value="/WEB-INF/views/prod/{1}.jsp" />
+  <definition name="/customer/customerIntro/intro" extends="customer">
+  	<put-attribute name="customerContent" value="/WEB-INF/views/customer/customerIntro/intro.jsp" />
+  	<put-attribute name="customerPreScript" value="/customer-includee/preScript.jsp" />
   </definition>
   
-  <definition name="member/*" extends ="super">
-  	<put-attribute name="content" value="/WEB-INF/views/member/{1}.jsp" />
-  </definition> -->
+  <definition name="/customer/customerIntro/open" extends="customer">
+  	<put-attribute name="customerContent" value="/WEB-INF/views/customer/customerIntro/open.jsp" />
+  	<put-attribute name="customerPreScript" value="/customer-includee/preScript.jsp" />
+  </definition>
   
+  <definition name="/customer/customerUseInfo/ticket" extends="customer">
+  	<put-attribute name="customerContent" value="/WEB-INF/views/customer/customerUseInfo/ticket.jsp" />
+  	<put-attribute name="customerPreScript" value="/customer-includee/preScript.jsp" />
+  </definition>
+  
+  <definition name="/customer/customerUseInfo/coin" extends="customer">
+  	<put-attribute name="customerContent" value="/WEB-INF/views/customer/customerUseInfo/coin.jsp" />
+  	<put-attribute name="customerPreScript" value="/customer-includee/preScript.jsp" />
+  </definition>
+  
+  <definition name="/customer/customerUseInfo/map" extends="customer">
+  	<put-attribute name="customerContent" value="/WEB-INF/views/customer/customerUseInfo/map.jsp" />
+  	<put-attribute name="customerPreScript" value="/customer-includee/preScript.jsp" />
+  </definition>
+
+  <definition name="/customer/customerUseInfo/map2" extends="customer">
+  	<put-attribute name="customerContent" value="/WEB-INF/views/customer/customerUseInfo/map2.jsp" />
+  	<put-attribute name="customerPreScript" value="/customer-includee/preScript.jsp" />
+  </definition>
+  
+  <definition name="/customer/customerUseInfo/map3" extends="customer">
+  	<put-attribute name="customerContent" value="/WEB-INF/views/customer/customerUseInfo/map3.jsp" />
+  	<put-attribute name="customerPreScript" value="/customer-includee/preScript.jsp" />
+  </definition>
+  
+  
+  <definition name="/customer/customerUseInfo/noticeForm" extends="customer">
+  	<put-attribute name="customerContent" value="/WEB-INF/views/customer/notice/noticeForm.jsp" />
+  	<put-attribute name="customerPreScript" value="/customer-includee/preScript.jsp" />
+  </definition>
+
+  <definition name="/customer/customerUseInfo/map4" extends="customer">
+  	<put-attribute name="customerContent" value="/WEB-INF/views/customer/customerUseInfo/map4.jsp" />
+  	<put-attribute name="customerPreScript" value="/customer-includee/preScript.jsp" />
+  </definition>  
+  
+   <definition name="empMain" template="/WEB-INF/views/emp/empTemplate.jsp">
+  	<put-attribute name="empTitle" value="DaeDeok Waterpark EMP Page" />
+    <put-attribute name="empHeaderMenu" value="/emp-includee/empHeaderMenu.jsp" />
+    <put-attribute name="empHeadData" value="/emp-includee/empHeadData.jsp"/>
+    <put-attribute name="empPostScript" value="/emp-includee/empPostScript.jsp" />
+   </definition>
+	
+	<definition name="emp/empMain" extends="empMain">
+		<put-attribute name="empAsideBar" value="/emp-includee/empAsideBarForMain.jsp"/>
+		<put-attribute name="empContent" value="/WEB-INF/views/emp/empMain.jsp" />
+	</definition>
+    
+    <definition name="emp/common/issue/**" extends="empMain">
+		<put-attribute name="empAsideBar" value="/emp-includee/empAsideBarForIssue.jsp"/>
+		<put-attribute name="empContent" value="/WEB-INF/views/emp/common/issue/{1}.jsp" />
+	</definition>
+   
+    <definition name="emp/common/email/**" extends="empMain">
+		<put-attribute name="empAsideBar" value="/emp-includee/empAsideBarForEmail.jsp"/>
+		<put-attribute name="empContent" value="/WEB-INF/views/emp/common/email/{1}.jsp" />
+	</definition>
+  
+  <definition name="emp/team/manageTeam/**" extends="empMain">
+		<put-attribute name="empAsideBar" value="/emp-includee/empAsideBarForManageTeam.jsp"/>
+		<put-attribute name="empContent" value="/WEB-INF/views/emp/team/manageTeam/{1}.jsp" />
+	</definition>
+  
+  <definition name="emp/common/notice/noticeList" extends="empMain">
+		<put-attribute name="empAsideBar" value="/emp-includee/empAsideBarForMain.jsp"/>
+		<put-attribute name="empContent" value="/WEB-INF/views/emp/common/notice/noticeList.jsp" />
+  </definition>
+
+  <definition name="emp/common/notice/noticeDetail" extends="empMain">
+		<put-attribute name="empAsideBar" value="/emp-includee/empAsideBarForMain.jsp"/>
+		<put-attribute name="empContent" value="/WEB-INF/views/emp/common/notice/noticeDetail.jsp" />
+  </definition>
+
+  <definition name="emp/common/notice/noticeForm" extends="empMain">
+		<put-attribute name="empAsideBar" value="/emp-includee/empAsideBarForMain.jsp"/>
+		<put-attribute name="empContent" value="/WEB-INF/views/emp/common/notice/noticeForm.jsp" />
+  </definition>
+      
 </tiles-definitions>
+
+
+
+

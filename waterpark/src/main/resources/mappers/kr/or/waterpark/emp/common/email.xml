@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.emp.common.email.dao.IEmailDAO">
+<sql id="searchFrag">
+		<trim prefixOverrides="AND" suffixOverrides="OR"> 
+			AND 
+			<trim prefix="AND (" suffix=")">
+				<if test="searchMap!=null and @org.apache.commons.lang3.StringUtils@isNotBlank(searchMap.searchWord)">
+					<choose>
+						<when test="searchMap.searchType eq 'title'">
+							INSTR(EMAIL_TITLE, #{searchMap.searchWord}) > 0
+						</when>
+						<when test="searchMap.searchType eq 'sender'">
+							INSTR(SENDER_NAME, #{searchMap.searchWord}) > 0
+						</when>
+						<when test="searchMap.searchType eq 'content'">
+							INSTR(EMAIL_CONT, #{searchMap.searchWord}) > 0
+						</when>
+						<otherwise>
+							INSTR(EMAIL_TITLE, #{searchMap.searchWord}) > 0
+							OR 
+							INSTR(EMP_NAME, #{searchMap.searchWord}) > 0
+							OR
+							INSTR(EMAIL_CONT, #{searchMap.searchWord}) > 0
+						</otherwise>
+					</choose>
+				</if>
+			</trim>
+			<trim prefix="AND (" suffix=")" prefixOverrides="AND">
+				<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(searchMap.minDate)">
+					AND TO_DATE(SEND_DATE,'YYYY-MM-DD HH:MI') >= TO_DATE(#{searchMap.minDate}, 'YYYY-MM-DD HH:MI') 
+				</if>
+				<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(searchMap.maxDate)">
+					<![CDATA[
+					AND TO_DATE(SEND_DATE,'YYYY-MM-DD HH:MI') <= TO_DATE(#{searchMap.maxDate}, 'YYYY-MM-DD HH:MI')
+					]]> 
+				</if>
+			</trim>	
+		</trim>
+	</sql>
+	
+	<select id="selectEmailCount" parameterType="kr.or.waterpark.emp.team.snack.vo.PagingVO" resultType="int">
+		select count(*) from email_view
+		where 1 = 1
+			<choose>
+    			<when test='email_type.equals("trash")'>
+					 AND EMAIL_DEL ='Y'
+	    			 AND RECEIVER_ID = #{emp_id}
+				</when>
+    			<when test='email_type.equals("send")'>
+    				 AND EMAIL_DEL = 'N'
+			 		 AND SENDER_ID = #{emp_id}
+    			</when>
+    			<otherwise>
+					 AND EMAIL_DEL = 'N'
+			         AND RECEIVER_ID = #{emp_id}
+				</otherwise>
+			</choose>
+		<include refid="searchFrag" />
+	</select>
+	
+	<select id="selectEmailList" 
+	parameterType="kr.or.waterpark.emp.team.snack.vo.PagingVO"
+	resultType="kr.or.waterpark.emp.common.email.vo.EmailVO">
+	  select d.* 
+ from(
+   select ROWNUM as rnum,
+          c.*
+     from (select B.* 
+             FROM (SELECT A.EMAIL_NO,
+                          A.SENDER_ID,
+                          A.SENDER_NAME,
+                          A.SEND_DATE,
+                          A.EMAIL_TITLE,
+                          A.EMAIL_CONT,
+                          A.EMAIL_RESERVE,
+                          A.RECEIVER_NAME,
+                          A.RECEIVER_ID,
+                          TO_CHAR(A.RECEIVE_DATE,'YYYY-MM-DD HH:MI') AS RECEIVE_DATE,
+                          A.EMAIL_RESERVE_DEL,
+                          A.RECEIVE_DEL,
+                          A.EMAIL_DEL,
+                          A.FILE_NO  
+             FROM EMAIL_VIEW A ) B
+            where 1=1
+            <choose>
+                <when test='email_type.equals("trash")'>
+                     AND EMAIL_DEL ='Y'
+                     AND RECEIVER_ID = #{emp_id}
+                </when>
+                <when test='email_type.equals("send")'>
+                     AND EMAIL_DEL = 'N'
+                     AND SENDER_ID = #{emp_id}
+                </when>
+                <otherwise>
+                     AND EMAIL_DEL = 'N'
+                     AND RECEIVER_ID = #{emp_id}
+                </otherwise>
+            </choose>
+            <include refid="searchFrag" />  
+            order by send_date desc)c) d 
+            where 1 = 1
+             <![CDATA[
+			AND RNUM >= #{startRow} AND RNUM <= #{endRow}
+			]]> 
+	</select>
+
+	<select id="selectUploadFiles" parameterType ="kr.or.waterpark.emp.common.email.vo.EmailVO" resultType="kr.or.waterpark.common.vo.FilesVO">
+		SELECT FILE_NO
+		       ,FILE_ORD
+		       ,FILE_BIZ
+		       ,FILE_PATH
+		       ,FILE_ORIGIN
+		       ,FILE_SAVE
+		       ,FILE_TYPE
+		       ,FILE_DEL
+		       FROM FILES 
+		       WHERE FILE_NO = #{file_no}
+	</select>
+
+	<select id="selectEmail" parameterType="kr.or.waterpark.emp.common.email.vo.EmailVO" resultType="kr.or.waterpark.emp.common.email.vo.EmailVO">
+		SELECT EMAIL_NO
+               ,A.SENDER_ID
+               ,A.SENDER_NAME
+               ,A.SEND_DATE
+               ,A.EMAIL_TITLE
+               ,A.EMAIL_CONT
+               ,A.EMAIL_RESERVE
+               ,A.RECEIVER_NAME
+               ,A.RECEIVER_ID
+               ,A.RECEIVE_DATE
+               ,A.FILE_NO
+          FROM EMAIL_VIEW A
+         WHERE EMAIL_NO = #{email_no}
+           <if test='receiver_id != null'>
+           	  AND RECEIVER_ID = #{receiver_id}	
+           </if>
+           <if test="sender_id != null">
+           	  AND SENDER_ID = #{sender_id}
+           </if>
+	</select>
+	
+	<update id="updateEmailAsReadForOne" parameterType="kr.or.waterpark.emp.common.email.vo.EmailVO">
+		UPDATE EMAIL_RECEIVER
+		   SET EMAIL_RECEIVE = SYSDATE
+		 WHERE EMAIL_NO = #{email_no}
+		   AND EMAIL_RECEIVE IS NULL
+	</update>
+	
+	<update id="updateEmailAsRead" parameterType="java.util.List">
+		UPDATE EMAIL_RECEIVER
+		   SET EMAIL_RECEIVE = SYSDATE
+		 WHERE EMAIL_NO 
+		 in (<foreach collection="list" item="item" separator=",">
+		 	#{item}
+		 </foreach>)
+		 and EMAIL_RECEIVE IS NULL
+	</update>
+
+	<update id="updateEmailAsDelete" parameterType="java.util.List">
+		UPDATE EMAIL
+		   SET EMAIL_DEL = 'Y'
+		 WHERE EMAIL_NO 
+		 in (<foreach collection="list" item="item" separator=",">
+		 	#{item}
+		 </foreach>)
+	</update>
+	
+	<insert id="insertEmailsToReceive" parameterType="kr.or.waterpark.emp.common.email.vo.EmailVO">
+		<selectKey resultType="int" keyProperty="email_no" order="BEFORE">
+			SELECT EMAIL_SEQ.CURRVAL
+			  FROM DUAL
+		</selectKey>
+		INSERT ALL
+		<foreach collection = "email_id_list" item="receiver">	
+		  INTO EMAIL_RECEIVER
+		      (
+		       EMP_ID
+			  ,EMAIL_NO
+              ,EMAIL_RECEIVE
+              ,RECEIVE_DEL
+             ) VALUES(
+             	SUBSTR(#{receiver},0,12),
+             	#{email_no},
+             	null,
+             	'N'
+             )
+         </foreach>
+         select count(*) from dual
+	</insert>
+	
+	<insert id="insertEmailsToSend" parameterType="kr.or.waterpark.emp.common.email.vo.EmailVO">
+		INSERT INTO 
+		   EMAIL(
+		  		 EMAIL_NO
+				,EMP_ID
+				,EMAIL_SEND
+				,EMAIL_TITLE
+				,EMAIL_CONT
+				,EMAIL_DEL
+				,EMAIL_RESERVE
+				,EMAIL_RESERVE_DEL
+				,FILE_NO
+		  	)VALUES(
+		  		 EMAIL_SEQ.NEXTVAL
+		  		,SUBSTR(#{sender_id},0,12)
+		  		,SYSDATE
+		  		,#{email_title,jdbcType=VARCHAR}
+		  		,#{email_cont,jdbcType=VARCHAR}
+		  		,'N'
+		  		<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(email_reserve)">
+		  		,#{email_reserve}
+		  		</if>
+		  		<if test="@org.apache.commons.lang3.StringUtils@isBlank(email_reserve)">
+			    , null
+			    </if>
+			    ,'N'
+			    ,FILES_SEQ.NEXTVAL
+		  	)
+	</insert>
+	
+	<update id="deleteOneEmail" parameterType="kr.or.waterpark.emp.common.email.vo.EmailVO">
+		UPDATE EMAIL
+		   SET EMAIL_DEL = 'Y'
+		 WHERE EMAIL_NO = #{email_no}
+	</update>
+	
+	<select id="selectSendedEmailList" parameterType="kr.or.waterpark.emp.common.email.vo.EmailVO" resultType="EmailVO">
+		 select EMAIL_NO
+		       ,SENDER_ID
+		       ,SENDER_NAME
+		       ,SEND_DATE
+		       ,EMAIL_TITLE
+		       ,EMAIL_CONT
+		       ,EMAIL_RESERVE
+		       ,RECEIVER_NAME
+		       ,RECEIVER_ID
+		       ,RECEIVE_DATE
+		       ,EMAIL_RESERVE_DEL
+		       ,RECEIVE_DEL
+		       ,EMAIL_DEL
+		       ,FILE_NO
+		   from email_view
+  		  where sender_id = #{sender_id}
+  		        and email_no = #{email_no}
+	</select>
+	
+	<select id="selectUnreadEmailsNum" parameterType="String" resultType="int">
+	    SELECT COUNT(*)
+		  FROM EMAIL_VIEW
+		 WHERE RECEIVER_ID = #{data}
+           AND RECEIVE_DATE IS NULL
+	</select>
+	
+</mapper>

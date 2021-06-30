@@ -23,18 +23,8 @@
 			expression="org.springframework.web.bind.annotation.ControllerAdvice"/>	
 	</context:component-scan>
 	
+	<util:properties id="appInfo" location="classpath:mappers/kr/or/waterpark/appInfo.properties" />
 	
+	<bean id="filterMultipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>
 </beans>
-
-
-
-
-
-
-
-
-
-
-
-
 

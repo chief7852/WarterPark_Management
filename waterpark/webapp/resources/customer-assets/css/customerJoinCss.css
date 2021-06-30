@@ -1,0 +1,20 @@
+@charset "UTF-8";
+.agreement {
+	display: inline-block;
+}
+
+.btn-success {
+	margin-top: 10px;
+}
+
+.agree {
+	magin-left: 20px;
+}
+
+.error{
+	color: red;
+}
+
+.message{
+	color: red;
+}

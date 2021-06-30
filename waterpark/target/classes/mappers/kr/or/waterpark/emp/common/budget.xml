@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.emp.team.manage.emp.dao.IBudgetDAO">
+
+<!-- 금일이용권수익 -->
+<select id="tickettingMoney" resultType="String">
+/* kr.or.waterpark.emp.team.manage.emp.dao.IBudgetDAO.tickettingMoney */
+	SELECT 
+		REGEXP_REPLACE(REVERSE(REGEXP_REPLACE( REVERSE(TO_CHAR(NVL(SUM(PAY_AMOUNT), 0))), '([0-9]{3})','\1,')), '^,','') TODAY_PROFIT
+	FROM RESERVE A 
+		LEFT OUTER JOIN PAY B ON (A.RES_CODE = B.RES_CODE)
+	WHERE PAY_WAY = 'TO' AND TO_CHAR(RES_DATE, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+</select>
+
+<!-- 금일 예약자 -->
+<select id="reservevisitorToday" resultType="String">
+/* kr.or.waterpark.emp.team.manage.emp.dao.IBudgetDAO.reservevisitorToday */
+	SELECT 
+	 	  NVL(COUNT(C.RES_INFO_CODE), 0) PRE_VISIT_CUSTOMER
+  	FROM RESERVE A LEFT OUTER JOIN PAY B ON (A.RES_CODE = B.RES_CODE)
+		 LEFT OUTER JOIN RES_INFO C ON (A.RES_CODE = C.RES_CODE)
+		 WHERE TO_CHAR(RES_PREDATE, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD') 
+		 AND PAY_WAY = 'OP'
+</select>
+
+<!-- 금일 상품판매 수익 -->
+<select id="prodToday" resultType="String">
+/* kr.or.waterpark.emp.team.manage.emp.dao.IBudgetDAO.prodToday */
+	SELECT
+		  REGEXP_REPLACE(REVERSE(REGEXP_REPLACE( REVERSE(TO_CHAR(NVL(SUM(COIN_USE_AMOUNT), 0))), '([0-9]{3})','\1,')), '^,','') TODAY_PROFIT
+    FROM COIN_USE
+		  WHERE TO_CHAR(COIN_USE_DATE,'YYYYMMDD') = TO_CHAR(SYSDATE,'YYYYMMDD') AND COIN_USE_CANCEL IS NULL     
+</select>
+
+<!-- 금일 방문객수 -->
+<select id="usevisitorToday" resultType="String">
+/* kr.or.waterpark.emp.team.manage.emp.dao.IBudgetDAO.usevisitorToday */
+	SELECT 
+		REGEXP_REPLACE(REVERSE(REGEXP_REPLACE( REVERSE(TO_CHAR(COUNT(*) )), '([0-9]{3})','\1,')), '^,','') TODAY_PROFIT
+	FROM COIN WHERE TO_CHAR(COIN_START, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+</select>
+
+<!-- 온라인예약 월별데이터 -->
+<select id="visitorMonthOP" parameterType="int" resultType="String">
+/* kr.or.waterpark.emp.team.manage.emp.dao.IBudgetDAO.visitorMonthOP */
+	SELECT 
+	      REGEXP_REPLACE(REVERSE(REGEXP_REPLACE( REVERSE(TO_CHAR(COUNT(*))), '([0-9]{3})','\1,')), '^,','') TODAY_PROFIT
+	FROM COIN A 
+		 RIGHT OUTER JOIN RES_INFO B ON(A.RES_INFO_CODE = B.RES_INFO_CODE)
+		 INNER JOIN PAY C ON(B.RES_CODE = C.RES_CODE)
+		  WHERE TO_CHAR(A.COIN_START,'YYYY') = TO_CHAR(SYSDATE,'YYYY')
+		  AND TO_NUMBER(TO_CHAR(A.COIN_START,'MM')) = #{month}
+		  AND C.PAY_WAY ='OP'
+</select>
+
+<!-- 월별 현장발권데이터 -->
+<select id="visitorMonthTO" parameterType="int" resultType="String">
+/* kr.or.waterpark.emp.team.manage.emp.dao.IBudgetDAO.visitorMonthTO */
+	SELECT 
+	      REGEXP_REPLACE(REVERSE(REGEXP_REPLACE( REVERSE(TO_CHAR(COUNT(*))), '([0-9]{3})','\1,')), '^,','') TODAY_PROFIT
+	FROM COIN A 
+		 RIGHT OUTER JOIN RES_INFO B ON(A.RES_INFO_CODE = B.RES_INFO_CODE)
+		 INNER JOIN PAY C ON(B.RES_CODE = C.RES_CODE)
+		  WHERE TO_CHAR(A.COIN_START,'YYYY') = TO_CHAR(SYSDATE,'YYYY')
+		  AND TO_NUMBER(TO_CHAR(A.COIN_START,'MM')) = #{month}
+		  AND C.PAY_WAY ='TO'
+</select>
+
+<!-- 금일 상품만판매 수익 -->
+<select id="todayMoneyPR" resultType="String">
+	
+	SELECT
+	     REGEXP_REPLACE(REVERSE(REGEXP_REPLACE( REVERSE(TO_CHAR(NVL(SUM(A.COIN_USE_AMOUNT),0))), '([0-9]{3})','\1,')), '^,','') TODAY_PROFIT 
+	FROM
+	    COIN_USE A 
+	    LEFT OUTER JOIN PROD B ON(A.PROD_CODE = B.PROD_CODE)
+	    WHERE A.COIN_USE_CANCEL IS NULL
+	    AND TO_CHAR(A.COIN_USE_DATE,'YYMMDD') = TO_CHAR(SYSDATE,'YYMMDD')
+	    AND (B.LPROD_ID = 'RT' 
+	    OR B.LPROD_ID = 'PD')
+</select>
+<!-- 금일 음식판매 수익 -->
+<select id="todayMoneyfood" resultType="String">
+	SELECT
+	    REGEXP_REPLACE(REVERSE(REGEXP_REPLACE( REVERSE(TO_CHAR(NVL(SUM(A.COIN_USE_AMOUNT),0))), '([0-9]{3})','\1,')), '^,','') TODAY_PROFIT 
+	FROM
+	    COIN_USE A 
+	    LEFT OUTER JOIN PROD B ON(A.PROD_CODE = B.PROD_CODE)
+	    WHERE TO_CHAR(A.COIN_USE_DATE,'YYMMDD') = TO_CHAR(SYSDATE,'YYMMDD')
+	    AND A.COIN_USE_CANCEL IS NULL
+	    AND (B.LPROD_ID = 'MN' 
+	    OR B.LPROD_ID = 'FD')    
+</select>
+</mapper>

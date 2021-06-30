@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.common.dao.IFileDAO">
+
+	<insert id="insertFiles" parameterType="kr.or.waterpark.emp.common.email.vo.EmailVO">
+		INSERT ALL
+		<foreach collection="fileList" item="file" index="idx">
+			INTO FILES(
+				 FILE_NO
+				,FILE_ORD
+				,FILE_BIZ
+				,FILE_PATH
+				,FILE_ORIGIN
+				,FILE_SAVE
+				,FILE_TYPE
+			)
+			VALUES(
+				FILES_SEQ.CURRVAL
+				, (#{idx}+1) 
+				,'OT'
+				,#{file.file_path,jdbcType=VARCHAR}
+				,#{file.file_origin,jdbcType=VARCHAR}
+				,#{file.file_save,jdbcType=VARCHAR}
+				,#{file.file_type,jdbcType=VARCHAR}
+			)
+		</foreach>
+		SELECT * FROM DUAL
+	</insert>
+	
+	<select id="selectFile" parameterType="kr.or.waterpark.common.vo.FilesVO" resultType="kr.or.waterpark.common.vo.FilesVO">
+	 SELECT FILE_NO
+		    ,FILE_ORD
+		    ,FILE_BIZ
+		    ,FILE_PATH
+		    ,FILE_ORIGIN
+		    ,FILE_SAVE
+		    ,FILE_TYPE
+		    ,FILE_DEL
+	   FROM FILES 
+	   WHERE FILE_NO = #{file_no}
+	     AND FILE_ORD = #{file_ord}
+	</select>
+	
+	<insert id="insertFilesForEmp" parameterType="kr.or.waterpark.emp.common.login.vo.EmpVO">
+		INSERT ALL
+		<foreach collection="fileList" item="file" index="idx">
+			INTO FILES(
+				 FILE_NO
+				,FILE_ORD
+				,FILE_BIZ
+				,FILE_PATH
+				,FILE_ORIGIN
+				,FILE_SAVE
+				,FILE_TYPE
+			)
+			VALUES(
+				FILES_SEQ.CURRVAL
+				, (#{idx}+1) 
+				<choose>
+					<when test ='file.file_biz.equals("ID")'>
+					,'ID'
+					</when>
+					<when test ='file.file_biz.equals("CR")'>
+					,'CR'
+					</when>
+					<when test ='file.file_biz.equals("EH")'>
+					,'EH'
+					</when>
+					<otherwise>
+					,'OT'
+					</otherwise>
+				</choose>
+				,#{file.file_path,jdbcType=VARCHAR}
+				,#{file.file_origin,jdbcType=VARCHAR}
+				,#{file.file_save,jdbcType=VARCHAR}
+				,#{file.file_type,jdbcType=VARCHAR}
+			)
+		</foreach>
+		SELECT * FROM DUAL
+	</insert>
+	
+	<insert id="insertFilesForResume" parameterType="kr.or.waterpark.emp.common.resume.vo.ResumeVO">
+		<selectKey resultType="int" keyProperty="file_no" order="BEFORE">
+			SELECT FILES_SEQ.NEXTVAL AS FILE_NO
+			  FROM DUAL
+		</selectKey>
+		INSERT ALL
+		<foreach collection="fileList" item="file" index="idx">
+			INTO FILES(
+				 FILE_NO
+				,FILE_ORD
+				,FILE_BIZ
+				,FILE_PATH
+				,FILE_ORIGIN
+				,FILE_SAVE
+				,FILE_TYPE
+			)
+			VALUES(
+				#{file_no}
+				, (#{idx}+1) 
+				<choose>
+					<when test ='file.file_biz.equals("ID")'>
+					,'ID'
+					</when>
+					<when test ='file.file_biz.equals("CR")'>
+					,'CR'
+					</when>
+					<when test ='file.file_biz.equals("EH")'>
+					,'EH'
+					</when>
+					<otherwise>
+					,'OT'
+					</otherwise>
+				</choose>
+				,#{file.file_path,jdbcType=VARCHAR}
+				,#{file.file_origin,jdbcType=VARCHAR}
+				,#{file.file_save,jdbcType=VARCHAR}
+				,#{file.file_type,jdbcType=VARCHAR}
+			)
+		</foreach>
+		SELECT * FROM DUAL
+	</insert>
+	
+</mapper>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.customer.common.reserve.dao.ITicketDAO">
+	
+		<sql id="getPriceForm">
+		<trim prefix="WHERE" prefixOverrides="AND" suffixOverrides="OR">
+		 	<choose>
+		 		<when test="(ticket_age == null or @org.apache.commons.lang3.StringUtils@isBlank(ticket_age)) and (ticket_id == null or @org.apache.commons.lang3.StringUtils@isBlank(ticket_id))">
+		 			TICKET_AGE = 'AD' OR B.TICKET_TYPE='SN' 
+		 		</when>
+		 		<when test="ticket_name != null and @org.apache.commons.lang3.StringUtils@isNotBlank(ticket_name)">
+		 			B.TICKET_NAME = #{ticket_name}
+<!-- 		 		</when> -->
+<!-- 		 		<when test="ticket_type != null and @org.apache.commons.lang3.StringUtils@isNotBlank(ticket_type)"> -->
+		 			AND B.TICKET_TYPE = #{ticket_type}
+<!-- 		 		</when> -->
+<!-- 		 		<when test="ticket_age != null and @org.apache.commons.lang3.StringUtils@isNotBlank(ticket_age)"> -->
+		 			AND TICKET_AGE = #{ticket_age}
+		 		</when>
+		 		<when test="ticket_id != null or @org.apache.commons.lang3.StringUtils@isBlank(ticket_id)">
+		 			TICKET_ID = #{ticket_id} 
+		 		</when>
+		 	</choose>
+		</trim>
+	</sql>
+	
+	
+	<select id="selectSimpleTicketList" parameterType="TicketVO" resultType="TicketVO">
+		SELECT TICKET_ID,
+			REGEXP_REPLACE(REVERSE(REGEXP_REPLACE( REVERSE(TO_CHAR(TICKET_PRICE)), '([0-9]{3})','\1,')), '^,','') TICKET_PRICE,
+			(select get_code_name_func(ticket_age, 'TA') from dual) ticket_age_name,
+			A.*
+			FROM (SELECT
+			    TICKET_NAME,
+			    TICKET_TYPE,
+			    (SELECT GET_CODE_NAME_FUNC(TICKET_TYPE, 'TT') FROM DUAL) TICKET_TYPE_NAME,
+			    TICKET_SALE,
+			    TICKET_GRP
+			FROM
+			    TICKET
+			<if test="ticket_grp != null and @org.apache.commons.lang3.StringUtils@isNotBlank(ticket_grp)">
+				<trim prefix="WHERE">
+					TICKET_GRP = #{ticket_grp}
+				</trim>
+			</if>
+			GROUP BY TICKET_NAME, TICKET_TYPE, TICKET_SALE, TICKET_GRP
+			ORDER BY (
+			    CASE TICKET_GRP
+			        WHEN 'DY' THEN 1
+			        WHEN 'YR' THEN 2
+			        ELSE 3
+			    END
+			), TICKET_NAME) A 
+			LEFT OUTER JOIN TICKET B ON (A.TICKET_NAME = B.TICKET_NAME AND A.TICKET_TYPE = B.TICKET_TYPE)
+			<include refid="getPriceForm" />
+	</select>
+	
+	<select id="selectTicketGrpList" parameterType="TicketListForResVO" resultType="string">
+		SELECT TICKET_GRP
+			FROM TICKET
+			WHERE TICKET_ID IN
+			<foreach collection="ticketListForRes" open="(" close=")" separator="," item="res">
+				#{res.ticket_id}
+			</foreach>
+	</select>
+	
+	<select id="selectTicketListForTO" parameterType="string" resultType="TicketVO">
+		SELECT
+		    TICKET_ID,
+		    TICKET_NAME,
+		    TICKET_TYPE,
+		    GET_CODE_NAME_FUNC(TICKET_TYPE, 'TT') TICKET_TYPE_NAME,
+		    TICKET_AGE,
+		    GET_CODE_NAME_FUNC(TICKET_AGE, 'TA') TICKET_AGE_NAME,
+		    REGEXP_REPLACE(REVERSE(REGEXP_REPLACE( REVERSE(TO_CHAR(TICKET_PRICE)), '([0-9]{3})','\1,')), '^,','') TICKET_PRICE,
+		    TICKET_SALE,
+		    REMARK,
+		    TICKET_GRP
+		FROM
+		    TICKET
+		<if test="ticket_grp != null and @org.apache.commons.lang3.StringUtils@isNotBlank(ticket_grp)">
+		WHERE TICKET_GRP = #{data}
+		</if>
+	</select>
+	
+</mapper>

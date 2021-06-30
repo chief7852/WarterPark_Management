@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.common.qna.dao.IQnaDAO">
+
+<select id="AllQnaList" resultType="kr.or.waterpark.common.vo.QnaVO">
+	SELECT
+	    QNA_NO, USER_ID ,QNA_TITLE, QNA_CONT,
+		GET_CODE_NAME_FUNC(LQNA_CODE, 'QA')LQNA_CODE
+		, QNA_ANSWER, QNA_DATE
+	FROM QNA ORDER BY QNA_NO DESC
+</select>
+
+<insert id="insertQna" parameterType="kr.or.waterpark.common.vo.QnaVO">
+	<selectKey resultType="int" keyProperty="qna_no" order="BEFORE">
+	SELECT QNA_SEQ.NEXTVAL
+	FROM DUAL
+	</selectKey>
+	INSERT INTO QNA(
+		QNA_NO, USER_ID, QNA_TITLE, QNA_CONT, LQNA_CODE,
+		QNA_ANSWER, QNA_DATE
+	) VALUES (
+		#{qna_no},
+		#{user_id},
+		#{qna_title, jdbcType=VARCHAR},
+		#{qna_cont, jdbcType=CLOB},
+		#{lqna_code, jdbcType=CLOB},
+		#{qna_answer, jdbcType=CLOB},
+		#{qna_date, jdbcType=VARCHAR}
+	)	
+</insert>
+
+<delete id="deleteQna" parameterType="kr.or.waterpark.common.vo.QnaVO">
+			DELETE FROM QNA
+		WHERE
+		    QNA_NO = #{qna_no}
+</delete>
+</mapper>

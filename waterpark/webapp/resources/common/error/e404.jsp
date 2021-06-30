@@ -74,7 +74,7 @@ a:hover {
     <div class="err">4</div>
     <i class="far fa-question-circle fa-spin"></i>
     <div class="err2">4</div>
-    <div class="msg">찾을수 없는 페이지입니다.<p>홈으로 돌아가려면 <a href="#">home</a> 를 누르십시오.</p></div>
+    <div class="msg">찾을수 없는 페이지입니다.<p>홈으로 돌아가려면 <a href="${WCP }/emp">home</a> 를 누르십시오.</p></div>
       </div>
       </body>
 </html>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.common.uboard.dao.IUboardDAO">
+	<sql id="searchFrag">
+		<trim prefixOverrides="AND" suffixOverrides="OR">
+			<trim prefix="AND (" suffix=")">
+				<if
+					test="searchMap!null and @org.apache.commons.lang3.StringUtils@isNotBlank(searchMap.searchWord)">
+					<choose>
+						<when test="searchMap.searchType eq 'title'">
+							INSTR(UBOARD_TITLE, #{searchMap.searchWord}) > 0
+						</when>
+						<when test="searchMap.searchType eq 'cont'">
+							INSTR(UBOARD_CONT, #{searchMap.searchWord}) > 0
+						</when>
+						<when test="searchMap.searchType eq 'llostCode'">
+							INSTR(LLOST_CODE, #{searchMap.searchWord}) > 0
+						</when>
+						<otherwise>
+							INSTR(UBOARD_TITLE, #{searchMap.searchWord}) > 0
+							OR
+							INSTR(UBOARD_CONT, #{searchMap.searchWord}) > 0
+							OR
+							INSTR(LLOST_CODE, #{searchMap.searchWord}) > 0
+						</otherwise>
+					</choose>
+				</if>
+			</trim>
+			<trim prefix="AND (" suffix=")" prefixOverrides="AND">
+				<if
+					test="@org.apache.commons.lang3.StringUtils@isNotBlank(searchMap.minDate)">
+					AND TO_DATE(UBOARD_DATE, 'YYYY-MM-DD') >=
+					TO_DATE(#{searchMap.minDate}, 'YYYY-MM-DD')
+				</if>
+				<if
+					test="@org.apache.commons.lang3.StringUtils@isNotBlank(searchMap.maxDate)">
+				<![CDATA[
+				AND TO_DATE(UBOARD_DATE, 'YYYY-MM-DD') <= TO_DATE(#{searchMap.maxDate}, 'YYYY-MM-DD')
+				]]>
+				</if>
+			</trim>
+		</trim>
+	</sql>
+
+	<!-- 총 게시글 갯수 출력 -->
+	<select id="selectLostCount" parameterType="PagingVO"
+		resultType="int">
+		SELECT COUNT(*) FROM UBOARD
+		WHERE LUBOARD_CODE = 'LO'
+		<include refid="searchFrag" />
+	</select>
+
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="selectLostList"
+		parameterType="kr.or.waterpark.emp.team.snack.vo.PagingVO"
+		resultType="kr.or.waterpark.common.vo.UboardVO">
+		SELECT *
+		FROM (
+		SELECT ROWNUM RN, A.*
+		FROM (
+		SELECT *
+		FROM UBOARD
+		ORDER BY UBOARD_NO ASC
+		) A
+		)
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+
+	<!-- faq list 조회 -->
+	<select id="faqList" parameterType="string"
+		resultType="kr.or.waterpark.common.vo.UboardVO">
+		SELECT
+		UBOARD_NO, UBOARD_TITLE, UBOARD_CONT, UBOARD_DEL,
+		GET_CODE_NAME_FUNC(LUBOARD_CODE, 'UB')LUBOARD_CODE,
+		GET_CODE_NAME_FUNC(LLOST_CODE, 'LT')LLOST_CODE,
+		FILE_NO,
+		TO_CHAR(TO_DATE(UBOARD_DATE,'YYYY-MM-DD'),'YYYY-MM-DD') UBOARD_DATE
+		FROM UBOARD
+		WHERE LUBOARD_CODE = #{data}
+		ORDER BY UBOARD_NO DESC
+	</select>
+
+	<!-- lost list 조회 -->
+	<select id="lostList" parameterType="string"
+		resultType="kr.or.waterpark.common.vo.UboardVO">
+		SELECT
+		UBOARD_NO, UBOARD_TITLE, UBOARD_CONT, UBOARD_DEL,
+		GET_CODE_NAME_FUNC(LUBOARD_CODE, 'UB')LUBOARD_CODE,
+		GET_CODE_NAME_FUNC(LLOST_CODE, 'LT')LLOST_CODE,
+		FILE_NO,
+		TO_CHAR(TO_DATE(UBOARD_DATE,'YYYY-MM-DD'),'YYYY-MM-DD') UBOARD_DATE
+		FROM UBOARD
+		WHERE LUBOARD_CODE = #{data}
+		ORDER BY UBOARD_NO DESC
+	</select>
+
+	<!-- notice list 조회 -->
+	<select id="noticeList" parameterType="string"
+		resultType="UboardVO">
+				/* kr.or.waterpark.common.uboard.dao.IUboardDAO.noticeList */
+		SELECT
+			UBOARD_NO
+			, UBOARD_TITLE
+			, UBOARD_CONT
+			, UBOARD_DEL
+			, GET_CODE_NAME_FUNC(LUBOARD_CODE, 'UB')LUBOARD_CODE
+			, GET_CODE_NAME_FUNC(LLOST_CODE, 'LT')LLOST_CODE
+			, FILE_NO
+			, TO_CHAR(TO_DATE(UBOARD_DATE,'YYYY-MM-DD'),'YYYY-MM-DD') UBOARD_DATE
+			, UBOARD_HIT
+		FROM UBOARD
+		WHERE LUBOARD_CODE = #{data}
+		ORDER BY UBOARD_NO DESC
+	</select>
+
+	<!-- notice 상세조회 -->
+	<select id="noticeDetail" parameterType="int"
+		resultType="kr.or.waterpark.common.vo.UboardVO">
+		
+		/* kr.or.waterpark.common.uboard.dao.IUboardDAO.noticeDetail */
+		SELECT
+			  UBOARD_NO
+			, UBOARD_TITLE
+			, UBOARD_DEL
+			, UBOARD_CONT
+			, FILE_NO
+			, LUBOARD_CODE
+			, LLOST_CODE
+			, UBOARD_HIT
+			, TO_CHAR(TO_DATE(UBOARD_DATE,'YYYY-MM-DD'),'YYYY-MM-DD') UBOARD_DATE
+		FROM UBOARD
+		WHERE UBOARD_NO = #{data}
+	</select>
+
+	<!-- notice 등록 -->
+	<insert id="noticeInsert"
+		parameterType="kr.or.waterpark.common.vo.UboardVO">
+		<selectKey resultType="int" keyProperty="uboard_no"
+			order="BEFORE">
+			SELECT UBOARD_SEQ.NEXTVAL
+			FROM DUAL
+		</selectKey>
+		INSERT INTO UBOARD (
+		UBOARD_NO, UBOARD_TITLE,
+		UBOARD_DEL, UBOARD_CONT, FILE_NO,
+		LUBOARD_CODE, LLOST_CODE, UBOARD_DATE
+		) VALUES (
+		#{uboard_no, jdbcType=NUMERIC},
+		#{uboard_title, jdbcType=VARCHAR},
+		#{uboard_del, jdbcType=VARCHAR},
+		#{uboard_cont, jdbcType=CLOB},
+		#{file_no, jdbcType=NUMERIC},
+		#{luboard_code, jdbcType=VARCHAR},
+		#{llost_code, jdbcType=VARCHAR},
+		#{uboard_date, jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<!-- notice 삭제 -->
+	<delete id="noticeDelete" parameterType="int">
+		DELETE FROM UBOARD
+		WHERE
+		UBOARD_NO = #{uboard_no, jdbcType=NUMERIC}
+
+	</delete>
+
+	<!-- faq 등록 -->
+	<insert id="faqInsert"
+		parameterType="kr.or.waterpark.common.vo.UboardVO">
+		<selectKey resultType="int" keyProperty="uboard_no"
+			order="BEFORE">
+			SELECT UBOARD_SEQ.NEXTVAL
+			FROM DUAL
+		</selectKey>
+		INSERT INTO UBOARD (
+		UBOARD_NO, UBOARD_TITLE,
+		UBOARD_DEL, UBOARD_CONT, FILE_NO,
+		LUBOARD_CODE, LLOST_CODE, UBOARD_DATE
+		) VALUES (
+		#{uboard_no, jdbcType=NUMERIC},
+		#{uboard_title, jdbcType=VARCHAR},
+		#{uboard_del, jdbcType=VARCHAR},
+		#{uboard_cont, jdbcType=CLOB},
+		#{file_no, jdbcType=NUMERIC},
+		#{luboard_code, jdbcType=VARCHAR},
+		#{llost_code, jdbcType=VARCHAR},
+		#{uboard_date, jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<!-- faq 삭제 -->
+	<delete id="faqDelete" parameterType="int">
+		DELETE FROM UBOARD
+		WHERE
+		UBOARD_NO = #{uboard_no, jdbcType=NUMERIC}
+	</delete>
+
+	<!-- lost 등록 -->
+	<insert id="lostInsert"
+		parameterType="kr.or.waterpark.common.vo.UboardVO">
+		<selectKey resultType="int" keyProperty="uboard_no"
+			order="BEFORE">
+			SELECT UBOARD_SEQ.NEXTVAL
+			FROM DUAL
+		</selectKey>
+		INSERT INTO UBOARD (
+		UBOARD_NO, UBOARD_TITLE,
+		UBOARD_DEL, UBOARD_CONT, FILE_NO,
+		LUBOARD_CODE, LLOST_CODE,
+		UBOARD_DATE
+		) VALUES (
+		#{uboard_no, jdbcType=NUMERIC},
+		#{uboard_title, jdbcType=VARCHAR},
+		#{uboard_del, jdbcType=VARCHAR},
+		#{uboard_cont, jdbcType=CLOB},
+		#{file_no, jdbcType=NUMERIC},
+		#{luboard_code, jdbcType=VARCHAR},
+		#{llost_code, jdbcType=VARCHAR},
+		#{uboard_date, jdbcType=VARCHAR}
+		)
+	</insert>
+	<delete id="lostDelete" parameterType="int">
+		DELETE FROM UBOARD
+		WHERE
+		UBOARD_NO = #{uboard_no, jdbcType=NUMERIC}
+	</delete>
+
+</mapper>

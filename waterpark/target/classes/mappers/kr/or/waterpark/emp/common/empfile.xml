@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.waterpark.common.dao.IEmpFilesDAO">
+	
+	<insert id="insertEmpFiles" parameterType="kr.or.waterpark.emp.common.login.vo.EmpVO">
+	 INSERT INTO 
+	    emp_files (
+		    emp_id,
+		    file_no,
+		    empf_del,
+		    lempf_code
+		) VALUES (
+		    #{emp_id},
+		    FILES_SEQ.CURRVAL,
+		    'N',
+		    #{file_biz}
+		)
+	</insert>
+	
+	<insert id="insertEmpFilesForResume" parameterType="kr.or.waterpark.emp.common.resume.vo.ResumeVO">
+		INSERT INTO 
+	    emp_files (
+		    emp_id,
+		    file_no,
+		    empf_del,
+		    lempf_code
+		) VALUES (
+		    #{emp_id},
+		    FILES_SEQ.CURRVAL,
+		    'N',
+		    #{file_biz}
+		)
+	</insert>
+</mapper>
