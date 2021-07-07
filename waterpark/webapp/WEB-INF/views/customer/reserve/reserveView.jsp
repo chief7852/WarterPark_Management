@@ -150,14 +150,10 @@
 		let predate_string = "${reserve.res_predate}";
 		let predate_array = predate_string.split("-");
 		let predate = new Date(predate_array[0], predate_array[1]-1, predate_array[2]);
-		console.log(predate);
 		let date_flag = Number(today) >= Number(predate);
-		console.log(date_flag);
 		if(date_flag != true){
 			let diff = predate - today;
 			let diff_day = parseInt(diff/(1000 * 60 * 60 * 24));
-			console.log(diff_day);
-			console.log("오늘 : " + today + " 이용 예정일 : " + predate + " 차이 : " + diff_day);
 			if(diff_day > 7){
 				Swal.fire({
 		 			  title: '정말로 환불하시겠습니까?',
@@ -210,8 +206,6 @@
 		
 	});
 	$(document).on("click", ".btn-print", function(){
-		console.log(res_code);
-		console.log("${WCP}/customer/use-info/reserveInfo/print?res_code_encode=" + res_code);
 		window.open("${WCP}/customer/use-info/reserveInfo/print?res_code_encode=${reserve.res_code_encode}", "예매 내역 인쇄", "width=1300px, height=700px, toolbar=no, menubar=no, resizable=no");
 	});
 </script>

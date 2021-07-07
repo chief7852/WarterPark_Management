@@ -87,8 +87,6 @@
 	$("#send").click(function() {
 		let user_name = $("#userName").val();
 		let user_hp = $("#userHp").val();
-		console.log(user_name);
-		console.log(user_hp);
 		$.ajax({
 			url : sendSmsUrl,
 			type : 'post',
@@ -116,8 +114,6 @@
 					setInterval(function(){
 						min = parseInt(time/60);
 						sec = time%60;
-						console.log(min);
-						console.log(sec);
 						$("#timer").html("<p>"+min + "분 " + sec+"초</p>");
 						time--;
 						
@@ -140,7 +136,6 @@
 				}
 			},
 			error : function() {
-				console.log("실패");
 			}
 		})
 	})
@@ -148,7 +143,6 @@
 	$("#enterBtn").click(function() {
 		let sendUserNumURL = "/waterpark/customer/getPhoneNumForAuth";
 		let user_num = $("#userNum").val();
-		console.log(userNum);
 		$.ajax({
 			url : sendUserNumURL,
 			type : 'post',

@@ -124,7 +124,6 @@
 			dataType : "json",
 			success : function(resp) {
 				$(".res-list tbody").empty();
-				console.log(resp);
 				let code = "";
 				$(resp.dataList).each(function(idx, res){
 					code += '<tr class="resTr" data-code="'+res.res_code+'">                             ';
@@ -150,7 +149,6 @@
 				    code += '</tr>';
 					
 				})
-				console.log(code);
 				$(".res-list tbody").append(code);
 				
 				

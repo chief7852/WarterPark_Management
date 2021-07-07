@@ -75,7 +75,6 @@ $(window).load( function() {
 	$(document).on("click", ".putBtn", function(){
 		let idx = $(this).parents(".box").attr("idx");
 		let grp = $(this).parents(".box").data("grp");
-		console.log(grp);
 		if(user == "false" && grp == "YR"){
 			Swal.fire({
 				  title: '연간 이용권 구입은 로그인이 필요한 서비스입니다.',
@@ -454,38 +453,10 @@ $(window).load( function() {
 		}, function(rsp) {
 		    if ( rsp.success ) {
 		        var msg = '결제가 완료되었습니다.';
-//		        msg += '고유ID : ' + rsp.imp_uid;
-//		        msg += '상점 거래ID : ' + rsp.merchant_uid;
 		        let paid = putComma(rsp.paid_amount);
 		        msg += '<br>결제 금액 : ' + paid + "원";
-//		        msg += '<br>카드 승인번호 : ' + rsp.apply_num;
 		        $(ticketOrders).find("input[name='pay_amount']").val(rsp.paid_amount);
 		        
-//		        $.ajax({
-//					url:ticketOrdersUrl,
-//					method:ticketOrders.attr("method"),
-//					data:ticketOrders.serialize(),
-//					dataType:"json",
-//					success:function(resp){
-//						if(resp.result == "Success"){
-//							let goView = confirm("예매가 완료되었습니다.\n예매내역을 조회하시겠습니까?");
-//							if(goView == true){
-//								location.href = "${WCP}/customer/info/reserveInfo?what="+resp.res_code;
-//							}else{
-//								Swal.fire("메인 페이지로 이동합니다.");
-//								location.href = "${WCP}/customer";
-//							}
-//						}else{
-//							Swal.fire("실패ㅜ");
-//						}
-//						
-//					}, error: function(xhr, error, msg){
-//						console.log(xhr);
-//						console.log(error);
-//						console.log(msg);
-//					}
-//					
-//				});
 		        
 		        test();
 					

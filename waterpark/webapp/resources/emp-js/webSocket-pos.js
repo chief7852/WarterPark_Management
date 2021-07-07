@@ -40,23 +40,19 @@ function websocketStart(datas,url){
 		this._initSocket();
 	},
 	sendChat: function(str) {
-		console.log(str)
 		
 		this._sendMessage(JSON.stringify(str));
 	},
 	// 메세지 데이터가 들어오면 그 메세지를 보여줌
 	receiveMessage: function(str) {
-		console.log(typeof(str))
 		const data = JSON.parse(str)
 		//카운트
-		console.log(data)
 		if(data.alarm_count!=null){
 			
 			$(".navbar-badge").text(data.alarm_count)	
 		}
 		//이메일 받았을때
 		if(data.from_name!=null){
-			console.log(data);
 			$(".navbar-badge").text(parseInt($(".navbar-badge").text())+1);
 
 			blink();
@@ -90,7 +86,6 @@ function websocketStart(datas,url){
 	},
 	// 메세지가입력되면 HandlerChat.java로 문자를 모냄
 	_sendMessage: function(str) {
-		console.log(str)
 		this._socket.send(str);
 	}
 	
@@ -139,7 +134,6 @@ function dbAlarm(url,emp_id){
 		},
 		dataType : "json",
 		success : function(data) {
-			console.log(data);
 			$(".dropdown-body").empty();
 			for(let map of data){
 				let dater = Date.parse(map.alarm_date);
@@ -170,7 +164,6 @@ function emailListLocation(move,url,alarm_no){
 		dataType : "json",
 		contentType: 'application/json; charset=utf-8',
 		success : function(data) {
-			console.log(data)
 			location.href = move;
 		},
 		error : function(xhr, status) {

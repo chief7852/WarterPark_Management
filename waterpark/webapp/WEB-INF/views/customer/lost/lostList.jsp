@@ -383,7 +383,6 @@ th{
 	let pagingArea = $("#pagingArea").on("click", "a", function(event) {
 		event.preventDefault();
 		let page = $(this).data("page");
-		console.log("내가 받은 페이지 : " + page);
 		if (page) {
 			searchForm.find("[name='page']").val(page);
 			searchForm.submit();

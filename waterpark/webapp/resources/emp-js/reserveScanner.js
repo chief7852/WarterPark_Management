@@ -143,8 +143,6 @@
 						reserveList = {};
 //						json파싱
 						try{
-							console.log("code.data");
-							console.log(code.data);
 							reserveList = JSON.parse(code.data);							
 						}catch(e){
 							Swal.fire(

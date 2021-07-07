@@ -62,7 +62,7 @@ var webSocket = {
 	},
 	// 메세지 데이터가 들어오면 그 메세지를 보여줌
 	receiveMessage: function(str) {
-		console.log(typeof(str))
+		
 		today()
 		$('#divChatData').append('<div>' + str + '</div>');				
 	},

@@ -40,12 +40,9 @@ $(".fileEnroll").on("click",function () {
 			        		setTimeout(function() {
 							  window.close();
 							}, 5000);
-			        		console.log("testing!");
 			        	}else{
-			        		console.log("실패!");
 			        	}
 			        }, error : function(){
-			        	console.log("아니 왜안돼 ㅠㅠ");
 			        }
 		    	})
 		    } 
@@ -72,7 +69,6 @@ $(".fileEnroll").on("click",function () {
 		$(infos).each(function(i, info){
 			let name = $(info).attr("name");
 			let val = $(info).val();
-			console.log(val);
 			let code = $("<input>").attr({"type":"hidden", "name":name,"value":val});
 			$(resumeForm2).append(code);
 			
@@ -101,18 +97,12 @@ $(".fileEnroll").on("click",function () {
 				$("#resumeForm").find("input[name=emp_birth]").val()	
 		);
 		
-		console.log("받아온 값음"); 	
-		console.log($("#resumeForm2").find("input[name=address]").val());
 		$("#resumeForm2").find("input[name=emergency_call]").val(
 				$("#resumeForm").find("input[name=emergency_call]").val()	
 		);
-		console.log($("#resumeForm2").find("input[name=emergency_call]").val());
-		console.log("받아온 값음");
 		$("#resumeForm2").find("input[name=emp_hp]").val(
 				$("#resumeForm").find("input[name=emp_hp]").val()	
 		);
-		console.log($("#resumeForm2").find("input[name=emp_hp]").val());
-		console.log("받아온 값음");
 	};
 	
  	$(".plus-experience").on("click",function(){
@@ -128,8 +118,6 @@ $(".fileEnroll").on("click",function () {
  	})
  	
  	$(".inputTag").on("change",function(){
- 		console.log("되냐?");
- 		console.log($(".resume").find(this));
  	})
  	
  	$(".sub-degree").on("click",function(){

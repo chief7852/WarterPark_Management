@@ -19,7 +19,6 @@ $.fn.formToAjax=function(param){
 			let name = $(this).attr("name");
 			let value = $(this).val();
 			data[name] = value;
-			console.log(data);
 		});
 		$.ajax({
 			url : url,

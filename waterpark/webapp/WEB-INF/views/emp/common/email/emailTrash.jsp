@@ -178,7 +178,7 @@
 	let pagingArea = $("#pagingArea").on("click", "a", function(event){
 		event.preventDefault();
 		let page = $(this).data("page");
-		console.log("내가 받은 페이지 : " + page);
+		
 		if(page){
 			searchForm.find("[name='page']").val(page);
 			searchForm.submit();
@@ -264,7 +264,7 @@
 		if(confirm('읽음 처리할까요?')){
 			$("input[name=chk]:checked").each(function() { 
 				var test = $(this).val(); 
-				console.log(test)
+				
 				emailList.push(test);
 			});
 			let readEmailURL = "/waterpark/emp/readEmailCheck"

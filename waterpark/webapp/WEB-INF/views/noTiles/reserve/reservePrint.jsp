@@ -159,7 +159,6 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		let res_code_encode = "${reserve.res_code_encode}";
-		console.log(res_code_encode);
 		let url = "${WCP}/reserveView/qrcodecreate";
 		url += "?res_code_encode=" + "${reserve.res_code_encode}" + "&res_date=" + "${reserve.res_date}";
 		$("#QRCode").attr("src", url);

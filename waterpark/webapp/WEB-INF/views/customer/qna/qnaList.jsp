@@ -305,16 +305,10 @@ td.hide {
 			$("tr[name='article']").hide();
 	    
 		let test = $(this).parent("td").siblings(".qno").text();
-		console.log(test);
 	    $("#deleteModalHidden").attr("value", test)
 			
 		});
-// 		$('#listBody >tr').on('click', function() {
 
-// 			let no = $(this).find('td.eq(0)').text();
-// 			$('#deleteModalHidden').val(no);
-// 			console.log(no);
-// 		})
 	});
 	$(window).scroll(function() {
 		if($(this).scrollTop() > 300){

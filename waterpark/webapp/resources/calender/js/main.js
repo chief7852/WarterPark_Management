@@ -114,7 +114,6 @@ var calendar = $('#calendar').fullCalendar({
   //startDate : moment(start).format('YYYY-MM-DD'),
   //endDate   : moment(end).format('YYYY-MM-DD')
   events: function (start, end, timezone, callback) {
-	  console.log(EmpVO)
     $.ajax({
       type: "get",
       url: WCP+"/emp/calender",
@@ -127,7 +126,6 @@ var calendar = $('#calendar').fullCalendar({
 	  contentType: 'application/json'
 	  ,
       success: function (response) {
-    	  console.log(response)
         var fixedDate = response.map(function (array) {
           if (array.allDay && array.start !== array.end) {
             array.end = moment(array.end).add(1, 'days'); // 이틀 이상 AllDay 일정인 경우 달력에 표기시 하루를 더해야 정상출력
@@ -333,7 +331,6 @@ function calDateWhenDragnDrop(event) {
 
   //하루짜리 all day
   if (event.allDay && event.end === event.start) {
-    console.log('1111')
     newDates.startDate = moment(event.start._d).format('YYYY-MM-DD');
     newDates.endDate = newDates.startDate;
   }

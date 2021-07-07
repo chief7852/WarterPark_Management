@@ -290,15 +290,16 @@ $(document).on("click",".barItems",function(){
 				$(".picture").empty();
 				$(".pdfPosition").empty();
 			}else{
-				console.log("실패!");
+				
+				
 			}
 			if(resp.empDetail.fileList != null){
 				$(resp.empDetail.fileList).each(function(idx,file){
 					let maxIdNo = 0;
 					let maxIdOrd = 0;
-					console.log("하악 이거 왜안됑?");
+					
 					if(file.lempf_code =='ID'){
-					console.log("파일이 null이 아니라222능");
+					
 						if(file.file_no > maxIdNo){
 							maxIdNo = file.file_no;
 							maxIdOrd = file.file_ord;
@@ -314,7 +315,7 @@ $(document).on("click",".barItems",function(){
 					}
 				});
 				if(resp.empDetail.fileList == ""){
-					console.log("파일 업승ㅁ");
+					
 					let pictureTag = $("<img>").attr("src",'${WCP}/resources/emp-img/water_no_img_emp.png').attr("id","img");
 					$(".picture").append(pictureTag);
 				}
@@ -337,7 +338,7 @@ $(document).on("click",".barItems",function(){
 			    	let month = report.report_date.substring(4,6);
 			    	let date = report.report_date.substring(6,8);
 			    	let replaceDate = year + "-" + month + "-" + date;
-			    	console.log(replaceDate);
+			    	
 					let tr = $("<tr>").append(
 						 $("<td>").html(report.rnum),
 						 $("<td>").html(report_title),

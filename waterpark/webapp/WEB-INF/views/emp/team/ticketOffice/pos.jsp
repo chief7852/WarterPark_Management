@@ -486,9 +486,7 @@ let empName = "${EmpVO.emp_name}";
 								}
 							},
 							error : function(xhr, error, msg) {
-								console.log(xhr);
-								console.log(error);
-								console.log(msg);
+
 							}
 
 						});
@@ -506,9 +504,7 @@ let empName = "${EmpVO.emp_name}";
 					alert("마감 버튼 ajax 동작 성공!");
 				},
 				error : function(xhr, error, msg) {
-					console.log(xhr);
-					console.log(error);
-					console.log(msg);
+
 				}
 
 			});
@@ -534,8 +530,7 @@ function relogin(WCP){
 				
 			},
 			error : function(xhr, status) {
-				console.log(xhr);
-				console.log(status);
+
 			}
 	
 		});
@@ -582,9 +577,7 @@ function relogin(WCP){
 				itemson.html(tl);
 			},
 			error : function(xhr, error, msg) {
-				console.log(xhr);
-				console.log(error);
-				console.log(msg);
+
 			}
 
 		});
@@ -680,7 +673,7 @@ $(document).on('click', '.del-ticket', function() {
 		total = parseInt(deleteComma(total));
 	}
 	total -= reprice;
-	console.log("tax ? " + total * 0.1);
+
 	
 	calTax();
 	
@@ -703,7 +696,7 @@ let calTax = function(){
 	$("#m-tax").text(tax + "원");
 	$("#subtotal").text(subtotal + "원");
 	$("#m-subtotal").text(subtotal + "원");
-	console.log("total : "+total);
+
 	$("#total").text(total + "원");
 	$("#m-total").text(total + "원");
 }
@@ -782,8 +775,7 @@ const { value: formValues} = await Swal.fire({
 // 		  saleYNprice == parseInt(deleteComma(saleYNprice));
 		  let saleprice = saleYNprice * (1 - (salepercent * 0.01));
 		  saleprice = Math.ceil(saleprice);
-		  console.log("saleYNprice");
-		  console.log(saleYNprice);
+
 		  let calSale = putComma(saleYNprice-saleprice);
 		  $('#SLPP').text(calSale+"원");
 		  $('#SLPN').append(" ("+salepercent+"%)")
@@ -804,7 +796,7 @@ $(document).on("click",'#saleList-btn',function(){
 		type : "post",
 		dataType : "json",
 		success : function(data) {
-			console.log(data)
+
 			var salesHTML = '<select id="swal-input1" class="form-select" aria-label="Default select example"> '
 			salesHTML += '<option selected>할인카드 선택..</option>';
 			for(let i in data){
@@ -814,8 +806,7 @@ $(document).on("click",'#saleList-btn',function(){
 			salepick(salesHTML);	
 		},
 		error : function(xhr, status) {
-			console.log(xhr);
-			console.log(status);
+
 		}
 
 	});
@@ -963,13 +954,13 @@ $(document).on("click", "#final-cash-btn", function(){
 //현금 결제 버튼 눌렀을 때
 $(document).on("click", "#cash-orderBtn", function(){
 	let ptm = $("label[for='PTM']").text();
-	console.log("ptm : " + ptm);
+
 	$("#final-amount").val(ptm);
 	$("#payPage").modal("hide");
 	
 
 	let price = $(".price-monitor").eq(1).val();
-	console.log("price : " + price);
+
 	putCommaProcess($("#final-amount"));
 	$("#cash-modal").modal("show");
 });
@@ -986,11 +977,10 @@ let getFromCustomer = null;
 $(document).on("click", ".cal-btn", function(){
 	let number = $(this).val();
 	getFromCustomer = $(this).parents(".modal").find("#get-from-customer");
-	console.log(getFromCustomer);
+
 	let modalID = $(this).parents(".modal").attr("id");
 	let fromCustomer = $(getFromCustomer).val();
-	console.log("number : " + number + " getFromCustomer : " + getFromCustomer + " modalID : " + modalID);
-	console.log(fromCustomer);
+
 	if(fromCustomer.length >= 9){
 		return;
 	}
@@ -1000,7 +990,7 @@ $(document).on("click", ".cal-btn", function(){
 	}
 	
 	fromCustomer = fromCustomer + number;
-	console.log("fromCustomer : " + fromCustomer);
+
 	getFromCustomer.val(fromCustomer);
 	putCommaProcess(getFromCustomer);	// 받은 금액 콤마 붙여주는 과정
 	if(modalID == "cash-modal"){
@@ -1011,7 +1001,7 @@ $(document).on("click", ".cal-btn", function(){
 });
 
 $(document).on("keyup", "#get-from-customer", function(){
-	console.log("keyup 이벤트 진입");
+
 	let modalID = $(this).parents(".modal").attr("id");
 	if(modalID == "cash-modal"){
 		minusAmount();
@@ -1033,7 +1023,6 @@ function plusAmount(){
 	if(putComAfter.indexOf("-") == 0){
 		putComAfter = "-" + putComAfter.replace(/[-]/gi,'');
 	}
-	console.log("- putComAfter : " + putComAfter);
 	$("#after-charge").val(putComAfter);
 }
 
@@ -1045,15 +1034,14 @@ function minusAmount(){
 	let deleteComFinal = deleteComma(finalAmount);
 	
 	let exchange = parseInt(deleteComPrice) - parseInt(deleteComFinal);
-	console.log("exchange : " + exchange + " type : " + typeof(exchange));
+
 	let putComExchange = putComma(exchange);
 	putComExchange = putComExchange + ""; 
-	console.log("putcomExchange 타입 : " + typeof(putComExchange));
-	console.log("putComExchange : " + putComExchange);
+
 	if(putComExchange.indexOf("-") == 0){
 		putComExchange = "-" + putComExchange.replace(/[-]/gi,'');
 	}
-	console.log("- putComExchange : " + putComExchange);
+
 	$("#exchange-amount").val(putComExchange);
 };
 
@@ -1125,9 +1113,7 @@ function test(){$.ajax({
 		}
 		
 	}, error: function(xhr, error, msg){
-		console.log(xhr);
-		console.log(error);
-		console.log(msg);
+
 	}
 });}
 
@@ -1161,7 +1147,7 @@ var selectResInfocode = function(res_code){
 					code = '<img class="qr-bangle"  id="qrfront_img['+i+']" src="${WCP}/resources/emp-img/Infra_Blueone_main.png">     ';
 			    	code += '<img class="qrcode-img" id="qrcode_img['+i+']" style="display:none" onload="this.style.display=\'block\'"> <br/>   ';
 					$("#backqr").append(code);
-					console.log("qr 생성 전 code" + resInfo.coinList[0].coin_code)
+
 				 	generateQRCode(i, resInfo);
 				});
 			$('#payPage').modal("hide");
@@ -1169,9 +1155,7 @@ var selectResInfocode = function(res_code){
 			}
 		},
 		error : function(xhr, error, msg) {
-			console.log(xhr);
-			console.log(error);
-			console.log(msg);
+
 		}
 
 	});
@@ -1188,25 +1172,20 @@ let pocketQRRead = function(qr){
 		success : function(resp) {
 			$("#qr-print-btn").attr("disabled", false);
 			let remainCoin = resp.remainCoin;
-			console.log("remainCoin");
-			console.log(remainCoin);
+
 			$("#qr-coin-start").text(remainCoin.coin_start);
 			$("#qr-coin-end").text(remainCoin.coin_end);
 			let remain = putComma(remainCoin.coin_remain+"");
 			pocketRemain = remain;
 			// 왜 undefined가 뜨냐...왜
-			console.log("remain");
-			console.log(typeof(remain));
-			console.log(remain);
+
 			remain += "원";
-			console.log(remain);
+
 			$("#qr-coin-remain").text(remain);
 			pocketCode = remainCoin.coin_code;
 			},
 		error : function(xhr, error, msg) {
-			console.log(xhr);
-			console.log(error);
-			console.log(msg);
+
 		}
 
 	});
@@ -1229,7 +1208,7 @@ let reserveQRRead = function(qr){
 			}else{
 				let allReserve = resp.allReserve;
 				coinForReserve = allReserve;
-				console.log("allReserve : " + allReserve);
+
 				let cancel = "";
 				if(allReserve.res_cancel == null){
 					cancel = "-";
@@ -1240,8 +1219,7 @@ let reserveQRRead = function(qr){
 				let num = 1;
 				$("#qr-print-btn").attr("disabled", false);
 				$(allReserve.resInfoList).each(function(i, res){
-					console.log("for문 진입");
-					console.log("coinList : " + res.coinList);
+
 					let coinList = res.coinList;
 					$(coinList).each(function(idx, coin){
 						let coin_code = "";
@@ -1253,7 +1231,7 @@ let reserveQRRead = function(qr){
 							coin_code = "미발급";
 							coin_start = "-";
 						}
-						console.log(num + " : " + coin_code);
+
 						$("#outputData table tbody").append($("<tr>").append(
 								$("<td>").text(num),
 								$("<td>").text(res.res_info_code),
@@ -1271,9 +1249,7 @@ let reserveQRRead = function(qr){
 			}
 		},
 		error : function(xhr, error, msg) {
-			console.log(xhr);
-			console.log(error);
-			console.log(msg);
+
 		}
 
 	});
@@ -1283,10 +1259,10 @@ let coinForReserve = null;
 
 $(document).on("click", "#qr-print-btn", function(){
 	let type = $(this).data("type");
-	console.log("qr-print-btn 누름 type : " + type);
+
 	if(type == "print"){
 		let res_code = coinForReserve.res_code;
-		console.log("coin : " + coinForReserve.resInfoList[0].coinList);
+
 		$(this).parents(".modal").modal("hide");
 		if(coinForReserve.resInfoList[0].coinList[0].coin_code == null){	// coin_code가 없으면 coin_code를 생성시켜 출력해줘야함
 			selectResInfocode(res_code);
@@ -1299,7 +1275,7 @@ $(document).on("click", "#qr-print-btn", function(){
 		$(this).parents(".modal").modal("hide");
 		coinCharge();
 	}else {
-		console.log("퇴장 처리해야함");
+
 		exitCoin();
 	}
 	
@@ -1366,13 +1342,13 @@ let coinCharge = function(){
 
 let coinCodeAgain = function(coinForReserve){
 	let resInfoList = coinForReserve.resInfoList;
-	console.log(resInfoList);
+
 	$("#backqr").empty();
 	$(resInfoList).each(function(i, resInfo){
 		code = '<img class="qr-bangle"  id="qrfront_img['+i+']" src="${WCP}/resources/emp-img/Infra_Blueone_main.png">     ';
     	code += '<img class="qrcode-img" id="qrcode_img['+i+']" style="display:none" onload="this.style.display=\'block\'"> <br/>   ';
 		$("#backqr").append(code);
-		console.log("qr 생성 전 code" + resInfo.coinList[0].coin_code)
+
 	 	generateQRCode(i, resInfo);
 	});
 	$("#exampleModal2").modal("show");
@@ -1384,7 +1360,7 @@ $(document).on("click","#printing",function(){
 })
 
 $(document).on("click", "#final-charge-btn", function(){
-	console.log("pocketCoin 충전 code : " + pocketCode);
+
 	let chargePrice = $(getFromCustomer).val();
 	if(chargePrice == 0 || chargePrice == "0"){
 		Swal.fire("충전할 금액을 입력해주세요.");

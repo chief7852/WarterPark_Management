@@ -63,8 +63,6 @@ function categoryArray(WCP){
 
 			},
 			error : function(xhr, status) {
-				console.log(xhr);
-				console.log(status);
 			}
 
 		});
@@ -308,7 +306,6 @@ function orderprod(WCP,listMap){
 				$("#tax").text(0 + "원");
 				$("#subtotal").text(0 + "원");
 				$("#total").text(0 + "원");
-//					console.log(data.prodlist)
 				let blcoin= '<table class="table-primary" style="font-size: 10px">'
 				for(var i in data.prodlist)	{
 					
@@ -351,7 +348,6 @@ function refundProd(WCP){
 			dataType : "json",
 			contentType: 'application/json; charset=utf-8',
 			success : function(data) {
-				console.log(data);
 				alerted(data.result);
 				del.closest('tr').remove();
 				let newqty = parseInt($(".modal-header").find('span').text().substring(7))-1;
@@ -372,7 +368,6 @@ function salestoday(WCP){
 			type : "get",
 			contentType: 'application/json; charset=utf-8',
 			success : function(data) {
-				console.log(data.result[0]);
 				for(let i in data.result){
 					let tableH = $('#Tsales').find('p').eq(i);
 					let tableP = $('#Tsales').find('p').eq(i);

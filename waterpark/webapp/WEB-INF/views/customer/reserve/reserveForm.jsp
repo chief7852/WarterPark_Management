@@ -213,7 +213,7 @@ if(membership > 0){
 //화면의 이용권 종류를 선택하면
 $(document).on("change", ".ticket-grp", function(){
 	getPriceForm.find("[name='"+$(this).attr("name")+"']").val($(this).val());
-//		console.log(grpval);
+
 	$.ajax({
 		url : getPriceFormUrl,
 		data : $(getPriceForm).serialize(),

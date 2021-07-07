@@ -121,7 +121,6 @@
 //						outputMessage.hidden = true;
 
 						outputData.parentElement.hidden = false;
-						console.log(code.data)
 						// QR코드 메시지 출력
 						pocketdata = {};
 //						json파싱
@@ -162,7 +161,6 @@
 									listMap.push(cartMap);
 								}
 								buyprod(listMap);
-								console.log(listMap);
 //		=============================================================================================
 								scannerToggle = false;
 	//							지금 판매되는 내역들을 json으로 파싱하고 ajax로 결제내역으로 보내기

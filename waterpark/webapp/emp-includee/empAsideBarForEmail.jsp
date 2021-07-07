@@ -16,7 +16,7 @@
 	box-sizing: border-box;
 }
 .dropdown{
-	margin-top: 35px;
+	margin-top: 35px;w
 	
 }
 .thumbTable{

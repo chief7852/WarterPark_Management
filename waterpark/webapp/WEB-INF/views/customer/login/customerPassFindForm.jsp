@@ -85,7 +85,6 @@
 	$("#enterBtn").click(function() {
 		let sendUserNumURL = "/waterpark/customer/getPhoneNumForAuth";
 		let user_num = $("#userNum").val();
-		console.log(user_num);
 		$.ajax({
 			url : sendUserNumURL,
 			type : 'post',

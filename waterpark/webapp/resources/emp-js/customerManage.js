@@ -7,7 +7,6 @@ $("#searchBtn").on("click", function(){
 		let sameInput = searchForm.find("[name='"+name+"']");
 		$(sameInput).val($(this).val());
 		let testing = $(this).val();
-		console.log(`${idx} : ${testing}`);
 	});
 	searchForm.submit();
 });	
@@ -15,11 +14,8 @@ $("#searchBtn").on("click", function(){
 let pagingArea = $("#pagingArea").on("click", "a", function(event){
 	event.preventDefault();
 	let page = $(this).data("page");
-	console.log("내가 받은 페이지 : " + page);
 	if(page){
-		console.log(page);
 		searchForm.find("[name='page']").val(page);
-		console.log("pageArea click!");
 		searchForm.submit();
 	}
 	return false;

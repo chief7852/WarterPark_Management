@@ -161,7 +161,6 @@ $.generateMessage = function(message) {
 									if (userNum.trim() != null) {
 										let phoneAuthURL = "/waterpark/customer/phoneAuth";
 										userNum = userNum.trim();
-										console.log(userNum);
 										$
 												.ajax({
 													url : phoneAuthURL,
@@ -201,7 +200,6 @@ $.generateMessage = function(message) {
 												})
 
 									} else {
-										console.log("실패");
 									}
 								}
 							});

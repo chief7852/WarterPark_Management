@@ -54,14 +54,12 @@
 		$(checks).each(function(index,check){
 			let classes = ".agreement"+index;
 			let idx = $(check).parents($(".clauseList")).find($(classes)).data("num");
-			console.log(idx);
 			let require = $(check).parents($("")).data("require");
 			agreeList.push
 			({clause_no : idx,
 				agreement_check : $(check).val(),
 				clause_require : require});
 		});
-		console.log(agreeList);
 		
 		let URL = "/waterpark/customer/clause";
 		$.ajax({
