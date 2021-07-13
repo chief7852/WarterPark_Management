@@ -22,6 +22,8 @@
 	}
 </script>
 <style>
+
+
 body {
 	font-family: 'Jua', sans-serif;
 }
